@@ -30,3 +30,11 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 module-name = "JavaScript"
+source-include = [
+    "tests/test_*.py",
+    "tests/fixtures/conformance.mjs",
+    "docs/compatibility.md",
+    "scripts/install_distribution.py",
+    "CHANGELOG.md",
+    "RELEASING.md",
+]
