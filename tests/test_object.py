@@ -69,6 +69,13 @@ class ObjectTests(unittest.TestCase):
         self.assertTrue(Object.hasOwn(value, 1))
         self.assertEqual(list(Object.keys("😀")), ["0", "1"])
         self.assertEqual(list(Object.values("😀")), ["\ud83d", "\ude00"])
+        self.assertTrue(Object.hasOwn("😀", "length"))
+
+    def test_equivalent_utf16_strings_share_one_property_key(self):
+        value = Object({"😀": 1})
+        value["\ud83d\ude00"] = 2
+        self.assertEqual(list(Object.keys(value)), ["😀"])
+        self.assertEqual(value["😀"], 2)
 
     def test_null_errors_and_same_value(self):
         for value in (None, undefined):

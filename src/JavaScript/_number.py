@@ -76,7 +76,9 @@ def parseInt(value=undefined, radix=undefined):
     digits = "0123456789abcdefghijklmnopqrstuvwxyz"[:base]
     result = 0
     count = 0
-    for char in text.lower():
+    for char in text:
+        if "A" <= char <= "Z":
+            char = char.lower()
         if char not in digits:
             break
         result = result * base + digits.index(char)

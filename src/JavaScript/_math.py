@@ -8,7 +8,7 @@ import random
 from ._values import to_number, undefined
 
 
-class Math:
+class _Math:
     PI = math.pi
     E = math.e
     LN2 = math.log(2)
@@ -104,3 +104,6 @@ class Math:
     @staticmethod
     def random():
         return random.random()
+
+
+Math = _Math()

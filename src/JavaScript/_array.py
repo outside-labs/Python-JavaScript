@@ -105,6 +105,9 @@ class Array:
 
     @classmethod
     def from_(cls, source, mapFn=undefined):
+        if isinstance(source, str):
+            from ._string import String
+            source = String(source)
         transform = callback(mapFn) if mapFn is not undefined else None
         result = cls()
         for index, value in enumerate(source):
