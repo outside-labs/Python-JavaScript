@@ -31,6 +31,9 @@ than asserting general Test262 conformance.
 - `Object()`/`Object(None)` create empty objects; `Object(existing)` returns the
   existing Object. Other construction accepts a Python mapping. Primitive
   boxing and prototype/descriptor operations are unsupported.
+- Object-to-primitive conversion uses the built-in data-object representation.
+  Custom `valueOf`/`toString` conversion hooks and Symbol.toPrimitive are not
+  implemented.
 - Objects preserve supplied child values; passing a nested Python dict/list
   does not recursively convert it. JSON parsing creates runtime containers.
 - Own Object keys shadow ordinary Python attributes. Use `Object.keys(obj)`
@@ -65,6 +68,9 @@ than asserting general Test262 conformance.
   and inherited methods retain Python behavior. Use explicit helpers for
   JavaScript semantics. No operator rewriting or automatic primitive boxing is
   provided. `Boolean` does not create boxed Boolean objects.
+- Methods can return native Python primitives, including Array `join` and Math
+  results. Wrap such results with `String` or `Number` to call their JavaScript
+  methods; Python does not automatically box primitive values.
 - Decimal number strings use Python's shortest float representation adjusted to
   JavaScript exponent/fixed-format thresholds. Tested ordinary values agree;
   rare shortest-decimal tie choices may differ between Python and ECMAScript.
