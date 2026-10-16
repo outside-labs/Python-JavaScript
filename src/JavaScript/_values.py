@@ -141,7 +141,7 @@ def strictEqual(left, right) -> bool:
     if is_number(left) and is_number(right):
         return to_number(left) == to_number(right)
     if isinstance(left, str) and isinstance(right, str):
-        return str(left) == str(right)
+        return left.encode("utf-16-le", "surrogatepass") == right.encode("utf-16-le", "surrogatepass")
     return left is right
 
 
