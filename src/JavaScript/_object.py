@@ -169,6 +169,8 @@ class Object:
     def hasOwn(value, key):
         if value is None or value is undefined:
             raise TypeError("Cannot convert undefined or null to object")
+        if isinstance(value, str) and to_string(key) == "length":
+            return True
         method = getattr(type(value), "_js_has_own", None)
         if method is not None:
             return method(value, to_string(key))

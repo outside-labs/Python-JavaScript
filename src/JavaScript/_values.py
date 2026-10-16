@@ -118,7 +118,7 @@ def to_string(value=undefined) -> str:
     if value is False:
         return "false"
     if isinstance(value, str):
-        return str(value)
+        return value.encode("utf-16-le", "surrogatepass").decode("utf-16-le", "surrogatepass")
     return number_string(value)
 
 

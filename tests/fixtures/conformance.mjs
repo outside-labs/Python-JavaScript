@@ -24,6 +24,9 @@ const values = [undefined, null, false, true, 0, -0, NaN, Infinity, -Infinity,
 cases.conversion = values.map(value => [Boolean(value), Number(value), String(value), typeof value]);
 cases.equality = [1 === true, NaN === NaN, 0 === -0, Object.is(0, -0),
   Object.is(NaN, NaN), {} === {}, "😀" === "\ud83d\ude00"];
+cases.namespace = [typeof Math, typeof JSON, typeof Number, Object.hasOwn("😀", "length")];
+const unicodeObject = {"😀": 1}; unicodeObject["\ud83d\ude00"] = 2;
+cases.unicodeKeys = [Object.keys(unicodeObject), unicodeObject["😀"], Array.from("\ud83d\ude00")];
 const obj = {b: 1, 10: 2, 2: 3, "01": 4, 0: 5, "4294967295": 6};
 cases.objectOrder = Object.entries(obj);
 delete obj.b; obj.b = 7;
@@ -78,7 +81,7 @@ cases.stringBoundary = ["abc".lastIndexOf("", 0), "abc".lastIndexOf("", -1), "ab
 const nums = [undefined, null, true, "1", NaN, Infinity, -0, 3.5, 3, 2**53 - 1, 2**53];
 cases.numberPredicates = nums.map(value => [Number.isNaN(value), Number.isFinite(value), Number.isInteger(value), Number.isSafeInteger(value)]);
 cases.parseInt = ["12px", "0xff", "010", "1e3", "-0", "bad", "0x"].map(value => parseInt(value));
-cases.parseRadix = [["ffz", 16], ["11", 2], ["12", 1], ["z", 36], ["0b11", 0]].map(([text, radix]) => parseInt(text, radix));
+cases.parseRadix = [["ffz", 16], ["11", 2], ["12", 1], ["z", 36], ["0b11", 0], ["K", 36], ["K", 36]].map(([text, radix]) => parseInt(text, radix));
 cases.parseFloat = ["-1.2e2px", "1e+", "0xff", "Infinity!", "bad"].map(value => parseFloat(value));
 const rounding = [-Infinity, -2.5, -1.5, -0.5, -0.2, -0, 0, 0.49999999999999994, 0.5, 1.5, Infinity, NaN];
 cases.mathRounding = rounding.map(value => [Math.floor(value), Math.ceil(value), Math.trunc(value), Math.round(value), Math.sign(value)]);

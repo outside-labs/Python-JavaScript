@@ -43,6 +43,10 @@ def observations():
               "inf", "\x851", "１２", Array(), Array.of(1), Array.of(1, 2), Object()]
     cases["conversion"] = [[Boolean(value), Number(value), String(value), typeof(value)] for value in values]
     cases["equality"] = [strictEqual(1, True), strictEqual(math.nan, math.nan), strictEqual(0, -0.0), Object.is_(0, -0.0), Object.is_(math.nan, math.nan), strictEqual(Object(), Object()), strictEqual("😀", "\ud83d\ude00")]
+    cases["namespace"] = [typeof(Math), typeof(JSON), typeof(Number), Object.hasOwn("😀", "length")]
+    unicode_object = Object({"😀": 1})
+    unicode_object["\ud83d\ude00"] = 2
+    cases["unicodeKeys"] = [Object.keys(unicode_object), unicode_object["😀"], Array.from_("\ud83d\ude00")]
     obj = Object({"b": 1, "10": 2, "2": 3, "01": 4, "0": 5, "4294967295": 6})
     cases["objectOrder"] = Object.entries(obj)
     del obj.b
@@ -91,7 +95,7 @@ def observations():
     nums = [undefined, None, True, "1", math.nan, math.inf, -0.0, 3.5, 3, 2**53 - 1, 2**53]
     cases["numberPredicates"] = [[Number.isNaN(value), Number.isFinite(value), Number.isInteger(value), Number.isSafeInteger(value)] for value in nums]
     cases["parseInt"] = [parseInt(value) for value in ["12px", "0xff", "010", "1e3", "-0", "bad", "0x"]]
-    cases["parseRadix"] = [parseInt(text, radix) for text, radix in [("ffz", 16), ("11", 2), ("12", 1), ("z", 36), ("0b11", 0)]]
+    cases["parseRadix"] = [parseInt(text, radix) for text, radix in [("ffz", 16), ("11", 2), ("12", 1), ("z", 36), ("0b11", 0), ("K", 36), ("K", 36)]]
     cases["parseFloat"] = [parseFloat(value) for value in ["-1.2e2px", "1e+", "0xff", "Infinity!", "bad"]]
     rounding = [-math.inf, -2.5, -1.5, -0.5, -0.2, -0.0, 0, 0.49999999999999994, 0.5, 1.5, math.inf, math.nan]
     cases["mathRounding"] = [[Math.floor(value), Math.ceil(value), Math.trunc(value), Math.round(value), Math.sign(value)] for value in rounding]

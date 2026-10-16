@@ -1,7 +1,7 @@
 import math
 import unittest
 
-from JavaScript import Array, Boolean, Math, Number, String, isFinite, parseFloat, parseInt, strictEqual, undefined
+from JavaScript import Array, Boolean, Math, Number, String, isFinite, parseFloat, parseInt, strictEqual, typeof, undefined
 
 
 class StringTests(unittest.TestCase):
@@ -20,6 +20,7 @@ class StringTests(unittest.TestCase):
         self.assertIs(value.codePointAt(4), undefined)
         self.assertEqual(list(value), ["a", "😀", "b"])
         self.assertEqual(list(Array.from_(value)), ["a", "😀", "b"])
+        self.assertEqual(list(Array.from_("\ud83d\ude00")), ["😀"])
         self.assertTrue(strictEqual("😀", "\ud83d\ude00"))
         self.assertEqual(String(), "")
         self.assertEqual(String(undefined), "undefined")
@@ -87,6 +88,8 @@ class NumberTests(unittest.TestCase):
         self.assertEqual(Number.parseInt("11", 2), 3)
         self.assertTrue(math.isnan(parseInt("12", 1)))
         self.assertTrue(math.isnan(parseInt("0x")))
+        self.assertTrue(math.isnan(parseInt("K", 36)))
+        self.assertEqual(parseInt("K", 36), 20)
         self.assertEqual(math.copysign(1, parseInt("-0")), -1)
         self.assertEqual(parseFloat("-1.2e2px"), -120)
         self.assertEqual(parseFloat("1e+"), 1)
@@ -96,6 +99,11 @@ class NumberTests(unittest.TestCase):
 
 
 class MathTests(unittest.TestCase):
+    def test_math_is_a_noncallable_namespace(self):
+        self.assertEqual(typeof(Math), "object")
+        with self.assertRaises(TypeError):
+            Math()
+
     def test_rounding_and_negative_zero(self):
         self.assertEqual(Math.round(2.5), 3)
         self.assertEqual(Math.round(-1.5), -1)
