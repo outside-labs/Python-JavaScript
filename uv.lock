@@ -1,0 +1,36 @@
+version = 1
+revision = 3
+requires-python = ">=3.14"
+
+[[package]]
+name = "javascript-fetch-api"
+version = "0.2.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ca/48/10ff71084c91abe71951a1ec2d5e0609828f93dd2b715da1ce969181b71a/javascript_fetch_api-0.2.0.tar.gz", hash = "sha256:3af21b723fd570d94beb91c9e1080fa50fed6c3fdc4c9cee3c85dca04fc93d76", size = 11907, upload-time = "2026-10-16T19:45:57.098Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ca/50/6255cbb902d7b4ec20c42e7a2bb13c81de87bd0572ac44abb286dd6638c1/javascript_fetch_api-0.2.0-py3-none-any.whl", hash = "sha256:b8a4965645b37928bb3348706994d22de72d0599ed81e9ed3baf1c519c6f60d1", size = 13654, upload-time = "2026-10-16T19:45:55.663Z" },
+]
+
+[[package]]
+name = "javascript-json"
+version = "0.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/04/92/d542ba9ae59528359389ad2afcc5dbd3283755ed9ffc95e7c173a98f74b9/javascript_json-0.1.0.tar.gz", hash = "sha256:19ce727971b44f39fd2a2a59b18ea774fb1c4f7421599964ad42a4aedceb4d4b", size = 4173, upload-time = "2026-10-16T19:08:54.745Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0e/a6/7c057df3ddd6799e7f6381da326917903ba52babb972a109702e1077b4b6/javascript_json-0.1.0-py3-none-any.whl", hash = "sha256:e119be47ba76924bb1757af6a55c0b7cd53e0d08b55f8157fc0081fc65052bef", size = 5047, upload-time = "2026-10-16T19:08:53.384Z" },
+]
+
+[[package]]
+name = "python-javascript"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "javascript-fetch-api" },
+    { name = "javascript-json" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "javascript-fetch-api", specifier = ">=0.2.0,<0.3.0" },
+    { name = "javascript-json", specifier = ">=0.1.0,<0.2.0" },
+]
