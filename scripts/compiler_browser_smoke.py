@@ -19,7 +19,8 @@ from JavaScript.modules import SourceModule
 
 
 ROOT = Path(__file__).resolve().parents[1]
-APP = '''from JavaScript.browser import read_text, write_text, on_click, unsubscribe, fetch_text
+APP = '''from JavaScript import Promise
+from JavaScript.browser import read_text, write_text, on_click, unsubscribe, fetch_text
 from text_metrics import metrics
 async def run(text):
     current = await read_text("input")
@@ -32,6 +33,13 @@ async def load(text):
 async def clear(text):
     await write_text("result", "")
 async def fail(text):
+    if text == "raise":
+        error = TypeError("explicit value")
+        raise error
+    if text == "reject":
+        error = TypeError("rejected value")
+        pending = Promise.reject(error)
+        await pending
     return 1 // 0
 async def busy(text):
     await write_text("status", "busy")
@@ -204,8 +212,14 @@ window.failures=[];window.start=(overrides={},denyFetch=false)=>{
                     page.evaluate('window.start()');page.wait_for_function('window.controller.stats().subscriptions===5')
                     page.click('#fail');page.wait_for_function('window.failures.length===1')
                     error = page.evaluate('window.failures[0]')
-                    assert error['type'] == 'ZeroDivisionError' and error['location']['line'] == 14, error
+                    assert error['type'] == 'ZeroDivisionError' and error['location']['line'] == next(i for i,line in enumerate(APP.splitlines(),1) if line.strip()=='return 1 // 0'), error
                     checks.append('python-error-source-location')
+                    for value, statement in [('raise','raise error'),('reject','await pending')]:
+                        page.evaluate('window.start()');page.wait_for_function('window.controller.stats().subscriptions===5')
+                        page.fill('#input',value);page.click('#fail');page.wait_for_function('window.failures.length===1')
+                        error=page.evaluate('window.failures[0]')
+                        assert error['type']=='TypeError' and error['location']['line']==next(i for i,line in enumerate(APP.splitlines(),1) if line.strip()==statement),error
+                    checks.append('preconstructed-raise-and-rejection-origins')
                     sessions = []
                     for _ in range(3):
                         page.evaluate('window.start()');page.wait_for_function('window.controller.stats().subscriptions===5')

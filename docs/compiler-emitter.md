@@ -89,3 +89,10 @@ precision/Unicode/tuple/default behavior and an independent Node source-map
 consumer. Local modules, async browser capabilities and the final browser parity
 gate remain MOD-01, ASYNC-01/BROWSER-01 and QA-03. This compiler executes only
 ahead-of-time approved source; it does not parse new source in the browser.
+
+Exception construction does not start a traceback. An explicit raise records
+its statement span; rejecting a Promise with an unraised exception records the
+first source await. Errors already raised in a function/callback keep that
+origin when propagated through awaits. Exception values retain identity. Native
+stack capture, where available, maps explicit raises to their statement; full
+Python call-frame construction remains separately staged.

@@ -194,8 +194,12 @@ class _Emitter:
                 self.add(f'{self.names[target]}={temporary};', indent, node)
         elif kind in {'expression', 'return', 'raise'}:
             value = self.expression(fields['value']) if fields['value'] else 'null'
-            prefix = {'expression': '', 'return': 'return ', 'raise': 'throw '}[kind]
-            self.add(prefix + value + ';', indent, node)
+            if kind == 'raise':
+                self.use('error')
+                self.add(f'$raise({value},{self.location(node)});', indent, node)
+            else:
+                prefix = 'return ' if kind == 'return' else ''
+                self.add(prefix + value + ';', indent, node)
         elif kind == 'if':
             self.use('truth')
             self.add(f'if($truth({self.expression(fields["test"])},{self.location(node)})){{', indent, node)
