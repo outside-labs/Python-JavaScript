@@ -15,6 +15,7 @@ import time
 from playwright.sync_api import sync_playwright
 
 from JavaScript.browser import compile_browser
+from JavaScript.emitter import OutputFile
 from JavaScript.modules import SourceModule
 
 
@@ -100,7 +101,8 @@ def sources():
 
 
 def smoke(channel=None):
-    artifact = compile_browser(sources(), entrypoint='app')
+    artifact = compile_browser(sources(), entrypoint='app', notices=(OutputFile(
+        'LICENSES/shimify.txt', (ROOT / 'tests/fixtures/licenses/SHIMIFY-LICENSE.txt').read_bytes(), 'notice'),))
     with tempfile.TemporaryDirectory() as temporary:
         root = Path(temporary)
         for item in artifact.files:

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "suite": "compiler-parity/1",
+  "reference": "CPython 3.14.7",
+  "attribution": [
+    {
+      "cases": [
+        "text-metrics-single-module"
+      ],
+      "source": "https://github.com/outside-labs/shimify/tree/b48ed1778270508007d75b861dc117ad4ddc4f2b/tests/fixtures/text_metrics",
+      "license": "licenses/SHIMIFY-LICENSE.txt",
+      "notes": "Shared reduced computation adopted in compiler_contract.json; exact MIT notice retained in compiled artifacts. Other cases are original regression examples."
+    }
+  ],
+  "cases": [
+    {
+      "id": "typed-return",
+      "source": "def main():\n    return None, True, False, 9007199254740993, -9007199254740995, \"A\ud83d\ude00e\u0301\", (1, \"\\ud83d\\ude00\")",
+      "family": "values",
+      "export": "main"
+    },
+    {
+      "id": "unicode-columns",
+      "source": "def main():\n    \"\ud83d\ude00\"; return 1 // 0",
+      "family": "errors",
+      "export": "main",
+      "traceback": true
+    },
+    {
+      "id": "evaluation-order",
+      "source": "def mark(value):\n    print(value)\n    return value\ndef main():\n    result = mark(1) < mark(2) < mark(3)\n    other = mark(3) < mark(2) < mark(1)\n    print(mark(\"\") and mark(\"never\"))\n    print(mark(()) or mark(\"fallback\"))\n    return result, other",
+      "family": "side-effects",
+      "export": "main"
+    },
+    {
+      "id": "default-alias",
+      "source": "def selected(value=(1, \"\ud83d\ude00\")):\n    return value\ndef main():\n    first=selected()\n    alias=selected\n    second=selected()\n    return first is second, selected is alias, first",
+      "family": "values",
+      "export": "main"
+    },
+    {
+      "id": "numeric-and-unicode",
+      "source": "def main():\n    return -7//3, 7//-3, -7%3, 7%-3, True+2, len(\"\\ud83d\\ude00\"), len(\"\ud83d\ude00\"), \"\\ud83d\\ude00\"==\"\ud83d\ude00\", \"\ud83d\ude00\"[-1], (1,2)<(1,3)",
+      "family": "values",
+      "export": "main"
+    },
+    {
+      "id": "preconstructed-raise",
+      "source": "def main():\n    error=TypeError(\"bad value\")\n    print(error is error)\n    raise error",
+      "family": "errors",
+      "export": "main",
+      "traceback": true
+    },
+    {
+      "id": "output-before-error",
+      "source": "print(\"before\")\n1//0",
+      "family": "errors",
+      "traceback": true
+    },
+    {
+      "id": "index-error",
+      "source": "def main():\n    return (1,)[4]",
+      "family": "errors",
+      "export": "main",
+      "traceback": true
+    },
+    {
+      "id": "unbound-local",
+      "source": "def main():\n    if False:\n        item=1\n    return item",
+      "family": "errors",
+      "export": "main"
+    },
+    {
+      "id": "lazy-coroutine",
+      "source": "async def selected(value=(1,\"\ud83d\ude00\")):\n    print(\"inside\")\n    return value\nasync def main():\n    pending=selected()\n    print(\"before\")\n    first=await pending\n    print(\"after\")\n    second=await selected()\n    return first is second, first",
+      "family": "async",
+      "export": "main",
+      "async": true
+    },
+    {
+      "id": "promise-callback-once",
+      "source": "from JavaScript import Promise\ndef callback(value):\n    print(\"callback\",value)\n    return value+1\nasync def main():\n    return await Promise.resolve(9007199254740993).then(callback)",
+      "family": "async",
+      "export": "main",
+      "async": true
+    },
+    {
+      "id": "promise-rejection-value",
+      "source": "from JavaScript import Promise\nasync def main():\n    error=TypeError(\"rejected\")\n    pending=Promise.reject(error)\n    await pending",
+      "family": "errors",
+      "export": "main",
+      "async": true
+    },
+    {
+      "id": "promise-callback-raise",
+      "source": "from JavaScript import Promise\ndef callback(value):\n    print(\"once\")\n    error=TypeError(\"callback error\")\n    raise error\nasync def main():\n    return await Promise.resolve(1).then(callback)",
+      "family": "errors",
+      "export": "main",
+      "traceback": true,
+      "async": true
+    },
+    {
+      "id": "async-original-failure",
+      "source": "async def inner():\n    return 1//0\nasync def main():\n    return await inner()",
+      "family": "errors",
+      "export": "main",
+      "traceback": true,
+      "async": true
+    },
+    {
+      "id": "module-alias-and-initialization",
+      "family": "modules",
+      "export": "main",
+      "modules": [
+        {
+          "name": "app",
+          "source": "from helpers import selected, selected as alias\nprint(\"app\")\ndef main():\n    first=selected()\n    second=alias()\n    return selected is alias, first is second, first"
+        },
+        {
+          "name": "helpers",
+          "source": "print(\"helpers\")\ndef selected(value=(1,\"\ud83d\ude00\")):\n    return value"
+        }
+      ]
+    },
+    {
+      "id": "module-callback-origin",
+      "family": "modules",
+      "export": "main",
+      "async": true,
+      "traceback": true,
+      "modules": [
+        {
+          "name": "app",
+          "source": "from JavaScript import Promise\nfrom helpers import callback\nasync def main():\n    return await Promise.resolve(1).then(callback)"
+        },
+        {
+          "name": "helpers",
+          "source": "def callback(value):\n    error=TypeError(\"helper error\")\n    raise error"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "async-classes",
+      "source": "class A:\n    pass",
+      "async": true,
+      "classification": "deferred",
+      "diagnostic": "PJS100"
+    },
+    {
+      "id": "async-generator",
+      "source": "async def main():\n    yield 1",
+      "async": true,
+      "classification": "deferred",
+      "diagnostic": "PJS100"
+    },
+    {
+      "id": "unapproved-promise-method",
+      "source": "from JavaScript import Promise\nasync def main():\n    return await Promise.all(())",
+      "async": true,
+      "classification": "rejected",
+      "diagnostic": "PJS110"
+    }
+  ]
+}

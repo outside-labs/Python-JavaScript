@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from JavaScript.browser import compile_browser
+from JavaScript.emitter import OutputFile
 from JavaScript.modules import SourceModule
 
 
@@ -23,7 +24,8 @@ def build(output):
     corpus = json.loads((ROOT / 'tests/fixtures/compiler_contract.json').read_text(encoding='utf-8'))
     reference = next(case['source'] for case in corpus['cases'] if case['id'] == 'text-metrics-single-module')
     computation = reference[:reference.index('\nprint(metrics(')]
-    artifact = compile_browser((SourceModule.from_text('app', APP), SourceModule.from_text('text_metrics', computation)), entrypoint='app')
+    artifact = compile_browser((SourceModule.from_text('app', APP), SourceModule.from_text('text_metrics', computation)), entrypoint='app',
+        notices=(OutputFile('LICENSES/shimify.txt', (ROOT / 'tests/fixtures/licenses/SHIMIFY-LICENSE.txt').read_bytes(), 'notice'),))
     identity = {'manifest_sha256': hashlib.sha256(artifact.manifest_bytes).hexdigest(), 'profile': 'compiled-javascript',
                 'profile_version': 1, 'entrypoint': 'app.mjs', 'engine': None}
     html = '''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
@@ -59,8 +61,12 @@ byId('restart').addEventListener('click',start);start();
     if output.exists() or output.is_symlink():
         raise ValueError('Choose a new output directory.')
     output.mkdir(parents=True)
-    written = []
+    written, directories = [], []
     try:
+        parents = {parent for name in files for parent in (output / name).parents if parent != output and output in parent.parents}
+        for directory in sorted(parents, key=lambda path: len(path.parts)):
+            directory.mkdir()
+            directories.append(directory)
         for name, data in files.items():
             path = output / name
             with path.open('xb') as stream:
@@ -69,6 +75,11 @@ byId('restart').addEventListener('click',start);start();
     except BaseException:
         for path in reversed(written):
             path.unlink(missing_ok=True)
+        for directory in reversed(directories):
+            try:
+                directory.rmdir()
+            except OSError:
+                pass
         try:
             output.rmdir()
         except OSError:
