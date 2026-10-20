@@ -35,6 +35,7 @@ source-include = [
     "tests/fixtures/conformance.mjs",
     "tests/fixtures/compiler_contract.json",
     "docs/compatibility.md",
+    "docs/compiler*.md",
     "scripts/install_distribution.py",
     "CHANGELOG.md",
     "RELEASING.md",

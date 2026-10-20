@@ -37,6 +37,11 @@
       "id": "alias",
       "source": "from JavaScript import Array as A\nprint(A.of(1, 2).length)",
       "stdout": "2\n"
+    },
+    {
+      "id": "text-metrics-single-module",
+      "source": "def character_count(text):\n    return len(text)\n\n\n\nSEPARATORS = \" \\t\\n\\r\\v\\f\"\n\n\ndef metrics(text):\n    if not isinstance(text, str):\n        raise TypeError(\"text must be str\")\n    characters = character_count(text)\n    words = 0\n    lines = 0\n    inside_word = False\n    if text:\n        lines = 1\n    for character in text:\n        if character == \"\\n\":\n            lines = lines + 1\n        if character in SEPARATORS:\n            inside_word = False\n        elif not inside_word:\n            words = words + 1\n            inside_word = True\n    return characters, words, lines\n\nprint(metrics(\"\"))\nprint(metrics(\"A😀 é\\nline two\"))\n",
+      "stdout": "(0, 0, 0)\n(14, 4, 2)\n"
     }
   ],
   "boundaries": [
