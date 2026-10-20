@@ -5,7 +5,8 @@ Date: 2026-10-16
 ## First milestone delivered: 2026-10-16
 
 [Python-JavaScript 0.1.0](https://pypi.org/project/Python-JavaScript/0.1.0/)
-is published. The repository and organization Project remain private. Final main
+is published. At release the repository and organization Project were private. The repository
+became public on 2026-10-20; the organization Project remains private. Final main
 and tag `v0.1.0` point to `c0389e4645c39f3db23ad2e911475fdd3188dad5`.
 
 | Task | Completed PR |
@@ -278,7 +279,7 @@ target; browser-specific assumptions require a separately defined target.
 4. Monitor build/publish jobs, compare artifact hashes, and verify a fresh public
    PyPI install of `Python-JavaScript==0.1.0` plus both dependency versions.
 
-The repository stays private. PyPI distributions expose their packaged source;
+The repository is public as of 2026-10-20. PyPI distributions expose their source;
 only reviewed source, tests and intended documentation belong in artifacts.
 Exclude local notes, archives, credentials, references and unrelated working files.
 Do not invent an open-source license: release metadata must reflect an actual
@@ -323,8 +324,8 @@ Related plans:
 - [Application assembly](https://github.com/outside-labs/pocket-python/blob/main/IMPLEMENTATION_PLAN.md)
 - [Independent interpreter](https://github.com/outside-labs/pocket-python/blob/main/IMPLEMENTATION_PLAN_INTERPRETER.md)
 
-The compiler repository remains private. Cross-project links do not change its
-visibility or authorize copying its source into public artifacts.
+The compiler repository became public on 2026-10-20. Project visibility remains
+separate; application artifacts still include only explicitly selected files.
 
 ## Common acceptance application
 
