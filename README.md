@@ -108,3 +108,7 @@ network requests.
 The development [compiler emitter](docs/compiler-emitter.md) produces deterministic
 ES modules for the approved single-module Python profile. This API is not part
 of the published 0.1.0 distribution.
+
+The explicit [async compiler profile](docs/compiler-async.md) adds lazy coroutines,
+awaited Promise values, callbacks and context cancellation. Browser host adapters
+remain separately tracked.

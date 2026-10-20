@@ -217,6 +217,105 @@ function $attribute(value, name, location) {
   $fail('TypeError', 'Attribute is outside the approved JavaScript registry.', location);
 }
 '''),
+    'async': (('call', 'javascript'), r'''
+if (signal !== null && (typeof signal !== 'object' || typeof signal.aborted !== 'boolean' ||
+    typeof signal.addEventListener !== 'function' || typeof signal.removeEventListener !== 'function')) {
+  throw new TypeError('signal must be an AbortSignal or null');
+}
+function $cancelled(location) {
+  const error = new $PyError('AbortError', 'Compiled operation cancelled.', location);
+  error.code = 'CANCELLED'; return error;
+}
+function $checkpoint(location) { if (signal?.aborted) throw $cancelled(location); }
+class $Coroutine {
+  constructor(start) { this.start = start; this.started = false; }
+}
+class $PromiseValue {
+  constructor(promise) { this.promise = promise; promise.catch(() => {}); Object.freeze(this); }
+}
+const $asyncFunctions = new WeakSet();
+let $activeAsync = 0;
+function $cfn(name, count, defaults, body) {
+  const fn = $fn(name, count, defaults, (args, location) => new $Coroutine(() => body(args, location)));
+  $asyncFunctions.add(fn); return fn;
+}
+function $wait(promise, location) {
+  $checkpoint(location);
+  return new Promise((resolve, reject) => {
+    let finished = false;
+    const cleanup = () => signal?.removeEventListener('abort', abort);
+    const abort = () => { if (!finished) { finished = true; cleanup(); reject($cancelled(location)); } };
+    signal?.addEventListener('abort', abort, {once: true});
+    if (signal?.aborted) { abort(); return; }
+    promise.then(value => {
+      if (finished) return; finished = true; cleanup();
+      try { $checkpoint(location); resolve(value); } catch (error) { reject(error); }
+    }, error => {
+      if (finished) return; finished = true; cleanup();
+      reject(error instanceof $PyError ? error : new $PyError('RuntimeError', 'Unhandled Promise rejection.', location));
+    });
+  });
+}
+function $await(value, location) {
+  $checkpoint(location);
+  if (value instanceof $PromiseValue) return $wait(value.promise, location);
+  if (!(value instanceof $Coroutine)) $fail('TypeError', 'await requires an adopted coroutine or Promise.', location);
+  if (value.started) $fail('RuntimeError', 'cannot reuse already awaited coroutine', location);
+  value.started = true;
+  if ($activeAsync >= 128) $fail('RecursionError', 'Maximum active async calls (128) exceeded.', location);
+  $activeAsync++;
+  let promise;
+  try { promise = Promise.resolve(value.start()); } catch (error) { promise = Promise.reject(error); }
+  const pending = promise.finally(() => { $activeAsync--; });
+  pending.catch(() => {});
+  return $wait(pending, location);
+}
+const $PromiseRegistry = Object.freeze({
+  resolve: $fn('Promise.resolve', 1, [], (args, location) => {
+    if (args[0] instanceof $Coroutine) $fail('TypeError', 'Await a coroutine before Promise conversion.', location);
+    return args[0] instanceof $PromiseValue ? args[0] : new $PromiseValue(Promise.resolve(args[0]));
+  }),
+  reject: $fn('Promise.reject', 1, [], (args, location) => {
+    if (!(args[0] instanceof $PyError)) $fail('TypeError', 'Promise.reject requires an adopted exception.', location);
+    return new $PromiseValue(Promise.reject(args[0]));
+  })
+});
+function $asyncAttribute(value, name, location) {
+  if (value === $JS && name === 'Promise') return $PromiseRegistry;
+  if (value === $PromiseRegistry && (name === 'resolve' || name === 'reject')) return value[name];
+  if (value instanceof $PromiseValue && name === 'then') return $fn('Promise.then', null, [], (args, where) => {
+    if (args.length > 2 || args.some(fn => fn !== null && (!(fn instanceof $Callable) || $asyncFunctions.has(fn)))) {
+      $fail('TypeError', 'then requires up to two synchronous Python callbacks or None.', where);
+    }
+    const callback = fn => fn == null ? undefined : result => {
+      $checkpoint(where);
+      const returned = $call(fn, [result], where);
+      if (returned instanceof $Coroutine) $fail('TypeError', 'Async Promise callbacks are outside this profile.', where);
+      return returned instanceof $PromiseValue ? returned.promise : returned;
+    };
+    return new $PromiseValue(value.promise.then(callback(args[0]), callback(args[1])));
+  });
+  $fail('TypeError', 'Attribute is outside the adopted async registry.', location);
+}
+'''),
+    'async-expose': (('async', 'input'), r'''
+const $asyncExposed = new WeakMap();
+function $asyncExpose(value, location) {
+  if (!(value instanceof $Callable)) return value;
+  if (!$asyncExposed.has(value)) {
+    const invoke = args => {
+      $checkpoint(location);
+      return $call(value, args.map(argument => $input(argument, location)), location);
+    };
+    $asyncExposed.set(value, $asyncFunctions.has(value) ?
+      (...args) => Promise.resolve().then(() => $await(invoke(args), location)) : (...args) => {
+        const result = invoke(args);
+        return result instanceof $PromiseValue ? $await(result, location) : result;
+      });
+  }
+  return $asyncExposed.get(value);
+}
+'''),
     'input': (('call', 'str', 'tuple'), r'''
 function $input(value, location, depth = 0, seen = new Set()) {
   if (depth > 64) $fail('TypeError', 'Input nesting exceeds 64.', location);
@@ -248,6 +347,8 @@ HELPER_BINDINGS = {
     'types': ('$types', '$isinstance'), 'exception': ('$TypeError',),
     'repr': ('$repr',), 'print': ('$print',),
     'javascript': ('$JS', '$JArray', '$attribute'), 'input': ('$input', '$expose'),
+    'async': ('$checkpoint', '$await', '$cfn', '$PromiseRegistry', '$asyncAttribute'),
+    'async-expose': ('$asyncExpose',),
 }
 
 

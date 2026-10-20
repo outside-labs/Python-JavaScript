@@ -10,7 +10,8 @@ from typing import Literal
 ValueType = Literal['statement', 'python-value', 'python-none', 'python-bool',
                     'python-int', 'python-str', 'python-tuple', 'python-exception',
                     'python-type', 'callable', 'javascript-type', 'javascript-array',
-                    'javascript-number', 'javascript-callable']
+                    'javascript-number', 'javascript-callable', 'async-callable',
+                    'python-coroutine', 'python-promise']
 
 
 @dataclass(frozen=True)
@@ -116,7 +117,7 @@ def _immutable(node):
 
 
 class _FrontEnd:
-    def __init__(self, source, filename, source_imports=None):
+    def __init__(self, source, filename, source_imports=None, *, async_enabled=False):
         self.filename = filename
         self.lines = source.splitlines() or ['']
         self.bindings = {}
@@ -124,6 +125,8 @@ class _FrontEnd:
         self.locals = {}
         self.types = {}
         self.source_imports = source_imports or {}
+        self.async_enabled = async_enabled
+        self.async_scopes = set()
         try:
             self.tree = ast.parse(source, filename=filename)
             self.table = symtable.symtable(source, filename, 'exec')
@@ -166,8 +169,11 @@ class _FrontEnd:
                 continue
             names = []
             kind, target = 'constant', None
-            if isinstance(node, ast.FunctionDef):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
                 names, kind = [node.name], 'function'
+                if isinstance(node, ast.AsyncFunctionDef):
+                    self.types['module:' + node.name] = 'async-callable'
+                    self.async_scopes.add('function:' + node.name)
             elif isinstance(node, ast.Assign):
                 if len(node.targets) != 1 or not isinstance(node.targets[0], ast.Name) or not _immutable(node.value):
                     self.fail('PJS100', 'Module bindings require single-name immutable literals.', node)
@@ -180,9 +186,9 @@ class _FrontEnd:
                         self.fail('PJS110', 'Only the approved JavaScript registry may be imported.', node)
                     names, target = [node.names[0].asname or 'JavaScript'], 'JavaScript'
                 else:
-                    if node.level or node.module != 'JavaScript' or len(node.names) != 1 or node.names[0].name != 'Array':
+                    if node.level or node.module != 'JavaScript' or len(node.names) != 1 or node.names[0].name not in ({'Array', 'Promise'} if self.async_enabled else {'Array'}):
                         self.fail('PJS110', 'Only the approved JavaScript.Array binding may be imported.', node)
-                    names, target = [node.names[0].asname or 'Array'], 'JavaScript.Array'
+                    names, target = [node.names[0].asname or node.names[0].name], 'JavaScript.' + node.names[0].name
             for name in names:
                 if name in self.root:
                     self.fail('PJS100', 'Module rebinding is outside the immutable profile.', node)
@@ -221,18 +227,34 @@ class _FrontEnd:
             kind = self.types.get(binding.id, 'python-value')
             target = binding.target
             if binding.kind == 'function':
-                kind, target = 'callable', binding.id
+                kind, target = self.types.get(binding.id, 'callable'), binding.id
             elif binding.kind == 'javascript':
                 kind = 'javascript-type'
             elif binding.kind == 'builtin':
                 kind = 'python-type' if binding.name in _TYPES else 'callable'
             elif binding.kind == 'source':
-                target = binding.id if kind == 'callable' else None
+                target = binding.id if kind in {'callable', 'async-callable'} else None
             return self.node(node, 'name', kind, binding=binding.id, target=target)
+        if isinstance(node, ast.Await):
+            if not self.async_enabled or scope not in self.async_scopes:
+                self.fail('PJS100', 'Await requires an adopted async function.', node)
+            value = self.expression(node.value, scope)
+            if value.value_type not in {'python-coroutine', 'python-promise', 'python-value'}:
+                self.fail('PJS120', 'Await requires an adopted coroutine or Promise.', node)
+            return self.node(node, 'await', 'python-value', value=value)
         if isinstance(node, ast.Tuple):
             return self.node(node, 'tuple', 'python-tuple', values=tuple(self.expression(value, scope) for value in node.elts))
         if isinstance(node, ast.Attribute):
             value = self.expression(node.value, scope)
+            if self.async_enabled:
+                async_target = {('JavaScript', 'Promise'): 'JavaScript.Promise',
+                                ('JavaScript.Promise', 'resolve'): 'JavaScript.Promise.resolve',
+                                ('JavaScript.Promise', 'reject'): 'JavaScript.Promise.reject'}.get((value.field('target'), node.attr))
+                if value.value_type == 'python-promise' and node.attr == 'then':
+                    async_target = 'Promise.then'
+                if async_target:
+                    return self.node(node, 'async-attribute', 'javascript-type' if async_target == 'JavaScript.Promise' else 'javascript-callable',
+                                     value=value, name=node.attr, target=async_target)
             target = {( 'JavaScript', 'Array'): 'JavaScript.Array',
                       ('JavaScript.Array', 'of'): 'JavaScript.Array.of'}.get((value.field('target'), node.attr))
             if target:
@@ -250,15 +272,24 @@ class _FrontEnd:
             allowed = {'builtin:len': ('python-int', 1), 'builtin:print': ('python-none', None),
                        'builtin:isinstance': ('python-bool', 2), 'builtin:TypeError': ('python-exception', 1),
                        'JavaScript.Array.of': ('javascript-array', None)}
+            if self.async_enabled:
+                allowed.update({'JavaScript.Promise.resolve': ('python-promise', 1),
+                                'JavaScript.Promise.reject': ('python-promise', 1),
+                                'Promise.then': ('python-promise', None)})
             if target in allowed:
                 kind, count = allowed[target]
                 if count is not None and len(node.args) != count:
                     self.fail('PJS120', 'Unsupported argument count.', node)
             elif target in self.bindings and self.bindings[target].kind in {'function', 'source'}:
-                kind = 'python-value'
+                kind = 'python-coroutine' if function.value_type == 'async-callable' else 'python-value'
             else:
                 self.fail('PJS120', 'Call does not resolve to an approved direct callable.', node)
             arguments = tuple(self.expression(argument, scope) for argument in node.args)
+            if any(argument.value_type == 'python-coroutine' for argument in arguments):
+                self.fail('PJS120', 'Coroutine arguments must be awaited first.', node)
+            if target == 'Promise.then' and (len(arguments) > 2 or any(
+                    argument.value_type not in {'callable', 'python-none'} for argument in arguments)):
+                self.fail('PJS120', 'then accepts up to two plain synchronous Python callbacks or None.', node)
             if target == 'builtin:isinstance' and arguments[1].field('target') not in {'builtin:' + name for name in _TYPES}:
                 self.fail('PJS120', 'isinstance requires an approved builtin type binding.', node)
             return self.node(node, 'call', kind, function=function, arguments=arguments, target=target)
@@ -325,7 +356,10 @@ class _FrontEnd:
                                  bindings=tuple((self.root[imported.name].id, imported.export) for imported in imports))
             names = [alias.asname or alias.name for alias in node.names]
             return self.node(node, 'import', bindings=tuple(self.root[name].id for name in names))
-        if isinstance(node, ast.FunctionDef):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            asynchronous = isinstance(node, ast.AsyncFunctionDef)
+            if asynchronous and not self.async_enabled:
+                self.fail('PJS100', 'Async functions require the explicit async profile.', node)
             if node not in self.tree.body or scope or node.decorator_list or node.type_params or node.returns or any(arg.annotation for arg in [*node.args.posonlyargs, *node.args.args]):
                 self.fail('PJS100', 'Nested, decorated, generic or annotated functions are deferred.', node)
             if node.args.vararg or node.args.kwarg or node.args.kwonlyargs:
@@ -339,7 +373,7 @@ class _FrontEnd:
             self.types = original
             return self.node(node, 'function', binding=self.root[node.name].id,
                              parameters=tuple(self.locals[function_scope][arg.arg].id for arg in [*node.args.posonlyargs, *node.args.args]),
-                             defaults=defaults, body=body)
+                             defaults=defaults, body=body, asynchronous=asynchronous)
         if isinstance(node, ast.Assign):
             if any(not isinstance(target, ast.Name) for target in node.targets):
                 self.fail('PJS100', 'Only simple-name assignment is supported.', node)
@@ -355,7 +389,11 @@ class _FrontEnd:
         if isinstance(node, ast.Return):
             if scope is None:
                 self.fail('PJS100', 'Return requires a function.', node)
-            return self.node(node, 'return', value=self.expression(node.value, scope) if node.value else None)
+            value = self.expression(node.value, scope) if node.value else None
+            if value and (value.value_type == 'python-coroutine' or
+                          (scope in self.async_scopes and value.value_type == 'python-promise')):
+                self.fail('PJS120', 'Returning an unawaited coroutine or Promise is outside this profile.', node)
+            return self.node(node, 'return', value=value)
         if isinstance(node, ast.If):
             test = self.expression(node.test, scope)
             original = self.types.copy()
@@ -393,7 +431,7 @@ class _FrontEnd:
         self.fail('PJS100', 'Unsupported statement: ' + type(node).__name__, node)
 
 
-def parse_source(source: str, *, filename: str = '<source>') -> ModuleIR:
+def parse_source(source: str, *, filename: str = '<source>', async_enabled: bool = False) -> ModuleIR:
     """Validate source and return immutable typed IR without executing target code."""
     if not isinstance(source, str) or not isinstance(filename, str):
         raise TypeError('source and filename must be strings')
@@ -403,7 +441,10 @@ def parse_source(source: str, *, filename: str = '<source>') -> ModuleIR:
         raise CompileError(Diagnostic('PJS100', 'Source must be valid UTF-8.', SourceSpan(filename, 1, 1, 1, 1), 'parse')) from None
     if len(encoded) > 1_048_576:
         raise CompileError(Diagnostic('PJS100', 'Source exceeds the 1 MiB profile limit.', SourceSpan(filename, 1, 1, 1, 1), 'parse'))
-    frontend = _FrontEnd(source, filename)
+    if type(async_enabled) is not bool:
+        raise TypeError('async_enabled must be bool')
+    frontend = _FrontEnd(source, filename, async_enabled=async_enabled)
     body = frontend.statements(frontend.tree.body)
     return ModuleIR(filename, hashlib.sha256(encoded).hexdigest(),
-                    tuple(frontend.bindings[key] for key in sorted(frontend.bindings)), body)
+                    tuple(frontend.bindings[key] for key in sorted(frontend.bindings)), body,
+                    profile='python-browser-async/1' if async_enabled else 'python-browser/1')

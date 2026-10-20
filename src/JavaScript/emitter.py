@@ -45,6 +45,12 @@ def _vlq(value):
             return encoded
 
 
+def _contains_await(node):
+    if not hasattr(node, 'fields'):
+        return any(_contains_await(item) for item in node) if isinstance(node, tuple) else False
+    return node.kind == 'await' or any(_contains_await(value) for _, value in node.fields)
+
+
 class _Emitter:
     def __init__(self, module):
         self.module = module
@@ -93,6 +99,12 @@ class _Emitter:
                 return value
             self.use('binding')
             return f'$get({self.names[binding.id]},{_json(binding.name)},{str(binding.kind in {"local", "parameter"}).lower()},{location})'
+        if kind == 'await':
+            self.use('async')
+            return f'(await $await({self.expression(fields["value"])},{location}))'
+        if kind == 'async-attribute':
+            self.use('async')
+            return f'$asyncAttribute({self.expression(fields["value"])},{_json(fields["name"])},{location})'
         if kind == 'attribute':
             self.use('javascript')
             return f'$attribute({self.expression(fields["value"])},{_json(fields["name"])},{location})'
@@ -118,7 +130,8 @@ class _Emitter:
                 if fields['operator'] == 'and':
                     condition = '!' + condition
                 pieces.extend([f'if({condition})return {name};', f'{name}={self.expression(value)};'])
-            return '(()=>{' + ''.join(pieces) + f'return {name};' + '})()'
+            code = '(()=>{' + ''.join(pieces) + f'return {name};' + '})()'
+            return '(await ' + code.replace('(()=>', '(async()=>', 1) + ')' if _contains_await(node) else code
         if kind == 'compare':
             self.use('compare')
             left, right = self.temporary(), self.temporary()
@@ -126,11 +139,15 @@ class _Emitter:
             for operator, value in zip(fields['operators'], fields['values'][1:]):
                 pieces.extend([f'{right}={self.expression(value)};',
                     f'if(!$compare({_json(operator)},{left},{right},{location}))return false;', f'{left}={right};'])
-            return '(()=>{' + ''.join(pieces) + 'return true;})()'
+            code = '(()=>{' + ''.join(pieces) + 'return true;})()'
+            return '(await ' + code.replace('(()=>', '(async()=>', 1) + ')' if _contains_await(node) else code
         raise AssertionError('Unrecognized validated expression: ' + kind)
 
     def statements(self, nodes, indent=1):
         for node in nodes:
+            if 'async/' in self.module.profile:
+                self.use('async')
+                self.add(f'$checkpoint({self.location(node)});', indent, node)
             self.statement(node, indent)
 
     def statement(self, node, indent):
@@ -143,13 +160,20 @@ class _Emitter:
         elif kind == 'import':
             self.use('javascript')
             for identifier in fields['bindings']:
-                value = '$JS' if self.bindings[identifier].target == 'JavaScript' else '$JArray'
+                target = self.bindings[identifier].target
+                if target == 'JavaScript.Promise':
+                    self.use('async')
+                value = {'JavaScript': '$JS', 'JavaScript.Array': '$JArray', 'JavaScript.Promise': '$PromiseRegistry'}[target]
                 self.add(f'{self.names[identifier]}={value};', indent, node)
         elif kind == 'function':
             self.use('call')
             binding = self.bindings[fields['binding']]
             defaults = '[' + ','.join(map(self.expression, fields['defaults'])) + ']'
-            self.add(f'{self.names[binding.id]}=$fn({_json(binding.name)},{len(fields["parameters"])},{defaults},($args)=>{{', indent, node)
+            asynchronous = fields.get('asynchronous', False)
+            if asynchronous:
+                self.use('async')
+            factory, modifier = ('$cfn', 'async ') if asynchronous else ('$fn', '')
+            self.add(f'{self.names[binding.id]}={factory}({_json(binding.name)},{len(fields["parameters"])},{defaults},{modifier}($args)=>{{', indent, node)
             locals_ = [item for item in self.module.bindings if item.scope == 'function:' + binding.name]
             if locals_:
                 self.use('binding')
@@ -201,9 +225,10 @@ class _Emitter:
         for binding in exports:
             value = self.names[binding.id]
             if binding.kind == 'function' and not shared_runtime:
-                self.use('input')
+                self.use('async-expose' if 'async/' in self.module.profile else 'input')
                 definition = next(node for node in self.module.body if node.kind == 'function' and node.field('binding') == binding.id)
-                value = f'$expose({value},{self.location(definition)})'
+                expose = '$asyncExpose' if 'async/' in self.module.profile else '$expose'
+                value = f'{expose}({value},{self.location(definition)})'
             items.append(f'[{_json(binding.name)}]:{value}')
         self.add('return Object.freeze({' + ','.join(items) + '});')
         helpers = helper_closure(self.required)
@@ -213,7 +238,8 @@ class _Emitter:
             if names:
                 lines.append(('  const {' + ','.join(names) + '}=runtime;', None))
         else:
-            lines = [('export function createModule({write = text => console.log(text.slice(0,-1))} = {}) {', None),
+            option = ', signal = null' if 'async/' in self.module.profile else ''
+            lines = [('export function createModule({write = text => console.log(text.slice(0,-1))' + option + '} = {}) {', None),
                      ("  if(typeof write !== 'function')throw new TypeError('write must be a function');", None)]
             for helper in helpers:
                 lines.extend(('  ' + line, None) for line in helper_source(helper).splitlines())
@@ -239,13 +265,13 @@ class _Emitter:
 
 
 def compile_source(source: str, *, filename: str = 'app.py', module_name: str = 'app.mjs',
-                   source_map: bool = True) -> CompiledArtifact:
+                   source_map: bool = True, async_enabled: bool = False) -> CompiledArtifact:
     """Compile one approved module to immutable artifacts; do not execute or publish it."""
     if not isinstance(module_name, str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]*\.mjs', module_name):
         raise ValueError('module_name must be a portable .mjs basename')
     if type(source_map) is not bool:
         raise TypeError('source_map must be bool')
-    module = parse_source(source, filename=filename)
+    module = parse_source(source, filename=filename, async_enabled=async_enabled)
     output, helpers, exports = _Emitter(module).render(source, module_name, source_map)
     compiler_version = version('Python-JavaScript')
     notice = ('Generated by Python-JavaScript ' + compiler_version + '\n'
@@ -255,7 +281,7 @@ def compile_source(source: str, *, filename: str = 'app.py', module_name: str = 
     output.append(OutputFile('NOTICES.txt', notice.encode('utf-8'), 'notice'))
     files = tuple(sorted(output, key=lambda item: item.path))
     manifest = {'kind': 'python-javascript-compiled', 'schema_version': 1,
-                'compiler': {'name': 'Python-JavaScript', 'version': compiler_version, 'abi': 'python-browser-esm/1'},
+                'compiler': {'name': 'Python-JavaScript', 'version': compiler_version, 'abi': 'python-browser-async-esm/1' if async_enabled else 'python-browser-esm/1'},
                 'language_profile': module.profile, 'target': 'ecmascript-2022-module',
                 'unicode_version': unicodedata.unidata_version, 'entrypoint': module_name,
                 'entrypoint_export': 'createModule', 'application_exports': exports,
