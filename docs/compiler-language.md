@@ -20,7 +20,7 @@ and arbitrary user objects are outside the first profile.
 | Scalars | None, bool, arbitrary-precision int and Unicode str literals; tuples of supported values. Floats/bytes/complex wait for separate numeric/binary contracts. |
 | Bindings | Simple names, immutable module constants, ordinary local assignments and top-level plain functions. Preserve lexical binding identity and evaluation order. |
 | Functions | Positional arguments and immutable literal defaults; return, direct calls and recursion. Keyword/variadic calls, nested closures, decorators, annotations and async functions are deferred. |
-| Control flow | if/elif/else, for over approved strings/tuples, break/continue, ordinary return and expression statements. while/comprehensions/generators are deferred initially. |
+| Control flow | if/elif/else, function-local for over approved strings/tuples, break/continue, ordinary return and expression statements; loop-else is deferred. while/comprehensions/generators are deferred initially. |
 | Operations | Supported scalar arithmetic/comparisons, Python and/or/not, identity on supported values, string membership and supported indexing. Mixed or unknown operand forms need helpers or a source-located rejection. |
 | Builtins/errors | len on adopted strings/tuples, print of adopted values, approved isinstance checks and explicit builtin TypeError raising needed by the fixture. No eval/exec, reflection or undeclared I/O. |
 | JavaScript API | Resolve explicit imports/aliases through a versioned symbol/method registry. Start with Array.of and length as a binding fixture; other exports/methods need adopted signatures and parity cases before lowering. |
@@ -65,6 +65,8 @@ classes, reflection, mutable module initialization and dynamic execution remain
 source-located diagnostics, not an interpreter/server fallback.
 
 ## Front end and diagnostics
+
+Source input is UTF-8 with an explicit 1 MiB front-end limit.
 
 Use ast -> bind -> validate -> typed IR -> lower -> emit. Never import or execute
 application/dependency modules to compile them. Carry original file/line/column
