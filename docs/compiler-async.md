@@ -79,10 +79,10 @@ AbortSignal delivery cannot interrupt busy synchronous execution on its own.
 In a worker, the trusted main thread must retain worker termination as the stop
 path. The [host protocol](https://github.com/outside-labs/pocket-python/blob/main/docs/browser-host-protocol.md)
 uses session/request IDs, serialized tagged values, exactly one terminal result
-and CANCELLED/TIMEOUT replies. A future transport adapter must wrap a pending
-host result as an adopted Promise, forward cancellation to its request, discard
-stale replies and release handles. Raw Promise/Event/DOM objects do not cross
-that transport. HOST-01 specifies that adapter; this task does not implement it.
+and CANCELLED/TIMEOUT replies. The [browser profile](compiler-browser.md) wraps a pending
+host result as an adopted Promise, forwards cancellation to its request, discards
+stale replies and releases handles. Raw Promise/Event/DOM objects do not cross
+that transport. HOST-01 defines the shared contract; the async-only profile does not itself provide that adapter.
 
 ## Fetch boundary
 
@@ -90,7 +90,7 @@ CPython code continues to use the published `fetch_api.fetch` implementation
 re-exported by `JavaScript`, including its thread-backed Promise and HTTP types.
 Those implementations are not copied into compiled artifacts. `fetch`, Request,
 Response, streaming bodies and response JSON methods remain rejected by this
-compiler profile. BROWSER-01 adds the separately granted `fetch/1` text operation,
+compiler profile. The [browser profile](compiler-browser.md) adds the separately granted `fetch/1` text operation,
 lowering to browser-native Fetch through the trusted host with AbortSignal,
 origin/CORS, URL, credential, redirect, size and deadline rules. Its first text
 metrics UI requires no network access. Streaming, async iterables and standalone

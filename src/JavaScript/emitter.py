@@ -163,7 +163,11 @@ class _Emitter:
                 target = self.bindings[identifier].target
                 if target == 'JavaScript.Promise':
                     self.use('async')
-                value = {'JavaScript': '$JS', 'JavaScript.Array': '$JArray', 'JavaScript.Promise': '$PromiseRegistry'}[target]
+                if target.startswith('JavaScript.browser.'):
+                    self.use('browser')
+                    value = '$browser[' + _json(target.rsplit('.', 1)[1]) + ']'
+                else:
+                    value = {'JavaScript': '$JS', 'JavaScript.Array': '$JArray', 'JavaScript.Promise': '$PromiseRegistry'}[target]
                 self.add(f'{self.names[identifier]}={value};', indent, node)
         elif kind == 'function':
             self.use('call')

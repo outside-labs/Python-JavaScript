@@ -456,3 +456,10 @@ coroutines, Promise conversion/chaining, synchronous callbacks, source-located
 rejections and AbortSignal context cancellation. JavaScript microtask timing and
 CPython scheduling differences are documented. Fetch/DOM/worker transport remains
 BROWSER-01; no new async runtime dependency or published artifact is introduced.
+
+The [compiled browser target](docs/compiler-browser.md) implements BROWSER-01
+with an explicit host namespace, module worker, named text/events, callback
+ownership, native GET text Fetch, source errors and stop/restart. A runnable
+text_metrics example and real-browser tests cover local/offline-after-load
+computation and transport/resource failures. WEB-03 owns verified PWA assembly
+and offline reload; QA-03 extends cross-target parity. No package was released.

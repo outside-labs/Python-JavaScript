@@ -60,7 +60,8 @@ class SourceModule:
 
 
 class _Modules:
-    def __init__(self, sources, entrypoint, async_enabled):
+    def __init__(self, sources, entrypoint, async_enabled, browser_enabled):
+        self.browser_enabled = browser_enabled
         self.async_enabled = async_enabled
         if not isinstance(sources, tuple) or any(not isinstance(source, SourceModule) for source in sources):
             raise TypeError('sources must be a tuple of verified SourceModule records')
@@ -104,6 +105,7 @@ class _Modules:
                     self.fail(name, 'Source imports require unconditional module bindings.', node, 'PJS100')
                 registry = isinstance(node, ast.Import) and all(alias.name == 'JavaScript' for alias in node.names)
                 registry = registry or isinstance(node, ast.ImportFrom) and not node.level and node.module == 'JavaScript'
+                registry = registry or (self.browser_enabled and isinstance(node, ast.ImportFrom) and not node.level and node.module == 'JavaScript.browser')
                 if registry:
                     continue
                 if isinstance(node, ast.Import):
@@ -180,22 +182,26 @@ class _Modules:
                     SourceImport(alias.asname or alias.name, base, alias.name,
                                  self.export_type(base, alias.name, name, node)) for alias in node.names)
                    for node, base in self.imports[name]}
-        frontend = _FrontEnd(source.data.decode('utf-8'), source.filename, imports, async_enabled=self.async_enabled)
+        frontend = _FrontEnd(source.data.decode('utf-8'), source.filename, imports, async_enabled=self.async_enabled, browser_enabled=self.browser_enabled)
         body = frontend.statements(frontend.tree.body)
         return ModuleIR(source.filename, source.sha256,
                         tuple(frontend.bindings[key] for key in sorted(frontend.bindings)), body,
-                        profile='python-browser-modules-async/1' if self.async_enabled else 'python-browser-modules/1')
+                        profile='python-browser-modules-host-async/1' if self.browser_enabled else 'python-browser-modules-async/1' if self.async_enabled else 'python-browser-modules/1')
 
 
 def compile_modules(sources: tuple[SourceModule, ...], *, entrypoint: str,
-                    source_map: bool = True, async_enabled: bool = False, notices: tuple[OutputFile, ...] = ()) -> CompiledArtifact:
+                    source_map: bool = True, async_enabled: bool = False, browser_enabled: bool = False, notices: tuple[OutputFile, ...] = ()) -> CompiledArtifact:
     """Compile a verified source allowlist, never reading or executing target files."""
     if type(source_map) is not bool:
         raise TypeError('source_map must be bool')
     if type(async_enabled) is not bool:
         raise TypeError('async_enabled must be bool')
-    graph = _Modules(sources, entrypoint, async_enabled)
+    if type(browser_enabled) is not bool or (browser_enabled and not async_enabled):
+        raise ValueError('browser_enabled requires the explicit async profile')
+    graph = _Modules(sources, entrypoint, async_enabled, browser_enabled)
     output, required, module_records = [], {'async-expose' if async_enabled else 'input'}, []
+    if browser_enabled:
+        required.add('browser')
     modules = sorted(graph.trees)
     for index, name in enumerate(modules):
         source = graph.sources[name]
@@ -208,7 +214,7 @@ def compile_modules(sources: tuple[SourceModule, ...], *, entrypoint: str,
                                'exports': exports, 'source': source.filename, 'sha256': source.sha256})
     helpers = helper_closure(required)
     bindings = [binding for helper in helpers for binding in HELPER_BINDINGS[helper]]
-    runtime = ["export function createRuntime(write" + (", signal = null" if async_enabled else "") + ") {", "  if(typeof write!=='function')throw new TypeError('write must be a function');"]
+    runtime = ["export function createRuntime(write" + (", signal = null" if async_enabled else "") + (", host = null" if browser_enabled else "") + ") {", "  if(typeof write!=='function')throw new TypeError('write must be a function');"]
     for helper in helpers:
         runtime.extend('  ' + line for line in helper_source(helper).splitlines())
     runtime.extend(['  return Object.freeze({' + ','.join(bindings) + '});', '}'])
@@ -219,8 +225,8 @@ def compile_modules(sources: tuple[SourceModule, ...], *, entrypoint: str,
     packages = _json([record['module'] for record in module_records if record['is_package']])
     location = _json({'filename': graph.sources[entrypoint].filename, 'line': 1, 'column': 1, 'end_line': 1, 'end_column': 1})
     expose = '$asyncExpose' if async_enabled else '$expose'
-    signal_option = ', signal = null' if async_enabled else ''
-    signal_argument = ',signal' if async_enabled else ''
+    signal_option = (', signal = null' if async_enabled else '') + (', host = null' if browser_enabled else '')
+    signal_argument = (',signal' if async_enabled else '') + (',host' if browser_enabled else '')
     entry = '\n'.join(imports) + '\n' + f'''
 export function createModule({{write = text => console.log(text.slice(0,-1)){signal_option}}} = {{}}) {{
   const runtime=createRuntime(write{signal_argument}), factories=new Map({registry}), packages=new Set({packages}), cache=new Map(), loading=new Set();
@@ -254,8 +260,8 @@ export function createModule({{write = text => console.log(text.slice(0,-1)){sig
         raise ValueError('Artifact file/directory paths collide.')
     files = tuple(sorted(output, key=lambda item: item.path))
     manifest = {'kind': 'python-javascript-compiled', 'schema_version': 1,
-                'compiler': {'name': 'Python-JavaScript', 'version': compiler_version, 'abi': 'python-browser-modules-async-esm/1' if async_enabled else 'python-browser-modules-esm/1'},
-                'language_profile': 'python-browser-modules-async/1' if async_enabled else 'python-browser-modules/1', 'target': 'ecmascript-2022-module',
+                'compiler': {'name': 'Python-JavaScript', 'version': compiler_version, 'abi': 'python-browser-host-esm/1' if browser_enabled else 'python-browser-modules-async-esm/1' if async_enabled else 'python-browser-modules-esm/1'},
+                'language_profile': 'python-browser-modules-host-async/1' if browser_enabled else 'python-browser-modules-async/1' if async_enabled else 'python-browser-modules/1', 'target': 'ecmascript-2022-module',
                 'unicode_version': unicodedata.unidata_version, 'entrypoint': 'app.mjs', 'entrypoint_export': 'createModule',
                 'application_exports': next(record['exports'] for record in module_records if record['module'] == entrypoint),
                 'modules': module_records, 'helpers': list(helpers),

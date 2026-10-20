@@ -93,6 +93,9 @@ class SourceImport:
     value_type: ValueType
 
 
+_BROWSER_APIS = {'read_text': 1, 'write_text': 2, 'on_click': 2, 'unsubscribe': 1, 'fetch_text': 1}
+
+
 _BUILTINS = {'len', 'print', 'isinstance', 'str', 'int', 'bool', 'tuple', 'TypeError'}
 _TYPES = {'str', 'int', 'bool', 'tuple'}
 _BINARY = {ast.Add: '+', ast.Sub: '-', ast.Mult: '*', ast.FloorDiv: '//', ast.Mod: '%'}
@@ -117,7 +120,7 @@ def _immutable(node):
 
 
 class _FrontEnd:
-    def __init__(self, source, filename, source_imports=None, *, async_enabled=False):
+    def __init__(self, source, filename, source_imports=None, *, async_enabled=False, browser_enabled=False):
         self.filename = filename
         self.lines = source.splitlines() or ['']
         self.bindings = {}
@@ -126,6 +129,7 @@ class _FrontEnd:
         self.types = {}
         self.source_imports = source_imports or {}
         self.async_enabled = async_enabled
+        self.browser_enabled = browser_enabled
         self.async_scopes = set()
         try:
             self.tree = ast.parse(source, filename=filename)
@@ -166,6 +170,15 @@ class _FrontEnd:
                     binding = self.declare(imported.name, 'module', 'source', imported.module + ':' + imported.export)
                     self.root[imported.name] = binding
                     self.types[binding.id] = imported.value_type
+                continue
+            if isinstance(node, ast.ImportFrom) and node.module == 'JavaScript.browser' and self.browser_enabled:
+                if node.level or any(alias.name not in _BROWSER_APIS for alias in node.names):
+                    self.fail('PJS110', 'Unsupported browser host import.', node)
+                for alias in node.names:
+                    name = alias.asname or alias.name
+                    if name in self.root:
+                        self.fail('PJS100', 'Module rebinding is outside the immutable profile.', node)
+                    self.root[name] = self.declare(name, 'module', 'javascript', 'JavaScript.browser.' + alias.name)
                 continue
             names = []
             kind, target = 'constant', None
@@ -229,7 +242,7 @@ class _FrontEnd:
             if binding.kind == 'function':
                 kind, target = self.types.get(binding.id, 'callable'), binding.id
             elif binding.kind == 'javascript':
-                kind = 'javascript-type'
+                kind = 'javascript-callable' if (target or '').startswith('JavaScript.browser.') else 'javascript-type'
             elif binding.kind == 'builtin':
                 kind = 'python-type' if binding.name in _TYPES else 'callable'
             elif binding.kind == 'source':
@@ -272,6 +285,8 @@ class _FrontEnd:
             allowed = {'builtin:len': ('python-int', 1), 'builtin:print': ('python-none', None),
                        'builtin:isinstance': ('python-bool', 2), 'builtin:TypeError': ('python-exception', 1),
                        'JavaScript.Array.of': ('javascript-array', None)}
+            if self.browser_enabled:
+                allowed.update({'JavaScript.browser.' + name: ('python-promise', count) for name, count in _BROWSER_APIS.items()})
             if self.async_enabled:
                 allowed.update({'JavaScript.Promise.resolve': ('python-promise', 1),
                                 'JavaScript.Promise.reject': ('python-promise', 1),
@@ -287,6 +302,8 @@ class _FrontEnd:
             arguments = tuple(self.expression(argument, scope) for argument in node.args)
             if any(argument.value_type == 'python-coroutine' for argument in arguments):
                 self.fail('PJS120', 'Coroutine arguments must be awaited first.', node)
+            if target == 'JavaScript.browser.on_click' and arguments[1].value_type not in {'callable', 'async-callable'}:
+                self.fail('PJS120', 'on_click requires a known compiled Python callback.', node)
             if target == 'Promise.then' and (len(arguments) > 2 or any(
                     argument.value_type not in {'callable', 'python-none'} for argument in arguments)):
                 self.fail('PJS120', 'then accepts up to two plain synchronous Python callbacks or None.', node)
@@ -347,6 +364,9 @@ class _FrontEnd:
         return tuple(self.statement(node, scope, loop) for node in nodes)
 
     def statement(self, node, scope, loop):
+        if self.browser_enabled and scope is None and not isinstance(node, (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.AsyncFunctionDef, ast.Assign, ast.Pass)):
+            if not (isinstance(node, ast.Expr) and isinstance(node.value, ast.Constant) and isinstance(node.value.value, str)):
+                self.fail('PJS100', 'Browser module initialization requires imports, definitions or immutable constants.', node)
         if isinstance(node, (ast.Import, ast.ImportFrom)) and scope is None:
             if node not in self.tree.body:
                 self.fail('PJS100', 'Imports require unconditional module bindings.', node)
