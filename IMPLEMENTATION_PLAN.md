@@ -450,3 +450,9 @@ rejected. Per-module maps, source hashes, static output closure and unchanged
 notices are retained. Published 0.1.0 artifacts remain unchanged. GitHub Issues
 and Project fields record live delivery status; the forward table records the
 original adopted dependency order. ASYNC-01 and BROWSER-01 follow this foundation.
+
+The explicit [async profile](docs/compiler-async.md) implements ASYNC-01
+coroutines, Promise conversion/chaining, synchronous callbacks, source-located
+rejections and AbortSignal context cancellation. JavaScript microtask timing and
+CPython scheduling differences are documented. Fetch/DOM/worker transport remains
+BROWSER-01; no new async runtime dependency or published artifact is introduced.

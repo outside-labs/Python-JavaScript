@@ -93,8 +93,9 @@ provides initial positive and rejected/deferred cases; parsing known sources
 for the contract does not prove a compiler already exists. PARSE-02 implements
 the front end and EMIT-01 must execute emitted output against that corpus.
 
-MOD-01 adds explicit local-module identity and initialization; ASYNC-01 adds
-supported await/Promise/cancellation behavior. BROWSER-01 integrates main-thread
+The local-module profile implements explicit module identity and initialization;
+the [async profile](compiler-async.md) adds supported await/Promise/cancellation
+behavior when explicitly enabled. BROWSER-01 integrates main-thread
 DOM/events and native Fetch through the versioned host protocol; QA-03 verifies
 CPython/Node/browser parity and source-map errors. Origin/CORS and worker message
 constraints remain explicit.
