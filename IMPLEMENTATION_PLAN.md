@@ -439,3 +439,14 @@ The development checkout now provides the [ES module emitter](docs/compiler-emit
 for the approved single-module subset, with selected helpers, source maps and a
 versioned artifact manifest. MOD-01 and browser profile integration follow their
 explicit dependencies.
+
+## Development implementation checkpoint: 2026-10-20
+
+PARSE-01, PARSE-02 and EMIT-01 are merged. The development checkout implements
+[verified local-module compilation](docs/compiler-modules.md) for MOD-01, with
+relative imports, aliases, package re-exports, initialization order and a shared
+value/callable runtime. Explicit source-import cycles and unsupported source are
+rejected. Per-module maps, source hashes, static output closure and unchanged
+notices are retained. Published 0.1.0 artifacts remain unchanged. GitHub Issues
+and Project fields record live delivery status; the forward table records the
+original adopted dependency order. ASYNC-01 and BROWSER-01 follow this foundation.

@@ -9,7 +9,7 @@ these APIs and provides Python-side JavaScript compatibility objects.
 
 Start with a single-module equivalent of Shimify's text_metrics application:
 Unicode character count, explicitly selected ASCII word separators, LF-based
-line count and a tuple of Python integer results. MOD-01 later adds its local
+line count and a tuple of Python integer results. The [local-module profile](compiler-modules.md) adds its
 helper import and package re-export. The selected input domain is builtin str;
 non-string input raises TypeError("text must be str"). String subclass overrides
 and arbitrary user objects are outside the first profile.
@@ -23,7 +23,7 @@ and arbitrary user objects are outside the first profile.
 | Operations | Supported scalar arithmetic/comparisons, Python and/or/not, identity on supported values, string membership and supported indexing. Mixed or unknown operand forms need helpers or a source-located rejection. |
 | Builtins/errors | len on adopted strings/tuples, print of adopted values, approved isinstance checks and explicit builtin TypeError raising needed by the fixture. No eval/exec, reflection or undeclared I/O. |
 | JavaScript API | Resolve explicit imports/aliases through a versioned symbol/method registry. Start with Array.of and length as a binding fixture; other exports/methods need adopted signatures and parity cases before lowering. |
-| Imports | Only approved JavaScript registry imports in the single-module profile. Local modules follow MOD-01; Python stdlib/third-party/native imports require explicit future adapters. |
+| Imports | Only approved JavaScript registry imports in the single-module profile. Named local imports use the separate modules profile; Python stdlib/third-party/native imports require explicit future adapters. |
 
 Every AST form and operation is supported, rejected or deferred explicitly. A
 Python-side JavaScript API existing today does not automatically make it

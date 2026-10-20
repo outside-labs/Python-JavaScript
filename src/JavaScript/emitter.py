@@ -8,7 +8,7 @@ import re
 import unicodedata
 
 from .compiler import parse_source
-from ._compiler_runtime import helper_closure, helper_source
+from ._compiler_runtime import HELPER_BINDINGS, helper_closure, helper_source
 
 
 def _json(value):
@@ -135,7 +135,12 @@ class _Emitter:
 
     def statement(self, node, indent):
         fields, kind = dict(node.fields), node.kind
-        if kind == 'import':
+        if kind == 'source-import':
+            temporary = self.temporary()
+            self.add(f'const {temporary}=importModule({_json(fields["module"])});', indent, node)
+            for identifier, exported in fields['bindings']:
+                self.add(f'{self.names[identifier]}={temporary}[{_json(exported)}];', indent, node)
+        elif kind == 'import':
             self.use('javascript')
             for identifier in fields['bindings']:
                 value = '$JS' if self.bindings[identifier].target == 'JavaScript' else '$JArray'
@@ -185,7 +190,7 @@ class _Emitter:
         else:
             raise AssertionError('Unrecognized validated statement: ' + kind)
 
-    def render(self, source, module_name, source_map):
+    def render(self, source, module_name, source_map, *, shared_runtime=False):
         roots = [binding for binding in self.module.bindings if binding.scope == 'module']
         if roots:
             self.use('binding')
@@ -195,17 +200,23 @@ class _Emitter:
         items = []
         for binding in exports:
             value = self.names[binding.id]
-            if binding.kind == 'function':
+            if binding.kind == 'function' and not shared_runtime:
                 self.use('input')
                 definition = next(node for node in self.module.body if node.kind == 'function' and node.field('binding') == binding.id)
                 value = f'$expose({value},{self.location(definition)})'
             items.append(f'[{_json(binding.name)}]:{value}')
         self.add('return Object.freeze({' + ','.join(items) + '});')
         helpers = helper_closure(self.required)
-        lines = [('export function createModule({write = text => console.log(text.slice(0,-1))} = {}) {', None),
-                 ("  if(typeof write !== 'function')throw new TypeError('write must be a function');", None)]
-        for helper in helpers:
-            lines.extend(('  ' + line, None) for line in helper_source(helper).splitlines())
+        if shared_runtime:
+            names = [name for helper in helpers for name in HELPER_BINDINGS[helper]]
+            lines = [('export function initialize(runtime, importModule) {', None)]
+            if names:
+                lines.append(('  const {' + ','.join(names) + '}=runtime;', None))
+        else:
+            lines = [('export function createModule({write = text => console.log(text.slice(0,-1))} = {}) {', None),
+                     ("  if(typeof write !== 'function')throw new TypeError('write must be a function');", None)]
+            for helper in helpers:
+                lines.extend(('  ' + line, None) for line in helper_source(helper).splitlines())
         lines.extend(self.lines)
         lines.append(('}', None))
         mappings, previous_line, previous_column = [], 0, 0
