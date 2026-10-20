@@ -9,7 +9,18 @@ HELPERS = {
 class $PyError extends Error {
   constructor(name, message, location) { super(message); this.name = name; this.location = location; }
 }
-function $fail(name, message, location) { throw new $PyError(name, message, location); }
+const $raisedErrors = new WeakSet();
+function $markRaised(error, location) {
+  if (!$raisedErrors.has(error)) { error.location = {...location}; $raisedErrors.add(error); }
+  return error;
+}
+function $raise(error, location) {
+  if (!(error instanceof $PyError)) $fail('TypeError', 'raise requires an adopted exception.', location);
+  error.location = {...location}; $raisedErrors.add(error);
+  if (typeof Error.captureStackTrace === 'function') Error.captureStackTrace(error, $raise);
+  throw error;
+}
+function $fail(name, message, location) { $raise(new $PyError(name, message, location), location); }
 '''),
     'binding': (('error',), r'''
 const $UNBOUND = Symbol('unbound');
@@ -226,7 +237,7 @@ function $cancelled(location) {
   const error = new $PyError('AbortError', 'Compiled operation cancelled.', location);
   error.code = 'CANCELLED'; return error;
 }
-function $checkpoint(location) { if (signal?.aborted) throw $cancelled(location); }
+function $checkpoint(location) { if (signal?.aborted) $raise($cancelled(location), location); }
 class $Coroutine {
   constructor(start) { this.start = start; this.started = false; }
 }
@@ -244,7 +255,7 @@ function $wait(promise, location) {
   return new Promise((resolve, reject) => {
     let finished = false;
     const cleanup = () => signal?.removeEventListener('abort', abort);
-    const abort = () => { if (!finished) { finished = true; cleanup(); reject($cancelled(location)); } };
+    const abort = () => { if (!finished) { finished = true; cleanup(); reject($markRaised($cancelled(location), location)); } };
     signal?.addEventListener('abort', abort, {once: true});
     if (signal?.aborted) { abort(); return; }
     promise.then(value => {
@@ -252,7 +263,7 @@ function $wait(promise, location) {
       try { $checkpoint(location); resolve(value); } catch (error) { reject(error); }
     }, error => {
       if (finished) return; finished = true; cleanup();
-      reject(error instanceof $PyError ? error : new $PyError('RuntimeError', 'Unhandled Promise rejection.', location));
+      reject($markRaised(error instanceof $PyError ? error : new $PyError('RuntimeError', 'Unhandled Promise rejection.', location), location));
     });
   });
 }
@@ -349,7 +360,7 @@ const $browser = Object.freeze({
   unsubscribe: $fn('unsubscribe',1,[],(args,where)=>{
     const handle=args[0];
     if (!(handle instanceof $HostHandle) || !$subscriptions.has(handle)) {
-      const error=new $PyError('HostError','Subscription handle is stale.',where);error.code='STALE_HANDLE';throw error;
+      const error=new $PyError('HostError','Subscription handle is stale.',where);error.code='STALE_HANDLE';$raise(error,where);
     }
     return $request('events.unsubscribe',{subscription:handle.wire},where,value=>{
       host.releaseCallback($subscriptions.get(handle));$subscriptions.delete(handle);return $hostDecode(value,where);
@@ -404,7 +415,7 @@ const $exposed = new WeakMap();
 
 
 HELPER_BINDINGS = {
-    'error': ('$PyError', '$fail'), 'binding': ('$UNBOUND', '$get'),
+    'error': ('$PyError', '$fail', '$raise'), 'binding': ('$UNBOUND', '$get'),
     'str': ('$str',), 'tuple': ('$tuple',), 'numeric': ('$number',),
     'truth': ('$truth',), 'binary': ('$binary',), 'unary': ('$unary',),
     'equal': ('$equal', '$order'), 'compare': ('$compare',), 'index': ('$index',),

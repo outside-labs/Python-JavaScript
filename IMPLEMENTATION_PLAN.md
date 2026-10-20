@@ -463,3 +463,9 @@ ownership, native GET text Fetch, source errors and stop/restart. A runnable
 text_metrics example and real-browser tests cover local/offline-after-load
 computation and transport/resource failures. WEB-03 owns verified PWA assembly
 and offline reload; QA-03 extends cross-target parity. No package was released.
+
+[ERR-01](https://github.com/outside-labs/Python-JavaScript/issues/34) corrects
+preconstructed exception origins before QA-03: explicit raises and first source
+awaits replace constructor spans, while propagated runtime/callback errors retain
+their origin. CPython/native/browser cases cover the correction and mapped
+tracebacks. QA-03 now depends on this diagnostic fix as well as BROWSER-01.
