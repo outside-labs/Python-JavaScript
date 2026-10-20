@@ -104,3 +104,7 @@ Node.js 24 runs the native ECMAScript differential fixture. That test is skipped
 when Node is absent locally; CI and release builds require it. Runtime code
 needs only Python and the two declared companions. Tests make no external
 network requests.
+
+The development [compiler emitter](docs/compiler-emitter.md) produces deterministic
+ES modules for the approved single-module Python profile. This API is not part
+of the published 0.1.0 distribution.

@@ -434,3 +434,8 @@ and publishes no package.
 - [Fetch standard](https://fetch.spec.whatwg.org/)
 - [Python AST](https://docs.python.org/3/library/ast.html)
 - [PyPI trusted publishing](https://docs.pypi.org/trusted-publishers/)
+
+The development checkout now provides the [ES module emitter](docs/compiler-emitter.md)
+for the approved single-module subset, with selected helpers, source maps and a
+versioned artifact manifest. MOD-01 and browser profile integration follow their
+explicit dependencies.
