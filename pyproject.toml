@@ -33,6 +33,7 @@ module-name = "JavaScript"
 source-include = [
     "tests/test_*.py",
     "tests/fixtures/conformance.mjs",
+    "tests/fixtures/compiler_contract.json",
     "docs/compatibility.md",
     "scripts/install_distribution.py",
     "CHANGELOG.md",
