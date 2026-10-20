@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "profile": "python-browser/1",
+  "reference": "CPython 3.14",
+  "cases": [
+    {
+      "id": "large-integer",
+      "source": "print(9007199254740993 + 1)",
+      "stdout": "9007199254740994\n"
+    },
+    {
+      "id": "unicode",
+      "source": "print(len('A😀é'))",
+      "stdout": "4\n"
+    },
+    {
+      "id": "negative-division",
+      "source": "print(-7 // 3, -7 % 3)",
+      "stdout": "-3 2\n"
+    },
+    {
+      "id": "short-circuit",
+      "source": "print('' or 'fallback', 'left' and 'right')",
+      "stdout": "fallback right\n"
+    },
+    {
+      "id": "loop-and-tuple",
+      "source": "def selected(text):\n    count = 0\n    for character in text:\n        if character == 'a':\n            count = count + 1\n    return len(text), count\nprint(selected('a😀a'))",
+      "stdout": "(3, 2)\n"
+    },
+    {
+      "id": "default",
+      "source": "def add(value, amount=2):\n    return value + amount\nprint(add(3))",
+      "stdout": "5\n"
+    },
+    {
+      "id": "alias",
+      "source": "from JavaScript import Array as A\nprint(A.of(1, 2).length)",
+      "stdout": "2\n"
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "class",
+      "classification": "deferred",
+      "source": "class Example:\n    pass",
+      "diagnostic": "PJS100"
+    },
+    {
+      "id": "async",
+      "classification": "deferred",
+      "source": "async def example():\n    return 1",
+      "diagnostic": "PJS100"
+    },
+    {
+      "id": "unapproved-import",
+      "classification": "rejected",
+      "source": "import os",
+      "diagnostic": "PJS110"
+    },
+    {
+      "id": "dynamic-execution",
+      "classification": "rejected",
+      "source": "eval('2 + 2')",
+      "diagnostic": "PJS110"
+    },
+    {
+      "id": "mutable-global",
+      "classification": "deferred",
+      "source": "values = []",
+      "diagnostic": "PJS100"
+    },
+    {
+      "id": "shadowed-call",
+      "classification": "rejected",
+      "source": "def selected(len):\n    return len(1)",
+      "diagnostic": "PJS120"
+    },
+    {
+      "id": "keyword-call",
+      "classification": "deferred",
+      "source": "def selected(value):\n    return value\nselected(value=1)",
+      "diagnostic": "PJS100"
+    }
+  ]
+}
