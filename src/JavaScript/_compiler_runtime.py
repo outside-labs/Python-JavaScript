@@ -298,6 +298,71 @@ function $asyncAttribute(value, name, location) {
   $fail('TypeError', 'Attribute is outside the adopted async registry.', location);
 }
 '''),
+    'browser': (('async', 'str', 'tuple'), r'''
+if (!host || !['request','registerCallback','releaseCallback'].every(name => typeof host[name] === 'function')) {
+  throw new TypeError('The browser profile requires its explicit worker host bridge.');
+}
+class $HostHandle { constructor(wire) { this.wire=Object.freeze({...wire}); Object.freeze(this); } }
+const $subscriptions = new Map();
+function $hostText(value, location) {
+  if (!(value instanceof $Str)) $fail('TypeError', 'Browser text/control/URL arguments require Python str.', location);
+  return $text(value);
+}
+function $hostDecode(value, location, depth=0) {
+  if (depth > 64 || !value || typeof value !== 'object') $fail('TypeError', 'Invalid host value.', location);
+  if (value.type === 'none') return null;
+  if (value.type === 'bool' && typeof value.value === 'boolean') return value.value;
+  if (value.type === 'int' && typeof value.value === 'string' && value.value.length <= 4097 && /^(0|[1-9][0-9]*|-[1-9][0-9]*)$/.test(value.value)) return BigInt(value.value);
+  if (value.type === 'str' && Array.isArray(value.codepoints) && value.codepoints.length <= 1048576 && value.codepoints.every(point => Number.isInteger(point) && point>=0 && point<=0x10ffff)) return $str(value.codepoints);
+  if (value.type === 'tuple' && Array.isArray(value.items) && value.items.length <= 1024) return $tuple(value.items.map(item=>$hostDecode(item,location,depth+1)));
+  if (value.type === 'handle' && value.owner === 'main' && value.kind === 'event.subscription' && /^m[1-9][0-9]*$/.test(value.id)) return new $HostHandle(value);
+  $fail('TypeError', 'Host result is outside the adopted browser values.', location);
+}
+function $hostFailure(error, location) {
+  if (error instanceof $PyError) return error;
+  const result = new $PyError(typeof error?.type==='string' ? error.type : 'HostError',
+    typeof error?.message==='string' ? error.message.slice(0,4096) : 'Host operation failed.', location);
+  result.code = typeof error?.code==='string' ? error.code : 'IO'; return result;
+}
+function $request(operation, args, location, decode=value=>$hostDecode(value,location)) {
+  $checkpoint(location);
+  return new $PromiseValue(Promise.resolve().then(()=>host.request(operation,args)).then(decode).catch(error=>{throw $hostFailure(error,location);}));
+}
+const $browser = Object.freeze({
+  read_text: $fn('read_text',1,[],(args,where)=>$request('dom.read',{control:$hostText(args[0],where)},where)),
+  write_text: $fn('write_text',2,[],(args,where)=>{
+    $hostText(args[1],where);
+    return $request('dom.write',{control:$hostText(args[0],where),text:{type:'str',codepoints:[...args[1].codepoints]}},where);
+  }),
+  on_click: $fn('on_click',2,[],(args,where)=>{
+    if (!(args[1] instanceof $Callable)) $fail('TypeError','on_click requires a compiled Python callback.',where);
+    const control=$hostText(args[0],where), callback=host.registerCallback(async value=>{
+      $checkpoint(where);
+      const result=$call(args[1],[$hostDecode(value,where)],where);
+      if (result instanceof $Coroutine || result instanceof $PromiseValue) await $await(result,where);
+    });
+    const pending=$request('events.subscribe',{control,event:'click',callback},where,value=>{
+      const handle=$hostDecode(value,where);$subscriptions.set(handle,callback);return handle;
+    });
+    return new $PromiseValue(pending.promise.catch(error=>{host.releaseCallback(callback);throw error;}));
+  }),
+  unsubscribe: $fn('unsubscribe',1,[],(args,where)=>{
+    const handle=args[0];
+    if (!(handle instanceof $HostHandle) || !$subscriptions.has(handle)) {
+      const error=new $PyError('HostError','Subscription handle is stale.',where);error.code='STALE_HANDLE';throw error;
+    }
+    return $request('events.unsubscribe',{subscription:handle.wire},where,value=>{
+      host.releaseCallback($subscriptions.get(handle));$subscriptions.delete(handle);return $hostDecode(value,where);
+    });
+  }),
+  fetch_text: $fn('fetch_text',1,[],(args,where)=>$request('fetch.text',{url:$hostText(args[0],where),method:'GET'},where,value=>{
+    if (value?.type!=='dict' || !Array.isArray(value.entries) || value.entries.length!==3) $fail('TypeError','Malformed Fetch result.',where);
+    const entries=new Map(value.entries.map(pair=>[$hostText($hostDecode(pair[0],where),where),$hostDecode(pair[1],where)]));
+    if (!['status','url','text'].every(key=>entries.has(key)) || typeof entries.get('status')!=='bigint' || !(entries.get('url') instanceof $Str) || !(entries.get('text') instanceof $Str)) $fail('TypeError','Malformed Fetch fields.',where);
+    return $tuple(['status','url','text'].map(key=>entries.get(key)));
+  }))
+});
+'''),
     'async-expose': (('async', 'input'), r'''
 const $asyncExposed = new WeakMap();
 function $asyncExpose(value, location) {
@@ -349,6 +414,7 @@ HELPER_BINDINGS = {
     'javascript': ('$JS', '$JArray', '$attribute'), 'input': ('$input', '$expose'),
     'async': ('$checkpoint', '$await', '$cfn', '$PromiseRegistry', '$asyncAttribute'),
     'async-expose': ('$asyncExpose',),
+    'browser': ('$browser',),
 }
 
 

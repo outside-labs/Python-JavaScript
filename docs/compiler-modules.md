@@ -87,5 +87,5 @@ The text_metrics parity fixture uses its supported metrics module and the
 reduced helper containing `character_count`. The original helper's unused slice
 utility remains unsupported and causes rejection if supplied unchanged. This
 compiler does not perform symbol extraction or silently skip unsupported code
-inside a selected module. Browser DOM/Fetch integration and runtime parsing of
-new source remain separate tasks.
+inside a selected module. The [browser profile](compiler-browser.md) adds DOM/Fetch integration. Runtime
+parsing of new source remains an independent-interpreter task.

@@ -104,3 +104,7 @@ This build-time application compiler does not execute newly entered source in
 the browser. That is a separate independent-interpreter milestone. Shared
 fixtures/host protocols do not make the two engines' IR, bytecode or value models
 interchangeable.
+
+The [compiled browser profile](compiler-browser.md) implements the adopted
+named controls, callbacks, native Fetch text and worker lifecycle. The original
+single-module language profile remains separately identified.

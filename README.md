@@ -110,5 +110,10 @@ ES modules for the approved single-module Python profile. This API is not part
 of the published 0.1.0 distribution.
 
 The explicit [async compiler profile](docs/compiler-async.md) adds lazy coroutines,
-awaited Promise values, callbacks and context cancellation. Browser host adapters
-remain separately tracked.
+awaited Promise values, callbacks and context cancellation. The [browser target](docs/compiler-browser.md) adds named DOM controls, callbacks,
+native Fetch text and worker stop/restart.
+
+Build the local [text_metrics browser example](docs/compiler-browser.md#run-the-example)
+with `uv run python examples/browser_text_metrics.py --output build/browser-text-metrics`.
+It uses our emitted modules and helpers in a worker; source parsing remains the
+separate independent-interpreter milestone.
