@@ -370,6 +370,10 @@ Date, RegExp, Map/Set or prototype/descriptor expansion first.
 first syntax/semantic decisions and reference corpus. It does not claim that
 translation is implemented yet.
 
+[The compiler front-end API](docs/compiler-front-end.md) implements parsing,
+lexical binding, validation and immutable typed IR in the development checkout;
+JavaScript emission remains a separate milestone.
+
 ## Compiler contracts and artifacts
 
 Preserve ordinary supported Python truthiness, integers, Unicode, evaluation

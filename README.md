@@ -88,6 +88,10 @@ globals and other unlisted APIs remain future work. Development is tracked in
 the [issues](https://github.com/outside-labs/Python-JavaScript/issues) and
 [Project](https://github.com/orgs/outside-labs/projects/11).
 
+The development checkout now includes a [binding-aware compiler front end](docs/compiler-front-end.md)
+that validates source and produces typed IR. JavaScript emission and browser
+execution remain subsequent milestones.
+
 ## Development
 
 ```sh
