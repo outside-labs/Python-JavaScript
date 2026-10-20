@@ -117,3 +117,5 @@ Build the local [text_metrics browser example](docs/compiler-browser.md#run-the-
 with `uv run python examples/browser_text_metrics.py --output build/browser-text-metrics`.
 It uses our emitted modules and helpers in a worker; source parsing remains the
 separate independent-interpreter milestone.
+
+The development compiler has a versioned [CPython/Node/browser parity suite](docs/compiler-conformance.md) with typed results, source-map error checks and explicit unsupported boundaries.

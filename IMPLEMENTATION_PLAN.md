@@ -357,7 +357,7 @@ meet their first milestones.
 | [js/MOD-01](https://github.com/outside-labs/Python-JavaScript/issues/23) | Compile bounded local Python module imports | [js/EMIT-01](https://github.com/outside-labs/Python-JavaScript/issues/13) | Blocked |
 | [js/ASYNC-01](https://github.com/outside-labs/Python-JavaScript/issues/10) | Define Promise scheduling and browser async semantics | [js/PARSE-01](https://github.com/outside-labs/Python-JavaScript/issues/11) | Blocked |
 | [js/BROWSER-01](https://github.com/outside-labs/Python-JavaScript/issues/24) | Implement browser DOM, events and Fetch adapters | [js/MOD-01](https://github.com/outside-labs/Python-JavaScript/issues/23), [js/ASYNC-01](https://github.com/outside-labs/Python-JavaScript/issues/10), [pocket/HOST-01](https://github.com/outside-labs/pocket-python/issues/17) | Blocked |
-| [js/QA-03](https://github.com/outside-labs/Python-JavaScript/issues/25) | Verify CPython, Node and browser execution parity | [js/BROWSER-01](https://github.com/outside-labs/Python-JavaScript/issues/24) | Blocked |
+| [js/QA-03](https://github.com/outside-labs/Python-JavaScript/issues/25) | Verify CPython, Node and browser execution parity | [js/BROWSER-01](https://github.com/outside-labs/Python-JavaScript/issues/24), [js/ERR-01](https://github.com/outside-labs/Python-JavaScript/issues/34) | See issue / Project |
 | [js/PERF-01](https://github.com/outside-labs/Python-JavaScript/issues/26) | Measure compiled application and helper footprints | [js/QA-03](https://github.com/outside-labs/Python-JavaScript/issues/25) | Blocked |
 
 PARSE-01 is the first Ready compiler task. PARSE-02/EMIT-01 follow in order;
@@ -469,3 +469,15 @@ preconstructed exception origins before QA-03: explicit raises and first source
 awaits replace constructor spans, while propagated runtime/callback errors retain
 their origin. CPython/native/browser cases cover the correction and mapped
 tracebacks. QA-03 now depends on this diagnostic fix as well as BROWSER-01.
+
+
+QA-03 implements compiler-parity/1: one approved corpus executes under isolated
+CPython and as identical emitted artifacts in Node and a real browser worker.
+Reports retain typed values, output order, exception origins, source-map frames,
+native JavaScript observations, explicit rejected/deferred diagnostics and exact
+corpus/artifact identities. The browser host suite separately verifies callback
+release, cancellation and worker stop/restart. Borrowed text-metrics cases retain
+Shimify's exact MIT notice, including the runnable browser example. The versioned
+[compatibility matrix](docs/compiler-conformance.md) records the adopted scope
+and remaining differences; full Python tracebacks and arbitrary dynamic Python
+remain outside this compiler profile. No release was published.

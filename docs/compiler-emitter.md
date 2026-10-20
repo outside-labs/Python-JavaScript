@@ -86,8 +86,9 @@ Run `python -m unittest discover -s tests -p 'test_compiler*.py' -v` with the
 installed development checkout and Node 24.19.0. Tests compare CPython and emitted
 Node output/errors/evaluation order, the single-module text_metrics application,
 precision/Unicode/tuple/default behavior and an independent Node source-map
-consumer. Local modules, async browser capabilities and the final browser parity
-gate remain MOD-01, ASYNC-01/BROWSER-01 and QA-03. This compiler executes only
+consumer. Local modules and async browser capabilities have separate adopted
+profiles. The shared [compiler-parity/1 suite](compiler-conformance.md) compares
+emitted Node and browser-worker execution with CPython. This compiler executes only
 ahead-of-time approved source; it does not parse new source in the browser.
 
 Exception construction does not start a traceback. An explicit raise records
