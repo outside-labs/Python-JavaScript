@@ -42,7 +42,7 @@ class Binding:
     id: str
     name: str
     scope: str
-    kind: Literal['constant', 'function', 'parameter', 'local', 'javascript', 'builtin']
+    kind: Literal['constant', 'function', 'parameter', 'local', 'javascript', 'builtin', 'source']
     target: str | None = None
 
 
@@ -84,6 +84,14 @@ class ModuleIR:
                 'body': [node.to_dict() for node in self.body]}
 
 
+@dataclass(frozen=True)
+class SourceImport:
+    name: str
+    module: str
+    export: str
+    value_type: ValueType
+
+
 _BUILTINS = {'len', 'print', 'isinstance', 'str', 'int', 'bool', 'tuple', 'TypeError'}
 _TYPES = {'str', 'int', 'bool', 'tuple'}
 _BINARY = {ast.Add: '+', ast.Sub: '-', ast.Mult: '*', ast.FloorDiv: '//', ast.Mod: '%'}
@@ -108,13 +116,14 @@ def _immutable(node):
 
 
 class _FrontEnd:
-    def __init__(self, source, filename):
+    def __init__(self, source, filename, source_imports=None):
         self.filename = filename
         self.lines = source.splitlines() or ['']
         self.bindings = {}
         self.root = {}
         self.locals = {}
         self.types = {}
+        self.source_imports = source_imports or {}
         try:
             self.tree = ast.parse(source, filename=filename)
             self.table = symtable.symtable(source, filename, 'exec')
@@ -146,6 +155,15 @@ class _FrontEnd:
 
     def _declare_module(self):
         for node in self.tree.body:
+            imports = self.source_imports.get((node.lineno, node.col_offset))
+            if imports is not None:
+                for imported in imports:
+                    if imported.name in self.root:
+                        self.fail('PJS100', 'Module rebinding is outside the immutable profile.', node)
+                    binding = self.declare(imported.name, 'module', 'source', imported.module + ':' + imported.export)
+                    self.root[imported.name] = binding
+                    self.types[binding.id] = imported.value_type
+                continue
             names = []
             kind, target = 'constant', None
             if isinstance(node, ast.FunctionDef):
@@ -208,6 +226,8 @@ class _FrontEnd:
                 kind = 'javascript-type'
             elif binding.kind == 'builtin':
                 kind = 'python-type' if binding.name in _TYPES else 'callable'
+            elif binding.kind == 'source':
+                target = binding.id if kind == 'callable' else None
             return self.node(node, 'name', kind, binding=binding.id, target=target)
         if isinstance(node, ast.Tuple):
             return self.node(node, 'tuple', 'python-tuple', values=tuple(self.expression(value, scope) for value in node.elts))
@@ -234,7 +254,7 @@ class _FrontEnd:
                 kind, count = allowed[target]
                 if count is not None and len(node.args) != count:
                     self.fail('PJS120', 'Unsupported argument count.', node)
-            elif target in self.bindings and self.bindings[target].kind == 'function':
+            elif target in self.bindings and self.bindings[target].kind in {'function', 'source'}:
                 kind = 'python-value'
             else:
                 self.fail('PJS120', 'Call does not resolve to an approved direct callable.', node)
@@ -299,6 +319,10 @@ class _FrontEnd:
         if isinstance(node, (ast.Import, ast.ImportFrom)) and scope is None:
             if node not in self.tree.body:
                 self.fail('PJS100', 'Imports require unconditional module bindings.', node)
+            imports = self.source_imports.get((node.lineno, node.col_offset))
+            if imports is not None:
+                return self.node(node, 'source-import', module=imports[0].module,
+                                 bindings=tuple((self.root[imported.name].id, imported.export) for imported in imports))
             names = [alias.asname or alias.name for alias in node.names]
             return self.node(node, 'import', bindings=tuple(self.root[name].id for name in names))
         if isinstance(node, ast.FunctionDef):

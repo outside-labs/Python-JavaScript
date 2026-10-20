@@ -230,9 +230,24 @@ function $input(value, location, depth = 0, seen = new Set()) {
   $fail('TypeError', 'Use BigInt, string, bool, null or explicit str/tuple input; JavaScript Number/Array is not Python int/tuple.', location);
 }
 function $expose(value, location) {
-  return value instanceof $Callable ? (...args) => $call(value, args.map(argument => $input(argument, location)), location) : value;
+  if (!(value instanceof $Callable)) return value;
+  if (!$exposed.has(value)) $exposed.set(value, (...args) => $call(value, args.map(argument => $input(argument, location)), location));
+  return $exposed.get(value);
 }
+const $exposed = new WeakMap();
 '''),
+}
+
+
+HELPER_BINDINGS = {
+    'error': ('$PyError', '$fail'), 'binding': ('$UNBOUND', '$get'),
+    'str': ('$str',), 'tuple': ('$tuple',), 'numeric': ('$number',),
+    'truth': ('$truth',), 'binary': ('$binary',), 'unary': ('$unary',),
+    'equal': ('$equal', '$order'), 'compare': ('$compare',), 'index': ('$index',),
+    'iterate': ('$iterate',), 'call': ('$fn', '$call'), 'len': ('$len',),
+    'types': ('$types', '$isinstance'), 'exception': ('$TypeError',),
+    'repr': ('$repr',), 'print': ('$print',),
+    'javascript': ('$JS', '$JArray', '$attribute'), 'input': ('$input', '$expose'),
 }
 
 
