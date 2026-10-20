@@ -1,6 +1,5 @@
 import ast
 import json
-import os
 from pathlib import Path
 import subprocess
 import sys
@@ -18,9 +17,8 @@ class CompilerContractTests(unittest.TestCase):
         for case in corpus["cases"]:
             with self.subTest(case=case["id"]):
                 result = subprocess.run(
-                    [sys.executable, "-I", "-c", case["source"]],
+                    [sys.executable, "-I", "-X", "utf8", "-c", case["source"]],
                     capture_output=True, text=True, encoding="utf-8", timeout=5,
-                    env={**os.environ, "PYTHONIOENCODING": "utf-8"},
                 )
                 self.assertEqual(result.returncode, 0, result.stderr)
                 self.assertEqual(result.stdout.replace("\r\n", "\n"), case["stdout"])
