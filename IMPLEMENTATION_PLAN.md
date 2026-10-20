@@ -366,6 +366,10 @@ BROWSER-01 uses the pocket-python host contract. QA-03 proves CPython/Node/brows
 parity; PERF-01 measures output/helpers. This sequence does not require completing
 Date, RegExp, Map/Set or prototype/descriptor expansion first.
 
+[The adopted compiler language contract](docs/compiler-language.md) specifies the
+first syntax/semantic decisions and reference corpus. It does not claim that
+translation is implemented yet.
+
 ## Compiler contracts and artifacts
 
 Preserve ordinary supported Python truthiness, integers, Unicode, evaluation
