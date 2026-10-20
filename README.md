@@ -78,7 +78,10 @@ indices follow JavaScript rules: `values[-1]` is a named property, and
 `values.at(-1)` accesses the last element. `Array(3)` creates three holes;
 `Array.of(3)` creates one element containing 3.
 
-The longer-term goal is a binding-aware Python-to-JavaScript translator. v0.1.0
+The next program adds our Python-to-JavaScript compiler, a browser target and
+CPython/client parity, coordinated with Shimify source reduction and pocket-python
+assembly. See [the implementation plan](IMPLEMENTATION_PLAN.md). A separately
+staged independent interpreter is tracked by pocket-python. v0.1.0
 provides the runtime foundation; it does not translate source or execute
 JavaScript. Prototypes, descriptors, Date, RegExp, Map/Set, typed arrays, browser
 globals and other unlisted APIs remain future work. Development is tracked in
