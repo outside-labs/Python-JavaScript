@@ -5,7 +5,7 @@ case-sensitive `JavaScript` namespace. An alpha compatibility layer with a
 documented subset of ECMAScript behavior.
 
 ```sh
-python -m pip install Python-JavaScript==0.1.0
+python -m pip install Python-JavaScript==0.2.0
 ```
 
 ```python
@@ -78,19 +78,26 @@ indices follow JavaScript rules: `values[-1]` is a named property, and
 `values.at(-1)` accesses the last element. `Array(3)` creates three holes;
 `Array.of(3)` creates one element containing 3.
 
-The next program adds our Python-to-JavaScript compiler, a browser target and
-CPython/client parity, coordinated with Shimify source reduction and pocket-python
-assembly. See [the implementation plan](IMPLEMENTATION_PLAN.md). A separately
-staged independent interpreter is tracked by pocket-python. v0.1.0
-provides the runtime foundation; it does not translate source or execute
-JavaScript. Prototypes, descriptors, Date, RegExp, Map/Set, typed arrays, browser
-globals and other unlisted APIs remain future work. Development is tracked in
-the [issues](https://github.com/outside-labs/Python-JavaScript/issues) and
-[Project](https://github.com/orgs/outside-labs/projects/11).
+Version 0.2.0 also includes a bounded Python-to-JavaScript compiler: a
+[binding-aware front end](docs/compiler-front-end.md), [ES module emitter](docs/compiler-emitter.md),
+[local-module compiler](docs/compiler-modules.md), [async profile](docs/compiler-async.md)
+and [browser worker/host target](docs/compiler-browser.md). Python parses source
+at build time; generated modules and selected helpers execute on the client.
+The separate pocket-python interpreter will parse newly entered Python in the browser.
 
-The development checkout now includes a [binding-aware compiler front end](docs/compiler-front-end.md)
-that validates source and produces typed IR. The emitter and [local-module compiler](docs/compiler-modules.md)
-produce executable ES modules; browser adapters remain a subsequent milestone.
+```python
+from JavaScript.emitter import compile_source
+
+artifact = compile_source("def count(text):\n    return len(text)", filename="counter.py")
+# artifact.files contains emitted JavaScript, source map and provenance notice.
+```
+
+This alpha supports the explicit [compiler language](docs/compiler-language.md),
+not arbitrary Python dependencies or complete ECMAScript. Prototypes, descriptors,
+Date, RegExp, Map/Set, typed arrays and unlisted APIs remain future work. See
+[0.2.0 release notes](docs/release-0.2.0.md), the [implementation plan](IMPLEMENTATION_PLAN.md),
+[issues](https://github.com/outside-labs/Python-JavaScript/issues) and
+[Project](https://github.com/orgs/outside-labs/projects/11).
 
 ## Development
 
@@ -105,9 +112,8 @@ when Node is absent locally; CI and release builds require it. Runtime code
 needs only Python and the two declared companions. Tests make no external
 network requests.
 
-The development [compiler emitter](docs/compiler-emitter.md) produces deterministic
-ES modules for the approved single-module Python profile. This API is not part
-of the published 0.1.0 distribution.
+The [compiler emitter](docs/compiler-emitter.md) produces deterministic
+ES modules for the approved single-module Python profile. The compiler APIs are included in the 0.2.0 distribution.
 
 The explicit [async compiler profile](docs/compiler-async.md) adds lazy coroutines,
 awaited Promise values, callbacks and context cancellation. The [browser target](docs/compiler-browser.md) adds named DOM controls, callbacks,
@@ -118,4 +124,4 @@ with `uv run python examples/browser_text_metrics.py --output build/browser-text
 It uses our emitted modules and helpers in a worker; source parsing remains the
 separate independent-interpreter milestone.
 
-The development compiler has a versioned [CPython/Node/browser parity suite](docs/compiler-conformance.md) with typed results, source-map error checks and explicit unsupported boundaries.
+The compiler has a versioned [CPython/Node/browser parity suite](docs/compiler-conformance.md) with typed results, source-map error checks and explicit unsupported boundaries.

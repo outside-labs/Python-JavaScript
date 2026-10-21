@@ -1,9 +1,9 @@
 # Compiled browser target
 
-The development checkout provides `JavaScript.browser.compile_browser`. It
+Version 0.2.0 provides `JavaScript.browser.compile_browser`. It
 compiles verified [local source modules](compiler-modules.md), enables the
 [async profile](compiler-async.md), and records the complete local worker/host
-asset closure. It is not included in the published 0.1.0 distribution.
+asset closure. It is included in 0.2.0; the published 0.1.0 distribution predates this API.
 
 The target is `python-browser-modules-host-async/1`, compiler ABI
 `python-browser-host-esm/1`, using host protocol `pocket-python-host` version 1.
@@ -31,7 +31,7 @@ The builder reads the approved text_metrics corpus, emits selected local modules
 source maps/notices, the host/worker/protocol modules, a manifest and a small HTML
 entry. It requires a new output directory and preserves existing outputs.
 The same computation can be imported under CPython in a separate server entry;
-client entrypoints and host adapters are explicit. E2E-01 owns the complete
+client entrypoints and host adapters are explicit. The pocket-python shared-application example provides the complete
 server/client packaging demonstration.
 
 ## Python namespace and entry

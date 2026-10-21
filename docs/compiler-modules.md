@@ -1,6 +1,6 @@
 # Compiling local source modules
 
-The development checkout provides `JavaScript.modules.compile_modules`. The
+Version 0.2.0 provides `JavaScript.modules.compile_modules`. The
 published 0.1.0 package predates this API. `python-browser-modules/1` extends the
 [single-module language](compiler-language.md) with explicit named source imports.
 

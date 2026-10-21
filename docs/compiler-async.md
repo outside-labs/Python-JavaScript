@@ -1,6 +1,6 @@
 # Compiled async profile
 
-The development APIs `parse_source`, `compile_source` and `compile_modules`
+The 0.2.0 APIs `parse_source`, `compile_source` and `compile_modules`
 accept `async_enabled=True`. Without it, async syntax remains rejected. Published
 0.1.0 artifacts predate these compiler APIs. Single-module artifacts identify
 `python-browser-async/1` and ABI `python-browser-async-esm/1`; local-module artifacts

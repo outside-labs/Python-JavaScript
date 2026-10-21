@@ -31,5 +31,4 @@ token belongs in the repository or workflow.
    run the examples/tests, and compare published SHA256 hashes with build artifacts.
 
 Publishing a GitHub release triggers upload; a tag push alone does not. PyPI
-versions are immutable. Repository visibility stays private; published artifacts
-include package source. No open-source license has been selected for this release.
+versions are immutable. The repository is public; published artifacts include the selected package source. No open-source license has been selected; existing provenance notices grant no additional rights.
