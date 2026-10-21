@@ -1,7 +1,7 @@
 [project]
 name = "Python-JavaScript"
-version = "0.1.0"
-description = "JavaScript-style objects, methods and functions for Python"
+version = "0.2.0"
+description = "JavaScript-style Python values and a bounded Python-to-JavaScript browser compiler"
 readme = "README.md"
 authors = [
     { name = "ellainng", email = "299958882+ellainng@users.noreply.github.com" }
@@ -39,6 +39,8 @@ source-include = [
     "tests/fixtures/licenses/SHIMIFY-LICENSE.txt",
     "docs/compatibility.md",
     "docs/compiler*.md",
+    "docs/release-*.md",
+    "scripts/check_distribution_files.py",
     "scripts/install_distribution.py",
     "scripts/compiler_browser_smoke.py",
     "scripts/compiler_conformance.py",

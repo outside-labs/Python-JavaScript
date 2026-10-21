@@ -1,9 +1,9 @@
 # Compiler front end
 
-The development checkout provides JavaScript.compiler.parse_source(source,
+Version 0.2.0 provides JavaScript.compiler.parse_source(source,
 filename=...) for the adopted python-browser/1 profile. It parses, binds and
 validates source without running target code, then returns an immutable ModuleIR.
-It does not emit or execute JavaScript yet; EMIT-01 owns that next step.
+Use `JavaScript.emitter.compile_source` to emit executable JavaScript from this IR.
 
 The API uses only the declared Python runtime and standard library. A ModuleIR
 records profile/schema identity, SHA-256 of UTF-8 input, stable lexical binding

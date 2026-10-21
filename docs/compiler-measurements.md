@@ -1,6 +1,6 @@
 # Reproducing compiler measurements
 
-PERF-01 measures the existing helper selection in the development compiler. It
+PERF-01 measures the existing helper selection in the 0.2.0 compiler. It
 compares required helpers with every helper available to the same language
 profile; it does not add an optimization or enable otherwise unsupported syntax.
 The complete positive compiler corpus must match CPython in both variants, in

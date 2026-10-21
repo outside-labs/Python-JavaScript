@@ -1,7 +1,7 @@
 # Compiler source language contract
 
 PARSE-01 adopts `python-browser/1` as the initial language profile, using Python
-3.14 grammar and semantics for ordinary Python constructs. The development checkout implements its front end and
+3.14 grammar and semantics for ordinary Python constructs. Version 0.2.0 implements its front end and
 [ES module emitter](compiler-emitter.md). The released 0.1.0 package predates
 these APIs and provides Python-side JavaScript compatibility objects.
 

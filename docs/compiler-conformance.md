@@ -1,6 +1,6 @@
 # Compiler compatibility matrix: compiler-parity/1
 
-The development compiler runs the same approved source corpus under CPython
+The 0.2.0 compiler runs the same approved source corpus under CPython
 3.14.7 and as identical emitted ES modules in Node 24.19.0 and a Chromium module
 worker. This is a bounded ahead-of-time Python profile. The independent source
 interpreter is a separate pocket-python implementation. Published 0.1.0 predates

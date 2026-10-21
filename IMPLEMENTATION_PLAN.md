@@ -489,3 +489,13 @@ helpers, maps, notices, metadata/harness and compressed payloads, with raw warm
 build, fresh/warm context startup and separate dedicated-worker V8 heap samples.
 These synchronous compiler fixtures do not include the browser-host/PWA shell;
 complete application and future interpreter measurements remain separate scopes.
+
+## 0.2.0 publication plan
+
+[REL-03](https://github.com/outside-labs/Python-JavaScript/issues/38) publishes
+the merged compiler, module/async/browser profiles, conformance and measurements.
+See the [release contract](docs/release-0.2.0.md). Runtime companion dependency
+ranges remain unchanged; compiler and browser assets are in the distributions.
+Strict artifact allowlists, installed-wheel/sdist and browser checks, passing
+final main CI, PyPI/workflow hash comparison and a fresh PyPI install are gates.
+The independent browser source interpreter remains a separate pocket-python task.

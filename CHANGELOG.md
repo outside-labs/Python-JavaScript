@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0
+
+- Add the binding-aware source compiler, deterministic ES module emitter and original-source diagnostics/maps.
+- Compile explicitly supplied local modules and re-exports with selected helper and notice closure.
+- Add lazy coroutine/Promise awaits and named browser worker/host capabilities with stop/restart.
+- Verify the approved corpus across CPython, Node and Chromium and record scoped payload/startup/memory measurements.
+- Preserve the JavaScript runtime namespace and existing Fetch/JSON dependency ranges.
+
 ## 0.1.0
 
 - Introduce the case-sensitive `JavaScript` namespace with Object, sparse Array,

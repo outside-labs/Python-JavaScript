@@ -1,6 +1,6 @@
 # Experimental ES module emitter
 
-The development checkout exposes `JavaScript.emitter.compile_source`. It
+Version 0.2.0 exposes `JavaScript.emitter.compile_source`. It
 validates source through the python-browser/1 front end, lowers the immutable IR
 and returns a CompiledArtifact without executing input or writing files. The
 published 0.1.0 package predates this compiler implementation.
@@ -16,7 +16,7 @@ print(artifact.manifest["application_exports"])  # ['count']
 ```
 
 `files` is a tuple of immutable OutputFile(path, data, role) values. The caller
-can inspect or pass those bytes to the future pocket-python application builder.
+can inspect or pass those bytes to the pocket-python 0.2 application builder.
 The manifest bytes are separate from their own file/hash closure and can be
 saved as PYTHON-JAVASCRIPT.json. Every recorded file has exact size, SHA-256 and
 role; imports, notices and selected helper dependencies are explicit. Current
@@ -83,7 +83,7 @@ runtime is embedded. The repository has no declared code license; this notice
 does not choose or grant one. Redistribution licensing remains a release decision.
 
 Run `python -m unittest discover -s tests -p 'test_compiler*.py' -v` with the
-installed development checkout and Node 24.19.0. Tests compare CPython and emitted
+installed package and Node 24.19.0. Tests compare CPython and emitted
 Node output/errors/evaluation order, the single-module text_metrics application,
 precision/Unicode/tuple/default behavior and an independent Node source-map
 consumer. Local modules and async browser capabilities have separate adopted
