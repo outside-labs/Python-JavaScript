@@ -481,3 +481,11 @@ Shimify's exact MIT notice, including the runnable browser example. The versione
 [compatibility matrix](docs/compiler-conformance.md) records the adopted scope
 and remaining differences; full Python tracebacks and arbitrary dynamic Python
 remain outside this compiler profile. No release was published.
+
+PERF-01 now provides [reproducible compiler measurements](docs/compiler-measurements.md):
+required helpers and full helpers for the same profile pass the shared reference
+corpus in Node/browser workers. Reports separate source, generated modules,
+helpers, maps, notices, metadata/harness and compressed payloads, with raw warm
+build, fresh/warm context startup and separate dedicated-worker V8 heap samples.
+These synchronous compiler fixtures do not include the browser-host/PWA shell;
+complete application and future interpreter measurements remain separate scopes.

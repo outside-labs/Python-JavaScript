@@ -1,0 +1,5339 @@
+{
+  "applications": [
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 5.300000071525574,
+            "wall_ms": 11.599999904632568
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 5.600000023841858,
+            "wall_ms": 11.5
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5999999046325684,
+            "module_import_ms": 4.600000023841858,
+            "wall_ms": 10.299999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 1.0999999046325684,
+            "module_import_ms": 6.600000023841858,
+            "wall_ms": 16.5
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 8.299999952316284,
+            "wall_ms": 19.5
+          }
+        ],
+        "median_cold_ms": 11.599999904632568,
+        "median_warm_ms": 4.400000095367432,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1877,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 15055,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 308932
+            },
+            "used_size_delta_bytes": 38200
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1877,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 15055,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 308932
+            },
+            "used_size_delta_bytes": 38200
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1877,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 15055,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 308932
+            },
+            "used_size_delta_bytes": 38200
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1877,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 15055,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 308932
+            },
+            "used_size_delta_bytes": 38200
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1877,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 15055,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 308932
+            },
+            "used_size_delta_bytes": 38200
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.3999999761581421,
+            "module_import_ms": 1.1999999284744263,
+            "wall_ms": 4.599999904632568
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.600000023841858,
+            "wall_ms": 4.699999928474426
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 4.400000095367432
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.40000009536743164,
+            "module_import_ms": 0.8999999761581421,
+            "wall_ms": 3.9000000953674316
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.40000009536743164,
+            "module_import_ms": 1,
+            "wall_ms": 4
+          }
+        ]
+      },
+      "build_ns": [
+        1371167,
+        819458,
+        670542,
+        642208,
+        609333
+      ],
+      "expected": {
+        "error": null,
+        "stdout": "",
+        "value": {
+          "items": [
+            {
+              "type": "int",
+              "value": "-3"
+            },
+            {
+              "type": "int",
+              "value": "-3"
+            },
+            {
+              "type": "int",
+              "value": "2"
+            },
+            {
+              "type": "int",
+              "value": "-2"
+            },
+            {
+              "type": "int",
+              "value": "3"
+            },
+            {
+              "type": "int",
+              "value": "2"
+            },
+            {
+              "type": "int",
+              "value": "1"
+            },
+            {
+              "type": "bool",
+              "value": false
+            },
+            {
+              "codepoints": [
+                128512
+              ],
+              "type": "str"
+            },
+            {
+              "type": "bool",
+              "value": true
+            }
+          ],
+          "type": "tuple"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 785,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "25da0e0a22ad363c3ddb63ab5c779406838325946cf5236f75ddc3780b1576ec",
+          "size_bytes": 1602
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 548,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "d87583285408e0c77cc7cb366eb29f50b7af1daab1c4cdf5da533b121556565f",
+          "size_bytes": 1156
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 605,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "ced4d7e6ad14887ec18731b8843205e67d085518d9594da0cc6f3ffb4847935b",
+          "size_bytes": 1955
+        },
+        {
+          "gzip_bytes": 210,
+          "path": "module-000.mjs.map",
+          "role": "source-map",
+          "sha256": "4efcd334772d1ecdf0f593e8768555ca06a37410d4fd851f8b9f3401d2e4f7bb",
+          "size_bytes": 299
+        },
+        {
+          "gzip_bytes": 2758,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "b4cbeee68ac7f494390f19cc88bcb58bc6630dfd3c259b135a554538b5fbe14d",
+          "size_bytes": 9796
+        }
+      ],
+      "fixture": "numeric-and-unicode",
+      "helper_policy": "required",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "index",
+        "input",
+        "len",
+        "truth",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "25da0e0a22ad363c3ddb63ab5c779406838325946cf5236f75ddc3780b1576ec",
+      "median_build_ns": 670542,
+      "omitted_profile_helpers": [
+        "exception",
+        "iterate",
+        "javascript",
+        "print",
+        "repr",
+        "types"
+      ],
+      "sizes": {
+        "canonical_tar_bytes": 30720,
+        "complete_payload_bytes": 17855,
+        "generated_module_bytes": 3111,
+        "gzip_file_transfer_bytes": 6522,
+        "gzip_tar_bytes": 5987,
+        "gzip_tar_sha256": "a3547d3c201f7613c2eec675926e26bfe80e184721c51d40f40f89c521f1bbd2",
+        "helper_bytes": 9796,
+        "input_source_bytes": 138,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 1602,
+        "notice_bytes": 210,
+        "source_map_bytes": 299
+      },
+      "source_map": true,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "2de5bbbf3f851cf425ce26795c65582d2000f42a36a816c7a3b5a08ff3bf0f8c",
+          "size": 138
+        }
+      ],
+      "variant": "required-maps"
+    },
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 5.199999928474426,
+            "wall_ms": 10.399999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 4.799999952316284,
+            "wall_ms": 11.600000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7999999523162842,
+            "module_import_ms": 5.100000023841858,
+            "wall_ms": 11.600000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 4.600000023841858,
+            "wall_ms": 9.700000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 5.900000095367432,
+            "wall_ms": 12.5
+          }
+        ],
+        "median_cold_ms": 11.600000023841858,
+        "median_warm_ms": 4.100000023841858,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1883,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 28821,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 350968
+            },
+            "used_size_delta_bytes": 80236
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1883,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 28821,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 350968
+            },
+            "used_size_delta_bytes": 80236
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1883,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 28821,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 350968
+            },
+            "used_size_delta_bytes": 80236
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1883,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 28821,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 350968
+            },
+            "used_size_delta_bytes": 80236
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1883,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 28821,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 350968
+            },
+            "used_size_delta_bytes": 80236
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5999999046325684,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 4.600000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 4.300000071525574
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 4.100000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1,
+            "wall_ms": 4.100000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1,
+            "wall_ms": 4.100000023841858
+          }
+        ]
+      },
+      "build_ns": [
+        1079208,
+        826250,
+        800459,
+        891542,
+        715875
+      ],
+      "expected": {
+        "error": null,
+        "stdout": "",
+        "value": {
+          "items": [
+            {
+              "type": "int",
+              "value": "-3"
+            },
+            {
+              "type": "int",
+              "value": "-3"
+            },
+            {
+              "type": "int",
+              "value": "2"
+            },
+            {
+              "type": "int",
+              "value": "-2"
+            },
+            {
+              "type": "int",
+              "value": "3"
+            },
+            {
+              "type": "int",
+              "value": "2"
+            },
+            {
+              "type": "int",
+              "value": "1"
+            },
+            {
+              "type": "bool",
+              "value": false
+            },
+            {
+              "codepoints": [
+                128512
+              ],
+              "type": "str"
+            },
+            {
+              "type": "bool",
+              "value": true
+            }
+          ],
+          "type": "tuple"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 815,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "07f33f4b65a2cf8b69b85488e9ad2342aab3cde81df2a5ad796c63a5e28d91de",
+          "size_bytes": 1661
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 548,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "d87583285408e0c77cc7cb366eb29f50b7af1daab1c4cdf5da533b121556565f",
+          "size_bytes": 1156
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 605,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "ced4d7e6ad14887ec18731b8843205e67d085518d9594da0cc6f3ffb4847935b",
+          "size_bytes": 1955
+        },
+        {
+          "gzip_bytes": 210,
+          "path": "module-000.mjs.map",
+          "role": "source-map",
+          "sha256": "4efcd334772d1ecdf0f593e8768555ca06a37410d4fd851f8b9f3401d2e4f7bb",
+          "size_bytes": 299
+        },
+        {
+          "gzip_bytes": 7874,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "eb060226247e226dda481780eaa054331e2b6d5595f8589a64bcad6d42976c20",
+          "size_bytes": 23547
+        }
+      ],
+      "fixture": "numeric-and-unicode",
+      "helper_policy": "all-profile",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "exception",
+        "index",
+        "input",
+        "iterate",
+        "javascript",
+        "len",
+        "repr",
+        "print",
+        "truth",
+        "types",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "07f33f4b65a2cf8b69b85488e9ad2342aab3cde81df2a5ad796c63a5e28d91de",
+      "median_build_ns": 826250,
+      "omitted_profile_helpers": [],
+      "sizes": {
+        "canonical_tar_bytes": 40960,
+        "complete_payload_bytes": 31665,
+        "generated_module_bytes": 3111,
+        "gzip_file_transfer_bytes": 11668,
+        "gzip_tar_bytes": 11148,
+        "gzip_tar_sha256": "779792d5d9c51d3d7212f2cc7c6d963aaea6fbb34fd4c580d18f3a05528824b4",
+        "helper_bytes": 23547,
+        "input_source_bytes": 138,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 1661,
+        "notice_bytes": 210,
+        "source_map_bytes": 299
+      },
+      "source_map": true,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "2de5bbbf3f851cf425ce26795c65582d2000f42a36a816c7a3b5a08ff3bf0f8c",
+          "size": 138
+        }
+      ],
+      "variant": "all-profile-maps"
+    },
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 5.100000023841858,
+            "wall_ms": 10.899999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 4.100000023841858,
+            "wall_ms": 10.100000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.3999999761581421,
+            "module_import_ms": 4.200000047683716,
+            "wall_ms": 9
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.3999999761581421,
+            "module_import_ms": 4.399999976158142,
+            "wall_ms": 9.200000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 4.300000071525574,
+            "wall_ms": 9.299999952316284
+          }
+        ],
+        "median_cold_ms": 9.299999952316284,
+        "median_warm_ms": 4.100000023841858,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1883,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 15030,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 308900
+            },
+            "used_size_delta_bytes": 38168
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1883,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 15030,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 308900
+            },
+            "used_size_delta_bytes": 38168
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1883,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 15030,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 308900
+            },
+            "used_size_delta_bytes": 38168
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1883,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 15030,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 308900
+            },
+            "used_size_delta_bytes": 38168
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1883,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 15030,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 308900
+            },
+            "used_size_delta_bytes": 38168
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1,
+            "wall_ms": 4.100000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.40000009536743164,
+            "module_import_ms": 1.0999999046325684,
+            "wall_ms": 4.299999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.2999999523162842,
+            "module_import_ms": 1,
+            "wall_ms": 3.899999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.3999999761581421,
+            "module_import_ms": 0.8999999761581421,
+            "wall_ms": 3.600000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.3999999761581421,
+            "module_import_ms": 1.1999999284744263,
+            "wall_ms": 4.100000023841858
+          }
+        ]
+      },
+      "build_ns": [
+        910167,
+        618042,
+        592583,
+        781291,
+        775166
+      ],
+      "expected": {
+        "error": null,
+        "stdout": "",
+        "value": {
+          "items": [
+            {
+              "type": "int",
+              "value": "-3"
+            },
+            {
+              "type": "int",
+              "value": "-3"
+            },
+            {
+              "type": "int",
+              "value": "2"
+            },
+            {
+              "type": "int",
+              "value": "-2"
+            },
+            {
+              "type": "int",
+              "value": "3"
+            },
+            {
+              "type": "int",
+              "value": "2"
+            },
+            {
+              "type": "int",
+              "value": "1"
+            },
+            {
+              "type": "bool",
+              "value": false
+            },
+            {
+              "codepoints": [
+                128512
+              ],
+              "type": "str"
+            },
+            {
+              "type": "bool",
+              "value": true
+            }
+          ],
+          "type": "tuple"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 724,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "e45a8b46bf2d1e3eb25b25b86503713d42a7699acc045a1322f124eeb38ab68b",
+          "size_bytes": 1465
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 548,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "d87583285408e0c77cc7cb366eb29f50b7af1daab1c4cdf5da533b121556565f",
+          "size_bytes": 1156
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 573,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "c2d92d231bedddff6cdf5175d6630e28a7f25a6e9341d7ef490ef7448e08ed6d",
+          "size_bytes": 1915
+        },
+        {
+          "gzip_bytes": 2758,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "b4cbeee68ac7f494390f19cc88bcb58bc6630dfd3c259b135a554538b5fbe14d",
+          "size_bytes": 9796
+        }
+      ],
+      "fixture": "numeric-and-unicode",
+      "helper_policy": "required",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "index",
+        "input",
+        "len",
+        "truth",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "e45a8b46bf2d1e3eb25b25b86503713d42a7699acc045a1322f124eeb38ab68b",
+      "median_build_ns": 775166,
+      "omitted_profile_helpers": [
+        "exception",
+        "iterate",
+        "javascript",
+        "print",
+        "repr",
+        "types"
+      ],
+      "sizes": {
+        "canonical_tar_bytes": 30720,
+        "complete_payload_bytes": 17379,
+        "generated_module_bytes": 3071,
+        "gzip_file_transfer_bytes": 6219,
+        "gzip_tar_bytes": 5734,
+        "gzip_tar_sha256": "c5b37087c8f291f013b32a96807c02d0a1e923a5f622c0f825a357731a5c3e72",
+        "helper_bytes": 9796,
+        "input_source_bytes": 138,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 1465,
+        "notice_bytes": 210,
+        "source_map_bytes": 0
+      },
+      "source_map": false,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "2de5bbbf3f851cf425ce26795c65582d2000f42a36a816c7a3b5a08ff3bf0f8c",
+          "size": 138
+        }
+      ],
+      "variant": "required-no-maps"
+    },
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 4.5,
+            "wall_ms": 10.399999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5999999046325684,
+            "module_import_ms": 4.400000095367432,
+            "wall_ms": 9.299999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 4.600000023841858,
+            "wall_ms": 9.899999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 4.399999976158142,
+            "wall_ms": 9.800000071525574
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 4.5,
+            "wall_ms": 9.400000095367432
+          }
+        ],
+        "median_cold_ms": 9.800000071525574,
+        "median_warm_ms": 4.5,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1889,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 28796,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 350936
+            },
+            "used_size_delta_bytes": 80204
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1889,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 28796,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 350936
+            },
+            "used_size_delta_bytes": 80204
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1889,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 28796,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 350936
+            },
+            "used_size_delta_bytes": 80204
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1889,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 28796,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 350936
+            },
+            "used_size_delta_bytes": 80204
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1889,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 28796,
+              "embedderHeapUsedSize": 29128,
+              "totalSize": 786432,
+              "usedSize": 350936
+            },
+            "used_size_delta_bytes": 80204
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4.600000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1,
+            "wall_ms": 4
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.1999999284744263,
+            "wall_ms": 4
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.399999976158142,
+            "wall_ms": 4.700000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.2999999523162842,
+            "wall_ms": 4.5
+          }
+        ]
+      },
+      "build_ns": [
+        779917,
+        714291,
+        690875,
+        678708,
+        710750
+      ],
+      "expected": {
+        "error": null,
+        "stdout": "",
+        "value": {
+          "items": [
+            {
+              "type": "int",
+              "value": "-3"
+            },
+            {
+              "type": "int",
+              "value": "-3"
+            },
+            {
+              "type": "int",
+              "value": "2"
+            },
+            {
+              "type": "int",
+              "value": "-2"
+            },
+            {
+              "type": "int",
+              "value": "3"
+            },
+            {
+              "type": "int",
+              "value": "2"
+            },
+            {
+              "type": "int",
+              "value": "1"
+            },
+            {
+              "type": "bool",
+              "value": false
+            },
+            {
+              "codepoints": [
+                128512
+              ],
+              "type": "str"
+            },
+            {
+              "type": "bool",
+              "value": true
+            }
+          ],
+          "type": "tuple"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 756,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "7badf3d3a86943305e27d4afc2176ea42c0143847f57e88d51289a4226c8b743",
+          "size_bytes": 1524
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 548,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "d87583285408e0c77cc7cb366eb29f50b7af1daab1c4cdf5da533b121556565f",
+          "size_bytes": 1156
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 573,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "c2d92d231bedddff6cdf5175d6630e28a7f25a6e9341d7ef490ef7448e08ed6d",
+          "size_bytes": 1915
+        },
+        {
+          "gzip_bytes": 7874,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "eb060226247e226dda481780eaa054331e2b6d5595f8589a64bcad6d42976c20",
+          "size_bytes": 23547
+        }
+      ],
+      "fixture": "numeric-and-unicode",
+      "helper_policy": "all-profile",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "exception",
+        "index",
+        "input",
+        "iterate",
+        "javascript",
+        "len",
+        "repr",
+        "print",
+        "truth",
+        "types",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "7badf3d3a86943305e27d4afc2176ea42c0143847f57e88d51289a4226c8b743",
+      "median_build_ns": 710750,
+      "omitted_profile_helpers": [],
+      "sizes": {
+        "canonical_tar_bytes": 40960,
+        "complete_payload_bytes": 31189,
+        "generated_module_bytes": 3071,
+        "gzip_file_transfer_bytes": 11367,
+        "gzip_tar_bytes": 10898,
+        "gzip_tar_sha256": "0aca005bc4223c58e434f260ae19f85edd4f564f15e808c350db55a7ef91716a",
+        "helper_bytes": 23547,
+        "input_source_bytes": 138,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 1524,
+        "notice_bytes": 210,
+        "source_map_bytes": 0
+      },
+      "source_map": false,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "2de5bbbf3f851cf425ce26795c65582d2000f42a36a816c7a3b5a08ff3bf0f8c",
+          "size": 138
+        }
+      ],
+      "variant": "all-profile-no-maps"
+    },
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.8999999761581421,
+            "module_import_ms": 4.600000023841858,
+            "wall_ms": 10
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 4.899999976158142,
+            "wall_ms": 10.700000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 4.700000047683716,
+            "wall_ms": 9.799999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 5.100000023841858,
+            "wall_ms": 10.800000071525574
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7999999523162842,
+            "module_import_ms": 4.899999976158142,
+            "wall_ms": 10.399999976158142
+          }
+        ],
+        "median_cold_ms": 10.399999976158142,
+        "median_warm_ms": 4.200000047683716,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1863,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19564,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 337884
+            },
+            "used_size_delta_bytes": 67152
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1863,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19564,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 337884
+            },
+            "used_size_delta_bytes": 67152
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1863,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19564,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 337884
+            },
+            "used_size_delta_bytes": 67152
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1863,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19564,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 337884
+            },
+            "used_size_delta_bytes": 67152
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1863,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19564,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 337884
+            },
+            "used_size_delta_bytes": 67152
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 1.5,
+            "wall_ms": 4.800000071525574
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.2999999523162842,
+            "wall_ms": 4.399999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.3999999761581421,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 4.100000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4.200000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4.199999928474426
+          }
+        ]
+      },
+      "build_ns": [
+        1127166,
+        1313125,
+        1285875,
+        1485625,
+        1290125
+      ],
+      "expected": {
+        "error": null,
+        "stdout": "",
+        "value": {
+          "items": [
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ],
+              "type": "tuple"
+            },
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "14"
+                },
+                {
+                  "type": "int",
+                  "value": "4"
+                },
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ],
+              "type": "tuple"
+            },
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "3"
+                },
+                {
+                  "type": "int",
+                  "value": "1"
+                },
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ],
+              "type": "tuple"
+            }
+          ],
+          "type": "tuple"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 1078,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "07bc56f63ae359ca0a8d0dada7b0e5e63375c696b9cba000697637debb9a13ec",
+          "size_bytes": 2496
+        },
+        {
+          "gzip_bytes": 646,
+          "path": "LICENSES/shimify.txt",
+          "role": "notice",
+          "sha256": "30989a02b7e73aa97c349440d9323d2486033a88a2b37461f3142bbb30515e85",
+          "size_bytes": 1066
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 569,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "068f61f597bb53df69f85d0e97c7a37d6ce256a031218d401f28cae420041900",
+          "size_bytes": 1237
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 435,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "e880ed9cd1517a24b6f804aa14c6897026f806d0f634b130489d4c92d3012596",
+          "size_bytes": 1029
+        },
+        {
+          "gzip_bytes": 212,
+          "path": "module-000.mjs.map",
+          "role": "source-map",
+          "sha256": "20c77911999ea1e790bbade72d82b9280669a9da73401b372964958722d8c755",
+          "size_bytes": 276
+        },
+        {
+          "gzip_bytes": 1135,
+          "path": "module-001.mjs",
+          "role": "executable-module",
+          "sha256": "018cefdc480618d62951a3297208c3569ee6773df2da72002c147d21e79a739e",
+          "size_bytes": 4735
+        },
+        {
+          "gzip_bytes": 415,
+          "path": "module-001.mjs.map",
+          "role": "source-map",
+          "sha256": "eb4f13b659b9c151d3227fcad4c2cc442b2c80cacf84f60d2ff347d92ae3877e",
+          "size_bytes": 909
+        },
+        {
+          "gzip_bytes": 2841,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "f106e466bde4a6548f087a7b29ec8407b7038395db575e12fa0e47a3ca136dc7",
+          "size_bytes": 10357
+        }
+      ],
+      "fixture": "text-metrics",
+      "helper_policy": "required",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "exception",
+        "input",
+        "iterate",
+        "len",
+        "truth",
+        "types",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "07bc56f63ae359ca0a8d0dada7b0e5e63375c696b9cba000697637debb9a13ec",
+      "median_build_ns": 1290125,
+      "omitted_profile_helpers": [
+        "index",
+        "javascript",
+        "print",
+        "repr"
+      ],
+      "sizes": {
+        "canonical_tar_bytes": 40960,
+        "complete_payload_bytes": 25152,
+        "generated_module_bytes": 7001,
+        "gzip_file_transfer_bytes": 8947,
+        "gzip_tar_bytes": 8069,
+        "gzip_tar_sha256": "8a374adb1246c56b5aa5771a35bd80bcd0d96809cbb4e5b0f5e02e8af50665d4",
+        "helper_bytes": 10357,
+        "input_source_bytes": 702,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 2496,
+        "notice_bytes": 1276,
+        "source_map_bytes": 1185
+      },
+      "source_map": true,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "38b57305a004c36f7da97261d4633c7db05e82d8a979449ea4cccb871003fc9b",
+          "size": 121
+        },
+        {
+          "path": "text_metrics.py",
+          "sha256": "cd0fc16e047b4c81230a1272446b0257ef741f937b1ea0857d2a94bb3d0bb350",
+          "size": 581
+        }
+      ],
+      "variant": "required-maps"
+    },
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7999999523162842,
+            "module_import_ms": 4.700000047683716,
+            "wall_ms": 9.899999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.8999999761581421,
+            "module_import_ms": 4.899999976158142,
+            "wall_ms": 11.299999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7999999523162842,
+            "module_import_ms": 4.900000095367432,
+            "wall_ms": 10.600000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 4.700000047683716,
+            "wall_ms": 10.200000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 5.600000023841858,
+            "wall_ms": 11
+          }
+        ],
+        "median_cold_ms": 10.600000023841858,
+        "median_warm_ms": 4.600000023841858,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1869,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32772,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 378556
+            },
+            "used_size_delta_bytes": 107824
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1869,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32772,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 378556
+            },
+            "used_size_delta_bytes": 107824
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1869,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32772,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 378556
+            },
+            "used_size_delta_bytes": 107824
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1869,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32772,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 378556
+            },
+            "used_size_delta_bytes": 107824
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1869,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32772,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 378556
+            },
+            "used_size_delta_bytes": 107824
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 1.2999999523162842,
+            "wall_ms": 4.700000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7999999523162842,
+            "module_import_ms": 1.3000000715255737,
+            "wall_ms": 4.600000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 1.2999999523162842,
+            "wall_ms": 4.5
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 1.2999999523162842,
+            "wall_ms": 4.299999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.8000000715255737,
+            "module_import_ms": 1.1999999284744263,
+            "wall_ms": 4.700000047683716
+          }
+        ]
+      },
+      "build_ns": [
+        1319666,
+        1491250,
+        1246792,
+        1515292,
+        1358542
+      ],
+      "expected": {
+        "error": null,
+        "stdout": "",
+        "value": {
+          "items": [
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ],
+              "type": "tuple"
+            },
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "14"
+                },
+                {
+                  "type": "int",
+                  "value": "4"
+                },
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ],
+              "type": "tuple"
+            },
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "3"
+                },
+                {
+                  "type": "int",
+                  "value": "1"
+                },
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ],
+              "type": "tuple"
+            }
+          ],
+          "type": "tuple"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 1094,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "54a30d82d4e2b5d8dd7156acea5d5145676c307156dff2d800aae005fccbf3b9",
+          "size_bytes": 2532
+        },
+        {
+          "gzip_bytes": 646,
+          "path": "LICENSES/shimify.txt",
+          "role": "notice",
+          "sha256": "30989a02b7e73aa97c349440d9323d2486033a88a2b37461f3142bbb30515e85",
+          "size_bytes": 1066
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 569,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "068f61f597bb53df69f85d0e97c7a37d6ce256a031218d401f28cae420041900",
+          "size_bytes": 1237
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 435,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "e880ed9cd1517a24b6f804aa14c6897026f806d0f634b130489d4c92d3012596",
+          "size_bytes": 1029
+        },
+        {
+          "gzip_bytes": 212,
+          "path": "module-000.mjs.map",
+          "role": "source-map",
+          "sha256": "20c77911999ea1e790bbade72d82b9280669a9da73401b372964958722d8c755",
+          "size_bytes": 276
+        },
+        {
+          "gzip_bytes": 1135,
+          "path": "module-001.mjs",
+          "role": "executable-module",
+          "sha256": "018cefdc480618d62951a3297208c3569ee6773df2da72002c147d21e79a739e",
+          "size_bytes": 4735
+        },
+        {
+          "gzip_bytes": 415,
+          "path": "module-001.mjs.map",
+          "role": "source-map",
+          "sha256": "eb4f13b659b9c151d3227fcad4c2cc442b2c80cacf84f60d2ff347d92ae3877e",
+          "size_bytes": 909
+        },
+        {
+          "gzip_bytes": 7874,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "eb060226247e226dda481780eaa054331e2b6d5595f8589a64bcad6d42976c20",
+          "size_bytes": 23547
+        }
+      ],
+      "fixture": "text-metrics",
+      "helper_policy": "all-profile",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "exception",
+        "index",
+        "input",
+        "iterate",
+        "javascript",
+        "len",
+        "repr",
+        "print",
+        "truth",
+        "types",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "54a30d82d4e2b5d8dd7156acea5d5145676c307156dff2d800aae005fccbf3b9",
+      "median_build_ns": 1358542,
+      "omitted_profile_helpers": [],
+      "sizes": {
+        "canonical_tar_bytes": 51200,
+        "complete_payload_bytes": 38378,
+        "generated_module_bytes": 7001,
+        "gzip_file_transfer_bytes": 13996,
+        "gzip_tar_bytes": 13160,
+        "gzip_tar_sha256": "eed86a64b13efe6ffdc1047272565e593a42a8904b3d249dca0a47381f22a909",
+        "helper_bytes": 23547,
+        "input_source_bytes": 702,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 2532,
+        "notice_bytes": 1276,
+        "source_map_bytes": 1185
+      },
+      "source_map": true,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "38b57305a004c36f7da97261d4633c7db05e82d8a979449ea4cccb871003fc9b",
+          "size": 121
+        },
+        {
+          "path": "text_metrics.py",
+          "sha256": "cd0fc16e047b4c81230a1272446b0257ef741f937b1ea0857d2a94bb3d0bb350",
+          "size": 581
+        }
+      ],
+      "variant": "all-profile-maps"
+    },
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 4.699999928474426,
+            "wall_ms": 9.799999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 4.899999976158142,
+            "wall_ms": 10.900000095367432
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7999999523162842,
+            "module_import_ms": 4.799999952316284,
+            "wall_ms": 10
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 5,
+            "wall_ms": 10.100000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 5,
+            "wall_ms": 10.300000071525574
+          }
+        ],
+        "median_cold_ms": 10.100000023841858,
+        "median_warm_ms": 4.299999952316284,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1869,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19502,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 337820
+            },
+            "used_size_delta_bytes": 67088
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1869,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19502,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 337820
+            },
+            "used_size_delta_bytes": 67088
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1869,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19502,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 337820
+            },
+            "used_size_delta_bytes": 67088
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1869,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19502,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 337820
+            },
+            "used_size_delta_bytes": 67088
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1869,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19502,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 337820
+            },
+            "used_size_delta_bytes": 67088
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5999999046325684,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4.600000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4.200000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 4.300000071525574
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4.299999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4
+          }
+        ]
+      },
+      "build_ns": [
+        1347708,
+        1569709,
+        1165291,
+        1082666,
+        1072333
+      ],
+      "expected": {
+        "error": null,
+        "stdout": "",
+        "value": {
+          "items": [
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ],
+              "type": "tuple"
+            },
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "14"
+                },
+                {
+                  "type": "int",
+                  "value": "4"
+                },
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ],
+              "type": "tuple"
+            },
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "3"
+                },
+                {
+                  "type": "int",
+                  "value": "1"
+                },
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ],
+              "type": "tuple"
+            }
+          ],
+          "type": "tuple"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 973,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "af581a39dcf781287bcc58a351bcd4f4c52176b58c805404ab93dd656c51a8dd",
+          "size_bytes": 2221
+        },
+        {
+          "gzip_bytes": 646,
+          "path": "LICENSES/shimify.txt",
+          "role": "notice",
+          "sha256": "30989a02b7e73aa97c349440d9323d2486033a88a2b37461f3142bbb30515e85",
+          "size_bytes": 1066
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 569,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "068f61f597bb53df69f85d0e97c7a37d6ce256a031218d401f28cae420041900",
+          "size_bytes": 1237
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 401,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "05b61b32673764dbe9d2be65a571eb5365acbf7f0b0bb480889ea6da8f2f0dd0",
+          "size_bytes": 989
+        },
+        {
+          "gzip_bytes": 1100,
+          "path": "module-001.mjs",
+          "role": "executable-module",
+          "sha256": "f21a865c1609eb3df9c391390ed901bbc1fc3d586c66994e0f6ddde126d8f7de",
+          "size_bytes": 4695
+        },
+        {
+          "gzip_bytes": 2841,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "f106e466bde4a6548f087a7b29ec8407b7038395db575e12fa0e47a3ca136dc7",
+          "size_bytes": 10357
+        }
+      ],
+      "fixture": "text-metrics",
+      "helper_policy": "required",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "exception",
+        "input",
+        "iterate",
+        "len",
+        "truth",
+        "types",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "af581a39dcf781287bcc58a351bcd4f4c52176b58c805404ab93dd656c51a8dd",
+      "median_build_ns": 1165291,
+      "omitted_profile_helpers": [
+        "index",
+        "javascript",
+        "print",
+        "repr"
+      ],
+      "sizes": {
+        "canonical_tar_bytes": 40960,
+        "complete_payload_bytes": 23612,
+        "generated_module_bytes": 6921,
+        "gzip_file_transfer_bytes": 8146,
+        "gzip_tar_bytes": 7496,
+        "gzip_tar_sha256": "706b5fa595e1bdf5684dff34a520435add07a55e8fa1ad6368c3dfeebb103c81",
+        "helper_bytes": 10357,
+        "input_source_bytes": 702,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 2221,
+        "notice_bytes": 1276,
+        "source_map_bytes": 0
+      },
+      "source_map": false,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "38b57305a004c36f7da97261d4633c7db05e82d8a979449ea4cccb871003fc9b",
+          "size": 121
+        },
+        {
+          "path": "text_metrics.py",
+          "sha256": "cd0fc16e047b4c81230a1272446b0257ef741f937b1ea0857d2a94bb3d0bb350",
+          "size": 581
+        }
+      ],
+      "variant": "required-no-maps"
+    },
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 5.699999928474426,
+            "wall_ms": 10.700000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7999999523162842,
+            "module_import_ms": 4.899999976158142,
+            "wall_ms": 10.100000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 4.899999976158142,
+            "wall_ms": 10.100000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.8000000715255737,
+            "module_import_ms": 5,
+            "wall_ms": 10.5
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.8000000715255737,
+            "module_import_ms": 4.699999928474426,
+            "wall_ms": 10
+          }
+        ],
+        "median_cold_ms": 10.100000023841858,
+        "median_warm_ms": 4.5,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1875,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32710,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 378492
+            },
+            "used_size_delta_bytes": 107760
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1875,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32710,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 378492
+            },
+            "used_size_delta_bytes": 107760
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1875,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32710,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 378492
+            },
+            "used_size_delta_bytes": 107760
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1875,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32710,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 378492
+            },
+            "used_size_delta_bytes": 107760
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1875,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32710,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 1310720,
+              "usedSize": 378492
+            },
+            "used_size_delta_bytes": 107760
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 1.399999976158142,
+            "wall_ms": 4.700000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4.399999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7999999523162842,
+            "module_import_ms": 1.2999999523162842,
+            "wall_ms": 4.5
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 1.4000000953674316,
+            "wall_ms": 4.699999928474426
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 1.0999999046325684,
+            "wall_ms": 4.299999952316284
+          }
+        ]
+      },
+      "build_ns": [
+        1448667,
+        1648541,
+        1256208,
+        1204500,
+        1178334
+      ],
+      "expected": {
+        "error": null,
+        "stdout": "",
+        "value": {
+          "items": [
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                },
+                {
+                  "type": "int",
+                  "value": "0"
+                }
+              ],
+              "type": "tuple"
+            },
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "14"
+                },
+                {
+                  "type": "int",
+                  "value": "4"
+                },
+                {
+                  "type": "int",
+                  "value": "2"
+                }
+              ],
+              "type": "tuple"
+            },
+            {
+              "items": [
+                {
+                  "type": "int",
+                  "value": "3"
+                },
+                {
+                  "type": "int",
+                  "value": "1"
+                },
+                {
+                  "type": "int",
+                  "value": "1"
+                }
+              ],
+              "type": "tuple"
+            }
+          ],
+          "type": "tuple"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 988,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "53bf9713dbec4cb8b284a582843a901c8a7f57fb5f320daa9a7218647aa3e5d9",
+          "size_bytes": 2257
+        },
+        {
+          "gzip_bytes": 646,
+          "path": "LICENSES/shimify.txt",
+          "role": "notice",
+          "sha256": "30989a02b7e73aa97c349440d9323d2486033a88a2b37461f3142bbb30515e85",
+          "size_bytes": 1066
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 569,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "068f61f597bb53df69f85d0e97c7a37d6ce256a031218d401f28cae420041900",
+          "size_bytes": 1237
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 401,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "05b61b32673764dbe9d2be65a571eb5365acbf7f0b0bb480889ea6da8f2f0dd0",
+          "size_bytes": 989
+        },
+        {
+          "gzip_bytes": 1100,
+          "path": "module-001.mjs",
+          "role": "executable-module",
+          "sha256": "f21a865c1609eb3df9c391390ed901bbc1fc3d586c66994e0f6ddde126d8f7de",
+          "size_bytes": 4695
+        },
+        {
+          "gzip_bytes": 7874,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "eb060226247e226dda481780eaa054331e2b6d5595f8589a64bcad6d42976c20",
+          "size_bytes": 23547
+        }
+      ],
+      "fixture": "text-metrics",
+      "helper_policy": "all-profile",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "exception",
+        "index",
+        "input",
+        "iterate",
+        "javascript",
+        "len",
+        "repr",
+        "print",
+        "truth",
+        "types",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "53bf9713dbec4cb8b284a582843a901c8a7f57fb5f320daa9a7218647aa3e5d9",
+      "median_build_ns": 1256208,
+      "omitted_profile_helpers": [],
+      "sizes": {
+        "canonical_tar_bytes": 51200,
+        "complete_payload_bytes": 36838,
+        "generated_module_bytes": 6921,
+        "gzip_file_transfer_bytes": 13194,
+        "gzip_tar_bytes": 12591,
+        "gzip_tar_sha256": "0d733c69534ef5a3fd278603a60e7298b70fc1e205b8f950c206de8d30259c5a",
+        "helper_bytes": 23547,
+        "input_source_bytes": 702,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 2257,
+        "notice_bytes": 1276,
+        "source_map_bytes": 0
+      },
+      "source_map": false,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "38b57305a004c36f7da97261d4633c7db05e82d8a979449ea4cccb871003fc9b",
+          "size": 121
+        },
+        {
+          "path": "text_metrics.py",
+          "sha256": "cd0fc16e047b4c81230a1272446b0257ef741f937b1ea0857d2a94bb3d0bb350",
+          "size": 581
+        }
+      ],
+      "variant": "all-profile-no-maps"
+    },
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 5.200000047683716,
+            "wall_ms": 10.799999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 4.899999976158142,
+            "wall_ms": 10.300000071525574
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 5.700000047683716,
+            "wall_ms": 10.699999928474426
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 5.300000071525574,
+            "wall_ms": 10.5
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 4.899999976158142,
+            "wall_ms": 10.200000047683716
+          }
+        ],
+        "median_cold_ms": 10.5,
+        "median_warm_ms": 4.300000071525574,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1875,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19135,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 312896
+            },
+            "used_size_delta_bytes": 42164
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1875,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19135,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 312896
+            },
+            "used_size_delta_bytes": 42164
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1875,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19135,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 312896
+            },
+            "used_size_delta_bytes": 42164
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1875,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19135,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 312896
+            },
+            "used_size_delta_bytes": 42164
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1875,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19135,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 312896
+            },
+            "used_size_delta_bytes": 42164
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 1.1999999284744263,
+            "wall_ms": 4.5
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.0999999046325684,
+            "wall_ms": 4
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.3999999761581421,
+            "module_import_ms": 1.3000000715255737,
+            "wall_ms": 4.5
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.3999999761581421,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4.300000071525574
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 3.899999976158142
+          }
+        ]
+      },
+      "build_ns": [
+        1031875,
+        1040750,
+        1022875,
+        1618375,
+        1230625
+      ],
+      "expected": {
+        "error": {
+          "location": {
+            "column": 9,
+            "filename": "text_metrics.py",
+            "line": 11
+          },
+          "message": "text must be str",
+          "name": "TypeError"
+        },
+        "stdout": "",
+        "value": {
+          "type": "none"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 1079,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "4d3e3d60ecdc5d35ab83bb9116bab833f18856fc0b212dc3d9bfff55dabd1ab3",
+          "size_bytes": 2494
+        },
+        {
+          "gzip_bytes": 646,
+          "path": "LICENSES/shimify.txt",
+          "role": "notice",
+          "sha256": "30989a02b7e73aa97c349440d9323d2486033a88a2b37461f3142bbb30515e85",
+          "size_bytes": 1066
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 569,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "068f61f597bb53df69f85d0e97c7a37d6ce256a031218d401f28cae420041900",
+          "size_bytes": 1237
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 338,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "b406a03d5c2860fa68d18aea18912896f59fc6ffce2fd0754d7c3f85479054ee",
+          "size_bytes": 564
+        },
+        {
+          "gzip_bytes": 176,
+          "path": "module-000.mjs.map",
+          "role": "source-map",
+          "sha256": "d41e92d81c89102f1d58f84d43781cce90eb036c4aebeb70342c8c03f53ca647",
+          "size_bytes": 205
+        },
+        {
+          "gzip_bytes": 1135,
+          "path": "module-001.mjs",
+          "role": "executable-module",
+          "sha256": "018cefdc480618d62951a3297208c3569ee6773df2da72002c147d21e79a739e",
+          "size_bytes": 4735
+        },
+        {
+          "gzip_bytes": 415,
+          "path": "module-001.mjs.map",
+          "role": "source-map",
+          "sha256": "eb4f13b659b9c151d3227fcad4c2cc442b2c80cacf84f60d2ff347d92ae3877e",
+          "size_bytes": 909
+        },
+        {
+          "gzip_bytes": 2841,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "f106e466bde4a6548f087a7b29ec8407b7038395db575e12fa0e47a3ca136dc7",
+          "size_bytes": 10357
+        }
+      ],
+      "fixture": "text-metrics-error",
+      "helper_policy": "required",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "exception",
+        "input",
+        "iterate",
+        "len",
+        "truth",
+        "types",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "4d3e3d60ecdc5d35ab83bb9116bab833f18856fc0b212dc3d9bfff55dabd1ab3",
+      "median_build_ns": 1040750,
+      "omitted_profile_helpers": [
+        "index",
+        "javascript",
+        "print",
+        "repr"
+      ],
+      "sizes": {
+        "canonical_tar_bytes": 40960,
+        "complete_payload_bytes": 24614,
+        "generated_module_bytes": 6536,
+        "gzip_file_transfer_bytes": 8815,
+        "gzip_tar_bytes": 7956,
+        "gzip_tar_sha256": "5b29c8ae030467be52ca9f8900580a644a4b01b5f108193d46e9d7a548f2de7f",
+        "helper_bytes": 10357,
+        "input_source_bytes": 651,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 2494,
+        "notice_bytes": 1276,
+        "source_map_bytes": 1114
+      },
+      "source_map": true,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "15370f89501da66df4fc742fbb44b55da54d387ffdc946ff3a4309a7a468df9c",
+          "size": 70
+        },
+        {
+          "path": "text_metrics.py",
+          "sha256": "cd0fc16e047b4c81230a1272446b0257ef741f937b1ea0857d2a94bb3d0bb350",
+          "size": 581
+        }
+      ],
+      "variant": "required-maps"
+    },
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.8000000715255737,
+            "module_import_ms": 5,
+            "wall_ms": 10.399999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7999999523162842,
+            "module_import_ms": 5.600000023841858,
+            "wall_ms": 11.200000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 5.300000071525574,
+            "wall_ms": 10.700000047683716
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7999999523162842,
+            "module_import_ms": 4.700000047683716,
+            "wall_ms": 9.799999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.8000000715255737,
+            "module_import_ms": 5.100000023841858,
+            "wall_ms": 10.200000047683716
+          }
+        ],
+        "median_cold_ms": 10.399999976158142,
+        "median_warm_ms": 4.399999976158142,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1881,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32343,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 353568
+            },
+            "used_size_delta_bytes": 82836
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1881,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32343,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 353568
+            },
+            "used_size_delta_bytes": 82836
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1881,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32343,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 353568
+            },
+            "used_size_delta_bytes": 82836
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1881,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32343,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 353568
+            },
+            "used_size_delta_bytes": 82836
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1881,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32343,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 353568
+            },
+            "used_size_delta_bytes": 82836
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5999999046325684,
+            "module_import_ms": 1.4000000953674316,
+            "wall_ms": 4.699999928474426
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5999999046325684,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4.399999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6999999284744263,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 4.399999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 1.2999999523162842,
+            "wall_ms": 4.5
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 1.2999999523162842,
+            "wall_ms": 4.100000023841858
+          }
+        ]
+      },
+      "build_ns": [
+        1387792,
+        1243292,
+        1553042,
+        1485458,
+        1218916
+      ],
+      "expected": {
+        "error": {
+          "location": {
+            "column": 9,
+            "filename": "text_metrics.py",
+            "line": 11
+          },
+          "message": "text must be str",
+          "name": "TypeError"
+        },
+        "stdout": "",
+        "value": {
+          "type": "none"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 1099,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "a756405187d424f37f06154e23c5beaf6f5bfd9396818b44839f310f89ed3396",
+          "size_bytes": 2530
+        },
+        {
+          "gzip_bytes": 646,
+          "path": "LICENSES/shimify.txt",
+          "role": "notice",
+          "sha256": "30989a02b7e73aa97c349440d9323d2486033a88a2b37461f3142bbb30515e85",
+          "size_bytes": 1066
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 569,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "068f61f597bb53df69f85d0e97c7a37d6ce256a031218d401f28cae420041900",
+          "size_bytes": 1237
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 338,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "b406a03d5c2860fa68d18aea18912896f59fc6ffce2fd0754d7c3f85479054ee",
+          "size_bytes": 564
+        },
+        {
+          "gzip_bytes": 176,
+          "path": "module-000.mjs.map",
+          "role": "source-map",
+          "sha256": "d41e92d81c89102f1d58f84d43781cce90eb036c4aebeb70342c8c03f53ca647",
+          "size_bytes": 205
+        },
+        {
+          "gzip_bytes": 1135,
+          "path": "module-001.mjs",
+          "role": "executable-module",
+          "sha256": "018cefdc480618d62951a3297208c3569ee6773df2da72002c147d21e79a739e",
+          "size_bytes": 4735
+        },
+        {
+          "gzip_bytes": 415,
+          "path": "module-001.mjs.map",
+          "role": "source-map",
+          "sha256": "eb4f13b659b9c151d3227fcad4c2cc442b2c80cacf84f60d2ff347d92ae3877e",
+          "size_bytes": 909
+        },
+        {
+          "gzip_bytes": 7874,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "eb060226247e226dda481780eaa054331e2b6d5595f8589a64bcad6d42976c20",
+          "size_bytes": 23547
+        }
+      ],
+      "fixture": "text-metrics-error",
+      "helper_policy": "all-profile",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "exception",
+        "index",
+        "input",
+        "iterate",
+        "javascript",
+        "len",
+        "repr",
+        "print",
+        "truth",
+        "types",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "a756405187d424f37f06154e23c5beaf6f5bfd9396818b44839f310f89ed3396",
+      "median_build_ns": 1387792,
+      "omitted_profile_helpers": [],
+      "sizes": {
+        "canonical_tar_bytes": 51200,
+        "complete_payload_bytes": 37840,
+        "generated_module_bytes": 6536,
+        "gzip_file_transfer_bytes": 13868,
+        "gzip_tar_bytes": 13048,
+        "gzip_tar_sha256": "348db417c05ba9d6e59fc2c58722defeb478d4328c6339c2334d3fab663ebe14",
+        "helper_bytes": 23547,
+        "input_source_bytes": 651,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 2530,
+        "notice_bytes": 1276,
+        "source_map_bytes": 1114
+      },
+      "source_map": true,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "15370f89501da66df4fc742fbb44b55da54d387ffdc946ff3a4309a7a468df9c",
+          "size": 70
+        },
+        {
+          "path": "text_metrics.py",
+          "sha256": "cd0fc16e047b4c81230a1272446b0257ef741f937b1ea0857d2a94bb3d0bb350",
+          "size": 581
+        }
+      ],
+      "variant": "all-profile-maps"
+    },
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 4.899999976158142,
+            "wall_ms": 17.100000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 5.299999952316284,
+            "wall_ms": 10.299999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 4.700000047683716,
+            "wall_ms": 10.199999928474426
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 4.899999976158142,
+            "wall_ms": 10.100000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 5.899999976158142,
+            "wall_ms": 11
+          }
+        ],
+        "median_cold_ms": 10.299999952316284,
+        "median_warm_ms": 4.199999928474426,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1881,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19073,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 312832
+            },
+            "used_size_delta_bytes": 42100
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1881,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19073,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 312832
+            },
+            "used_size_delta_bytes": 42100
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1881,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19073,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 312832
+            },
+            "used_size_delta_bytes": 42100
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1881,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19073,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 312832
+            },
+            "used_size_delta_bytes": 42100
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1881,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 19073,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 312832
+            },
+            "used_size_delta_bytes": 42100
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 4.299999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 4
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5999999046325684,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 4.199999928474426
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 1.399999976158142,
+            "wall_ms": 4.600000023841858
+          }
+        ]
+      },
+      "build_ns": [
+        1382167,
+        1136459,
+        1186333,
+        1359709,
+        1547833
+      ],
+      "expected": {
+        "error": {
+          "location": {
+            "column": 9,
+            "filename": "text_metrics.py",
+            "line": 11
+          },
+          "message": "text must be str",
+          "name": "TypeError"
+        },
+        "stdout": "",
+        "value": {
+          "type": "none"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 973,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "82ddcfcf8933caea6f3b267426e72043c9de8fded815dcb5a81da663862ac3b3",
+          "size_bytes": 2220
+        },
+        {
+          "gzip_bytes": 646,
+          "path": "LICENSES/shimify.txt",
+          "role": "notice",
+          "sha256": "30989a02b7e73aa97c349440d9323d2486033a88a2b37461f3142bbb30515e85",
+          "size_bytes": 1066
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 569,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "068f61f597bb53df69f85d0e97c7a37d6ce256a031218d401f28cae420041900",
+          "size_bytes": 1237
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 308,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "da9d6890005ce7504cd0b6be58132ef212ba378a8e23da23680d275925e81070",
+          "size_bytes": 524
+        },
+        {
+          "gzip_bytes": 1100,
+          "path": "module-001.mjs",
+          "role": "executable-module",
+          "sha256": "f21a865c1609eb3df9c391390ed901bbc1fc3d586c66994e0f6ddde126d8f7de",
+          "size_bytes": 4695
+        },
+        {
+          "gzip_bytes": 2841,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "f106e466bde4a6548f087a7b29ec8407b7038395db575e12fa0e47a3ca136dc7",
+          "size_bytes": 10357
+        }
+      ],
+      "fixture": "text-metrics-error",
+      "helper_policy": "required",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "exception",
+        "input",
+        "iterate",
+        "len",
+        "truth",
+        "types",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "82ddcfcf8933caea6f3b267426e72043c9de8fded815dcb5a81da663862ac3b3",
+      "median_build_ns": 1359709,
+      "omitted_profile_helpers": [
+        "index",
+        "javascript",
+        "print",
+        "repr"
+      ],
+      "sizes": {
+        "canonical_tar_bytes": 40960,
+        "complete_payload_bytes": 23146,
+        "generated_module_bytes": 6456,
+        "gzip_file_transfer_bytes": 8053,
+        "gzip_tar_bytes": 7425,
+        "gzip_tar_sha256": "08b7ac56f94ee305d9052ca7719c4dc1578ff0562b7248504395e9350d24446f",
+        "helper_bytes": 10357,
+        "input_source_bytes": 651,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 2220,
+        "notice_bytes": 1276,
+        "source_map_bytes": 0
+      },
+      "source_map": false,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "15370f89501da66df4fc742fbb44b55da54d387ffdc946ff3a4309a7a468df9c",
+          "size": 70
+        },
+        {
+          "path": "text_metrics.py",
+          "sha256": "cd0fc16e047b4c81230a1272446b0257ef741f937b1ea0857d2a94bb3d0bb350",
+          "size": 581
+        }
+      ],
+      "variant": "required-no-maps"
+    },
+    {
+      "browser": {
+        "cold_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7999999523162842,
+            "module_import_ms": 5.100000023841858,
+            "wall_ms": 10.399999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 5.399999976158142,
+            "wall_ms": 10.399999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 4.899999976158142,
+            "wall_ms": 10
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 5.100000023841858,
+            "wall_ms": 10.299999952316284
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 4.799999952316284,
+            "wall_ms": 10.099999904632568
+          }
+        ],
+        "median_cold_ms": 10.299999952316284,
+        "median_warm_ms": 4.399999976158142,
+        "memory_samples": [
+          {
+            "baseline": {
+              "backingStorageSize": 1887,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32281,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 353504
+            },
+            "used_size_delta_bytes": 82772
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1887,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32281,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 353504
+            },
+            "used_size_delta_bytes": 82772
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1887,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32281,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 353504
+            },
+            "used_size_delta_bytes": 82772
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1887,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32281,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 353504
+            },
+            "used_size_delta_bytes": 82772
+          },
+          {
+            "baseline": {
+              "backingStorageSize": 1887,
+              "embedderHeapUsedSize": 20984,
+              "totalSize": 786432,
+              "usedSize": 270732
+            },
+            "retained_module_and_result": {
+              "backingStorageSize": 32281,
+              "embedderHeapUsedSize": 30360,
+              "totalSize": 786432,
+              "usedSize": 353504
+            },
+            "used_size_delta_bytes": 82772
+          }
+        ],
+        "warm_context_samples": [
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 1.399999976158142,
+            "wall_ms": 4.600000023841858
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 1.2999999523162842,
+            "wall_ms": 4.5
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.5999999046325684,
+            "module_import_ms": 1.2000000476837158,
+            "wall_ms": 4.399999976158142
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.7000000476837158,
+            "module_import_ms": 1.100000023841858,
+            "wall_ms": 4.300000071525574
+          },
+          {
+            "id": "fixture",
+            "initialize_and_run_ms": 0.6000000238418579,
+            "module_import_ms": 1.1999999284744263,
+            "wall_ms": 4.200000047683716
+          }
+        ]
+      },
+      "build_ns": [
+        1349167,
+        1192792,
+        1146750,
+        1123084,
+        1358333
+      ],
+      "expected": {
+        "error": {
+          "location": {
+            "column": 9,
+            "filename": "text_metrics.py",
+            "line": 11
+          },
+          "message": "text must be str",
+          "name": "TypeError"
+        },
+        "stdout": "",
+        "value": {
+          "type": "none"
+        }
+      },
+      "files": [
+        {
+          "gzip_bytes": 990,
+          "path": "COMPILED-MANIFEST.json",
+          "role": "metadata",
+          "sha256": "baf460a04ec92f1d0bdea62239a51f089c1b6758e7b02365125c055914abf1c6",
+          "size_bytes": 2256
+        },
+        {
+          "gzip_bytes": 646,
+          "path": "LICENSES/shimify.txt",
+          "role": "notice",
+          "sha256": "30989a02b7e73aa97c349440d9323d2486033a88a2b37461f3142bbb30515e85",
+          "size_bytes": 1066
+        },
+        {
+          "gzip_bytes": 173,
+          "path": "NOTICES.txt",
+          "role": "notice",
+          "sha256": "6f5d82cbe362365fa7b97ab5825f5d5e1c6766e6f285f4ffe10c50ba9cedb270",
+          "size_bytes": 210
+        },
+        {
+          "gzip_bytes": 569,
+          "path": "app.mjs",
+          "role": "executable-module",
+          "sha256": "068f61f597bb53df69f85d0e97c7a37d6ce256a031218d401f28cae420041900",
+          "size_bytes": 1237
+        },
+        {
+          "gzip_bytes": 585,
+          "path": "index.html",
+          "role": "measurement-harness",
+          "sha256": "5062f46de090ec1079d601c4b8711bb1927d259f0ff0da8be7dd1e374f177c1b",
+          "size_bytes": 1158
+        },
+        {
+          "gzip_bytes": 622,
+          "path": "measure-runtime.mjs",
+          "role": "measurement-harness",
+          "sha256": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+          "size_bytes": 1302
+        },
+        {
+          "gzip_bytes": 236,
+          "path": "measure-worker.mjs",
+          "role": "measurement-harness",
+          "sha256": "a4aba4acc34a538f8af6aa64603d3cf99d8b9eff32c9a33625fbe53b468471dc",
+          "size_bytes": 377
+        },
+        {
+          "gzip_bytes": 308,
+          "path": "module-000.mjs",
+          "role": "executable-module",
+          "sha256": "da9d6890005ce7504cd0b6be58132ef212ba378a8e23da23680d275925e81070",
+          "size_bytes": 524
+        },
+        {
+          "gzip_bytes": 1100,
+          "path": "module-001.mjs",
+          "role": "executable-module",
+          "sha256": "f21a865c1609eb3df9c391390ed901bbc1fc3d586c66994e0f6ddde126d8f7de",
+          "size_bytes": 4695
+        },
+        {
+          "gzip_bytes": 7874,
+          "path": "runtime.mjs",
+          "role": "compatibility-helper",
+          "sha256": "eb060226247e226dda481780eaa054331e2b6d5595f8589a64bcad6d42976c20",
+          "size_bytes": 23547
+        }
+      ],
+      "fixture": "text-metrics-error",
+      "helper_policy": "all-profile",
+      "helpers": [
+        "error",
+        "numeric",
+        "str",
+        "binary",
+        "binding",
+        "call",
+        "tuple",
+        "equal",
+        "compare",
+        "exception",
+        "index",
+        "input",
+        "iterate",
+        "javascript",
+        "len",
+        "repr",
+        "print",
+        "truth",
+        "types",
+        "unary"
+      ],
+      "language_profile": "python-browser-modules/1",
+      "manifest_sha256": "baf460a04ec92f1d0bdea62239a51f089c1b6758e7b02365125c055914abf1c6",
+      "median_build_ns": 1192792,
+      "omitted_profile_helpers": [],
+      "sizes": {
+        "canonical_tar_bytes": 51200,
+        "complete_payload_bytes": 36372,
+        "generated_module_bytes": 6456,
+        "gzip_file_transfer_bytes": 13103,
+        "gzip_tar_bytes": 12521,
+        "gzip_tar_sha256": "ab9b7a7dc1599a663c9e60b6f8b61ab1717ab50f65ffcfb632f3f3bc065f85ea",
+        "helper_bytes": 23547,
+        "input_source_bytes": 651,
+        "interpreter_asset_bytes": 0,
+        "measurement_harness_bytes": 2837,
+        "metadata_bytes": 2256,
+        "notice_bytes": 1276,
+        "source_map_bytes": 0
+      },
+      "source_map": false,
+      "sources": [
+        {
+          "path": "app.py",
+          "sha256": "15370f89501da66df4fc742fbb44b55da54d387ffdc946ff3a4309a7a468df9c",
+          "size": 70
+        },
+        {
+          "path": "text_metrics.py",
+          "sha256": "cd0fc16e047b4c81230a1272446b0257ef741f937b1ea0857d2a94bb3d0bb350",
+          "size": 581
+        }
+      ],
+      "variant": "all-profile-no-maps"
+    }
+  ],
+  "browser": {
+    "channel": null,
+    "helper_conformance_cases": 48,
+    "local_static_gets_only": true,
+    "playwright_version": "1.64.0",
+    "requested_paths": [
+      "/applications/numeric-and-unicode/all-profile-maps/app.mjs",
+      "/applications/numeric-and-unicode/all-profile-maps/index.html",
+      "/applications/numeric-and-unicode/all-profile-maps/measure-runtime.mjs",
+      "/applications/numeric-and-unicode/all-profile-maps/measure-worker.mjs",
+      "/applications/numeric-and-unicode/all-profile-maps/module-000.mjs",
+      "/applications/numeric-and-unicode/all-profile-maps/runtime.mjs",
+      "/applications/numeric-and-unicode/all-profile-no-maps/app.mjs",
+      "/applications/numeric-and-unicode/all-profile-no-maps/index.html",
+      "/applications/numeric-and-unicode/all-profile-no-maps/measure-runtime.mjs",
+      "/applications/numeric-and-unicode/all-profile-no-maps/measure-worker.mjs",
+      "/applications/numeric-and-unicode/all-profile-no-maps/module-000.mjs",
+      "/applications/numeric-and-unicode/all-profile-no-maps/runtime.mjs",
+      "/applications/numeric-and-unicode/required-maps/app.mjs",
+      "/applications/numeric-and-unicode/required-maps/index.html",
+      "/applications/numeric-and-unicode/required-maps/measure-runtime.mjs",
+      "/applications/numeric-and-unicode/required-maps/measure-worker.mjs",
+      "/applications/numeric-and-unicode/required-maps/module-000.mjs",
+      "/applications/numeric-and-unicode/required-maps/runtime.mjs",
+      "/applications/numeric-and-unicode/required-no-maps/app.mjs",
+      "/applications/numeric-and-unicode/required-no-maps/index.html",
+      "/applications/numeric-and-unicode/required-no-maps/measure-runtime.mjs",
+      "/applications/numeric-and-unicode/required-no-maps/measure-worker.mjs",
+      "/applications/numeric-and-unicode/required-no-maps/module-000.mjs",
+      "/applications/numeric-and-unicode/required-no-maps/runtime.mjs",
+      "/applications/text-metrics-error/all-profile-maps/app.mjs",
+      "/applications/text-metrics-error/all-profile-maps/index.html",
+      "/applications/text-metrics-error/all-profile-maps/measure-runtime.mjs",
+      "/applications/text-metrics-error/all-profile-maps/measure-worker.mjs",
+      "/applications/text-metrics-error/all-profile-maps/module-000.mjs",
+      "/applications/text-metrics-error/all-profile-maps/module-001.mjs",
+      "/applications/text-metrics-error/all-profile-maps/runtime.mjs",
+      "/applications/text-metrics-error/all-profile-no-maps/app.mjs",
+      "/applications/text-metrics-error/all-profile-no-maps/index.html",
+      "/applications/text-metrics-error/all-profile-no-maps/measure-runtime.mjs",
+      "/applications/text-metrics-error/all-profile-no-maps/measure-worker.mjs",
+      "/applications/text-metrics-error/all-profile-no-maps/module-000.mjs",
+      "/applications/text-metrics-error/all-profile-no-maps/module-001.mjs",
+      "/applications/text-metrics-error/all-profile-no-maps/runtime.mjs",
+      "/applications/text-metrics-error/required-maps/app.mjs",
+      "/applications/text-metrics-error/required-maps/index.html",
+      "/applications/text-metrics-error/required-maps/measure-runtime.mjs",
+      "/applications/text-metrics-error/required-maps/measure-worker.mjs",
+      "/applications/text-metrics-error/required-maps/module-000.mjs",
+      "/applications/text-metrics-error/required-maps/module-001.mjs",
+      "/applications/text-metrics-error/required-maps/runtime.mjs",
+      "/applications/text-metrics-error/required-no-maps/app.mjs",
+      "/applications/text-metrics-error/required-no-maps/index.html",
+      "/applications/text-metrics-error/required-no-maps/measure-runtime.mjs",
+      "/applications/text-metrics-error/required-no-maps/measure-worker.mjs",
+      "/applications/text-metrics-error/required-no-maps/module-000.mjs",
+      "/applications/text-metrics-error/required-no-maps/module-001.mjs",
+      "/applications/text-metrics-error/required-no-maps/runtime.mjs",
+      "/applications/text-metrics/all-profile-maps/app.mjs",
+      "/applications/text-metrics/all-profile-maps/index.html",
+      "/applications/text-metrics/all-profile-maps/measure-runtime.mjs",
+      "/applications/text-metrics/all-profile-maps/measure-worker.mjs",
+      "/applications/text-metrics/all-profile-maps/module-000.mjs",
+      "/applications/text-metrics/all-profile-maps/module-001.mjs",
+      "/applications/text-metrics/all-profile-maps/runtime.mjs",
+      "/applications/text-metrics/all-profile-no-maps/app.mjs",
+      "/applications/text-metrics/all-profile-no-maps/index.html",
+      "/applications/text-metrics/all-profile-no-maps/measure-runtime.mjs",
+      "/applications/text-metrics/all-profile-no-maps/measure-worker.mjs",
+      "/applications/text-metrics/all-profile-no-maps/module-000.mjs",
+      "/applications/text-metrics/all-profile-no-maps/module-001.mjs",
+      "/applications/text-metrics/all-profile-no-maps/runtime.mjs",
+      "/applications/text-metrics/required-maps/app.mjs",
+      "/applications/text-metrics/required-maps/index.html",
+      "/applications/text-metrics/required-maps/measure-runtime.mjs",
+      "/applications/text-metrics/required-maps/measure-worker.mjs",
+      "/applications/text-metrics/required-maps/module-000.mjs",
+      "/applications/text-metrics/required-maps/module-001.mjs",
+      "/applications/text-metrics/required-maps/runtime.mjs",
+      "/applications/text-metrics/required-no-maps/app.mjs",
+      "/applications/text-metrics/required-no-maps/index.html",
+      "/applications/text-metrics/required-no-maps/measure-runtime.mjs",
+      "/applications/text-metrics/required-no-maps/measure-worker.mjs",
+      "/applications/text-metrics/required-no-maps/module-000.mjs",
+      "/applications/text-metrics/required-no-maps/module-001.mjs",
+      "/applications/text-metrics/required-no-maps/runtime.mjs",
+      "/conformance/alias-all-profile/app.mjs",
+      "/conformance/alias-all-profile/module-000.mjs",
+      "/conformance/alias-all-profile/runtime.mjs",
+      "/conformance/alias-required/app.mjs",
+      "/conformance/alias-required/module-000.mjs",
+      "/conformance/alias-required/runtime.mjs",
+      "/conformance/async-original-failure-all-profile/app.mjs",
+      "/conformance/async-original-failure-all-profile/module-000.mjs",
+      "/conformance/async-original-failure-all-profile/runtime.mjs",
+      "/conformance/async-original-failure-required/app.mjs",
+      "/conformance/async-original-failure-required/module-000.mjs",
+      "/conformance/async-original-failure-required/runtime.mjs",
+      "/conformance/default-alias-all-profile/app.mjs",
+      "/conformance/default-alias-all-profile/module-000.mjs",
+      "/conformance/default-alias-all-profile/runtime.mjs",
+      "/conformance/default-alias-required/app.mjs",
+      "/conformance/default-alias-required/module-000.mjs",
+      "/conformance/default-alias-required/runtime.mjs",
+      "/conformance/default-all-profile/app.mjs",
+      "/conformance/default-all-profile/module-000.mjs",
+      "/conformance/default-all-profile/runtime.mjs",
+      "/conformance/default-required/app.mjs",
+      "/conformance/default-required/module-000.mjs",
+      "/conformance/default-required/runtime.mjs",
+      "/conformance/evaluation-order-all-profile/app.mjs",
+      "/conformance/evaluation-order-all-profile/module-000.mjs",
+      "/conformance/evaluation-order-all-profile/runtime.mjs",
+      "/conformance/evaluation-order-required/app.mjs",
+      "/conformance/evaluation-order-required/module-000.mjs",
+      "/conformance/evaluation-order-required/runtime.mjs",
+      "/conformance/index-error-all-profile/app.mjs",
+      "/conformance/index-error-all-profile/module-000.mjs",
+      "/conformance/index-error-all-profile/runtime.mjs",
+      "/conformance/index-error-required/app.mjs",
+      "/conformance/index-error-required/module-000.mjs",
+      "/conformance/index-error-required/runtime.mjs",
+      "/conformance/large-integer-all-profile/app.mjs",
+      "/conformance/large-integer-all-profile/module-000.mjs",
+      "/conformance/large-integer-all-profile/runtime.mjs",
+      "/conformance/large-integer-required/app.mjs",
+      "/conformance/large-integer-required/module-000.mjs",
+      "/conformance/large-integer-required/runtime.mjs",
+      "/conformance/lazy-coroutine-all-profile/app.mjs",
+      "/conformance/lazy-coroutine-all-profile/module-000.mjs",
+      "/conformance/lazy-coroutine-all-profile/runtime.mjs",
+      "/conformance/lazy-coroutine-required/app.mjs",
+      "/conformance/lazy-coroutine-required/module-000.mjs",
+      "/conformance/lazy-coroutine-required/runtime.mjs",
+      "/conformance/loop-and-tuple-all-profile/app.mjs",
+      "/conformance/loop-and-tuple-all-profile/module-000.mjs",
+      "/conformance/loop-and-tuple-all-profile/runtime.mjs",
+      "/conformance/loop-and-tuple-required/app.mjs",
+      "/conformance/loop-and-tuple-required/module-000.mjs",
+      "/conformance/loop-and-tuple-required/runtime.mjs",
+      "/conformance/module-alias-and-initialization-all-profile/app.mjs",
+      "/conformance/module-alias-and-initialization-all-profile/module-000.mjs",
+      "/conformance/module-alias-and-initialization-all-profile/module-001.mjs",
+      "/conformance/module-alias-and-initialization-all-profile/runtime.mjs",
+      "/conformance/module-alias-and-initialization-required/app.mjs",
+      "/conformance/module-alias-and-initialization-required/module-000.mjs",
+      "/conformance/module-alias-and-initialization-required/module-001.mjs",
+      "/conformance/module-alias-and-initialization-required/runtime.mjs",
+      "/conformance/module-callback-origin-all-profile/app.mjs",
+      "/conformance/module-callback-origin-all-profile/module-000.mjs",
+      "/conformance/module-callback-origin-all-profile/module-001.mjs",
+      "/conformance/module-callback-origin-all-profile/runtime.mjs",
+      "/conformance/module-callback-origin-required/app.mjs",
+      "/conformance/module-callback-origin-required/module-000.mjs",
+      "/conformance/module-callback-origin-required/module-001.mjs",
+      "/conformance/module-callback-origin-required/runtime.mjs",
+      "/conformance/negative-division-all-profile/app.mjs",
+      "/conformance/negative-division-all-profile/module-000.mjs",
+      "/conformance/negative-division-all-profile/runtime.mjs",
+      "/conformance/negative-division-required/app.mjs",
+      "/conformance/negative-division-required/module-000.mjs",
+      "/conformance/negative-division-required/runtime.mjs",
+      "/conformance/numeric-and-unicode-all-profile/app.mjs",
+      "/conformance/numeric-and-unicode-all-profile/module-000.mjs",
+      "/conformance/numeric-and-unicode-all-profile/runtime.mjs",
+      "/conformance/numeric-and-unicode-required/app.mjs",
+      "/conformance/numeric-and-unicode-required/module-000.mjs",
+      "/conformance/numeric-and-unicode-required/runtime.mjs",
+      "/conformance/output-before-error-all-profile/app.mjs",
+      "/conformance/output-before-error-all-profile/module-000.mjs",
+      "/conformance/output-before-error-all-profile/runtime.mjs",
+      "/conformance/output-before-error-required/app.mjs",
+      "/conformance/output-before-error-required/module-000.mjs",
+      "/conformance/output-before-error-required/runtime.mjs",
+      "/conformance/preconstructed-raise-all-profile/app.mjs",
+      "/conformance/preconstructed-raise-all-profile/module-000.mjs",
+      "/conformance/preconstructed-raise-all-profile/runtime.mjs",
+      "/conformance/preconstructed-raise-required/app.mjs",
+      "/conformance/preconstructed-raise-required/module-000.mjs",
+      "/conformance/preconstructed-raise-required/runtime.mjs",
+      "/conformance/promise-callback-once-all-profile/app.mjs",
+      "/conformance/promise-callback-once-all-profile/module-000.mjs",
+      "/conformance/promise-callback-once-all-profile/runtime.mjs",
+      "/conformance/promise-callback-once-required/app.mjs",
+      "/conformance/promise-callback-once-required/module-000.mjs",
+      "/conformance/promise-callback-once-required/runtime.mjs",
+      "/conformance/promise-callback-raise-all-profile/app.mjs",
+      "/conformance/promise-callback-raise-all-profile/module-000.mjs",
+      "/conformance/promise-callback-raise-all-profile/runtime.mjs",
+      "/conformance/promise-callback-raise-required/app.mjs",
+      "/conformance/promise-callback-raise-required/module-000.mjs",
+      "/conformance/promise-callback-raise-required/runtime.mjs",
+      "/conformance/promise-rejection-value-all-profile/app.mjs",
+      "/conformance/promise-rejection-value-all-profile/module-000.mjs",
+      "/conformance/promise-rejection-value-all-profile/runtime.mjs",
+      "/conformance/promise-rejection-value-required/app.mjs",
+      "/conformance/promise-rejection-value-required/module-000.mjs",
+      "/conformance/promise-rejection-value-required/runtime.mjs",
+      "/conformance/short-circuit-all-profile/app.mjs",
+      "/conformance/short-circuit-all-profile/module-000.mjs",
+      "/conformance/short-circuit-all-profile/runtime.mjs",
+      "/conformance/short-circuit-required/app.mjs",
+      "/conformance/short-circuit-required/module-000.mjs",
+      "/conformance/short-circuit-required/runtime.mjs",
+      "/conformance/text-metrics-single-module-all-profile/app.mjs",
+      "/conformance/text-metrics-single-module-all-profile/module-000.mjs",
+      "/conformance/text-metrics-single-module-all-profile/runtime.mjs",
+      "/conformance/text-metrics-single-module-required/app.mjs",
+      "/conformance/text-metrics-single-module-required/module-000.mjs",
+      "/conformance/text-metrics-single-module-required/runtime.mjs",
+      "/conformance/typed-return-all-profile/app.mjs",
+      "/conformance/typed-return-all-profile/module-000.mjs",
+      "/conformance/typed-return-all-profile/runtime.mjs",
+      "/conformance/typed-return-required/app.mjs",
+      "/conformance/typed-return-required/module-000.mjs",
+      "/conformance/typed-return-required/runtime.mjs",
+      "/conformance/unbound-local-all-profile/app.mjs",
+      "/conformance/unbound-local-all-profile/module-000.mjs",
+      "/conformance/unbound-local-all-profile/runtime.mjs",
+      "/conformance/unbound-local-required/app.mjs",
+      "/conformance/unbound-local-required/module-000.mjs",
+      "/conformance/unbound-local-required/runtime.mjs",
+      "/conformance/unicode-all-profile/app.mjs",
+      "/conformance/unicode-all-profile/module-000.mjs",
+      "/conformance/unicode-all-profile/runtime.mjs",
+      "/conformance/unicode-columns-all-profile/app.mjs",
+      "/conformance/unicode-columns-all-profile/module-000.mjs",
+      "/conformance/unicode-columns-all-profile/runtime.mjs",
+      "/conformance/unicode-columns-required/app.mjs",
+      "/conformance/unicode-columns-required/module-000.mjs",
+      "/conformance/unicode-columns-required/runtime.mjs",
+      "/conformance/unicode-required/app.mjs",
+      "/conformance/unicode-required/module-000.mjs",
+      "/conformance/unicode-required/runtime.mjs"
+    ],
+    "version": "156.0.8078.4"
+  },
+  "collected_at_utc": "2026-10-21T00:50:52.279112+00:00",
+  "compiler_source_hash_policy": "Installed .py/.mjs files with canonical LF line endings",
+  "compiler_source_sha256": {
+    "__init__.py": "d9fcb26b9868feeecc32e199e3b39b3872d435171baef27706670ff0259594b7",
+    "_array.py": "684620313b702240939a7be26fce29c903c89551dfbfe0da53eacc49f54743f3",
+    "_browser/browser-host.mjs": "122aed7edbda37ffe92c4d82efc84ced4ef9e3687cdbc299ea09800dbb0f022a",
+    "_browser/browser-protocol.mjs": "841602b8e605529093f8638a6ce497743cbd70d0bb05a39ed55f50f65e8693f1",
+    "_browser/browser-worker.mjs": "b0d42dc542a20787618bc85971597edc316b30e779c3ac6826eb7c85d9b32198",
+    "_compiler_runtime.py": "63d0cb5ee148c26e185557f439baac9b3e73d5b3fc4ae7173fdc6e08049d56d4",
+    "_json.py": "85da152f893fc138feb3df935bb57b7c8dc1e839dc6780639447eb438bbc6156",
+    "_math.py": "ce793e1c5e73b72b35df6dca51cc5d889eec6785b640127fce3a8f2db9ef43f7",
+    "_number.py": "54fcab169544214d3f758d7ff19861c2e485c6a0d988b048825bab975a2b4d98",
+    "_object.py": "91951b2ffc38e0e6eea9e2a3a0a161779b52d7156c03a536d23aca0386afbc6e",
+    "_string.py": "b73cd918e388a3ad8f7a8d07b0a30486462f07e0854a848158a53750e487936a",
+    "_values.py": "c56640bd5d7d32ab627300c3975812e0d8280dfb69206babb948874038e849c5",
+    "browser.py": "abcdb2dedfbf6b634df54798bc0751cae2459f760f54eca435b628dddc2abfad",
+    "compiler.py": "396011ef77ff049b316a2ce4a27aa8699fbed4d99cca3717fcab1135be41665a",
+    "emitter.py": "096cceb6308595b327e29931735cf490767ec7b530e89f7006500ed3cfa594d6",
+    "modules.py": "180c730ad570b301013a1656ddff94c1d8e08bc6323d50eaced1e8c7db263faf"
+  },
+  "compiler_version": "0.1.0",
+  "compression": {
+    "archive": "canonical USTAR then gzip level 9, mtime 0",
+    "per_file": "gzip level 9, mtime 0; excludes HTTP headers",
+    "zlib_version": "1.2.12"
+  },
+  "corpus": {
+    "SHIMIFY-LICENSE.txt": "30989a02b7e73aa97c349440d9323d2486033a88a2b37461f3142bbb30515e85",
+    "compiler_contract.json": "4f5febbda3f524ddf4f9c25a63a91c61705c99db5711d891307031450c952730",
+    "compiler_parity.json": "d8c4168f0ee3d8663ada6bef1db346b646a9383d92bf9265b0d58f39ca9a7fad"
+  },
+  "helper_conformance": {
+    "browser": "pass",
+    "node": "pass",
+    "observations": [
+      {
+        "case": "large-integer",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "call",
+          "tuple",
+          "input",
+          "repr",
+          "print"
+        ],
+        "id": "large-integer-required",
+        "manifest_sha256": "c1bdcdf817eaede6dcb94c8aab65d5cc550a744ba0a964690740eff541b560f3"
+      },
+      {
+        "case": "large-integer",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "large-integer-all-profile",
+        "manifest_sha256": "747773d33e12ae25243deef7a669382bf8d7b13f02ff0d40ed9a19c509c5c16c"
+      },
+      {
+        "case": "unicode",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "call",
+          "str",
+          "tuple",
+          "input",
+          "len",
+          "repr",
+          "print"
+        ],
+        "id": "unicode-required",
+        "manifest_sha256": "2447d0b1c9b54639fc2ab786e4a8e6a8ed5fc726de879f74957b4f03cbc2c139"
+      },
+      {
+        "case": "unicode",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "unicode-all-profile",
+        "manifest_sha256": "ac213fab32a2dbed5af48afba27129aece9a5233f4867e4f2f487a1b5768c988"
+      },
+      {
+        "case": "negative-division",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "call",
+          "tuple",
+          "input",
+          "repr",
+          "print",
+          "truth",
+          "unary"
+        ],
+        "id": "negative-division-required",
+        "manifest_sha256": "d312953cb379b83b7770bb88bfda83f18ed1da513f8ebde13fc100d8e02b68af"
+      },
+      {
+        "case": "negative-division",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "negative-division-all-profile",
+        "manifest_sha256": "b285b9d1ec75861d9399bf1f3ddd8b8f0264efcab045f5557271747abee741dc"
+      },
+      {
+        "case": "short-circuit",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "call",
+          "str",
+          "tuple",
+          "input",
+          "repr",
+          "print",
+          "truth"
+        ],
+        "id": "short-circuit-required",
+        "manifest_sha256": "7390a57bf14f21acec23b5a834051a3e20fdab31b267c2149ce42b7df4dc40dc"
+      },
+      {
+        "case": "short-circuit",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "short-circuit-all-profile",
+        "manifest_sha256": "7fc9daa43df7009900426d018d36a5510d56fb67064801cdad75282836c3a460"
+      },
+      {
+        "case": "loop-and-tuple",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "input",
+          "iterate",
+          "len",
+          "repr",
+          "print",
+          "truth"
+        ],
+        "id": "loop-and-tuple-required",
+        "manifest_sha256": "552dc25a2b25444f3c4f6f826daa1b5e14740a3cd78f15edf3f5049425bc2675"
+      },
+      {
+        "case": "loop-and-tuple",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "loop-and-tuple-all-profile",
+        "manifest_sha256": "91fc354dda8a4e5c73bc6ad4c82b50c074acdf81c440cb2c7a9efb05a6c6d16b"
+      },
+      {
+        "case": "default",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "input",
+          "repr",
+          "print"
+        ],
+        "id": "default-required",
+        "manifest_sha256": "bb45f5205aff68edbadfe6a3d67112d8c2d8eb0315b69e216c648c3e5c70664c"
+      },
+      {
+        "case": "default",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "default-all-profile",
+        "manifest_sha256": "6c229c572e696dd67fc87d0a6987de5ae834039c6dc4f991356474b3552efdd4"
+      },
+      {
+        "case": "alias",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "binding",
+          "call",
+          "str",
+          "tuple",
+          "input",
+          "javascript",
+          "repr",
+          "print"
+        ],
+        "id": "alias-required",
+        "manifest_sha256": "f2a2e0b08fff4ecf2394e3a9f097c978e54c1cd656d7eca1877d933f5ac37686"
+      },
+      {
+        "case": "alias",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "alias-all-profile",
+        "manifest_sha256": "189ee64021f7b7d9edca46d09eff17b51974c3facd16b8c07ae24a3db06c87c4"
+      },
+      {
+        "case": "text-metrics-single-module",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "input",
+          "iterate",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "text-metrics-single-module-required",
+        "manifest_sha256": "07d8f88f64571fc5f44fc5ee48a76ea90d28c11570b584a815d1ed878405f9fd"
+      },
+      {
+        "case": "text-metrics-single-module",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "text-metrics-single-module-all-profile",
+        "manifest_sha256": "0fe2ee682ffda98bbd212229839619f2caaa72ea0a01445c8fae9a62e36ac453"
+      },
+      {
+        "case": "typed-return",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "binding",
+          "call",
+          "str",
+          "tuple",
+          "input",
+          "numeric",
+          "truth",
+          "unary"
+        ],
+        "id": "typed-return-required",
+        "manifest_sha256": "2bfcb47b947d75b3e276fe7a30c077662734124db23246c120a1955a79d315d8"
+      },
+      {
+        "case": "typed-return",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "typed-return-all-profile",
+        "manifest_sha256": "da23ed3deb86f5164275eb0339761d245003573869ea6415feaf0ebcc17952d1"
+      },
+      {
+        "case": "unicode-columns",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "input"
+        ],
+        "id": "unicode-columns-required",
+        "manifest_sha256": "de37836ab968dc89799ba7a46bc30c6aaf9c514234e02e3adec1865774eec8cf"
+      },
+      {
+        "case": "unicode-columns",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "unicode-columns-all-profile",
+        "manifest_sha256": "ecb0f83841d33010168af173914477fd3b969fbe036b6eaae90553e4409d3f20"
+      },
+      {
+        "case": "evaluation-order",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "binding",
+          "call",
+          "numeric",
+          "str",
+          "tuple",
+          "equal",
+          "compare",
+          "input",
+          "repr",
+          "print",
+          "truth"
+        ],
+        "id": "evaluation-order-required",
+        "manifest_sha256": "a0be259063d0569fd751a6ef5123b1a8ab20df2bbceeb10b2df10d6af7d4d780"
+      },
+      {
+        "case": "evaluation-order",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "evaluation-order-all-profile",
+        "manifest_sha256": "07a554e1e7b98d710626f4cf82dd54a8ce01dd8599f70c9a8b7c5ff9978cb13d"
+      },
+      {
+        "case": "default-alias",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "binding",
+          "call",
+          "numeric",
+          "str",
+          "tuple",
+          "equal",
+          "compare",
+          "input"
+        ],
+        "id": "default-alias-required",
+        "manifest_sha256": "7cda93f14f5aa65305d922c147b28fed859abdd971cc01d25cf681706e5a40b7"
+      },
+      {
+        "case": "default-alias",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "default-alias-all-profile",
+        "manifest_sha256": "ade78809b8c0890d60922591f9545bf01b925601be8e005820fb70373fff9c36"
+      },
+      {
+        "case": "numeric-and-unicode",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "index",
+          "input",
+          "len",
+          "truth",
+          "unary"
+        ],
+        "id": "numeric-and-unicode-required",
+        "manifest_sha256": "25da0e0a22ad363c3ddb63ab5c779406838325946cf5236f75ddc3780b1576ec"
+      },
+      {
+        "case": "numeric-and-unicode",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "numeric-and-unicode-all-profile",
+        "manifest_sha256": "07f33f4b65a2cf8b69b85488e9ad2342aab3cde81df2a5ad796c63a5e28d91de"
+      },
+      {
+        "case": "preconstructed-raise",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "binding",
+          "call",
+          "numeric",
+          "str",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "input",
+          "repr",
+          "print"
+        ],
+        "id": "preconstructed-raise-required",
+        "manifest_sha256": "4376ef31514b5d41f515f482f597b5bd1fd2ef5e03837faaef87fb9e7f3fdbbf"
+      },
+      {
+        "case": "preconstructed-raise",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "preconstructed-raise-all-profile",
+        "manifest_sha256": "6d192fa04cb141e59ed4ab8248f4c5e233ba604537c8930d2b52fff4f2de34c2"
+      },
+      {
+        "case": "output-before-error",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "call",
+          "tuple",
+          "input",
+          "repr",
+          "print"
+        ],
+        "id": "output-before-error-required",
+        "manifest_sha256": "a31e7ccaea7c9d1d53a9eeef50cf4a52d910c6450eb31762b8d0e7a9296a7e7d"
+      },
+      {
+        "case": "output-before-error",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "output-before-error-all-profile",
+        "manifest_sha256": "ef744930cd39dcf86cc2c78c43f92648ce30fd526bcb70b6b8043946e779cf43"
+      },
+      {
+        "case": "index-error",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "binding",
+          "call",
+          "numeric",
+          "str",
+          "tuple",
+          "index",
+          "input"
+        ],
+        "id": "index-error-required",
+        "manifest_sha256": "eb6cc0f6893bbc065affc8cccdba9c072f0c8533a1c93fd3e0ff3162295194a5"
+      },
+      {
+        "case": "index-error",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "index-error-all-profile",
+        "manifest_sha256": "2f4eca1d61c6bb06d4498a7d74368fa7a99667365b50c92d4ba97cd9bc87e73c"
+      },
+      {
+        "case": "unbound-local",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "binding",
+          "call",
+          "str",
+          "tuple",
+          "input",
+          "truth"
+        ],
+        "id": "unbound-local-required",
+        "manifest_sha256": "bc7b38a18037ab95c3f6e045a904d1c29b6f4c89ba423fc3b9ab24cb2ce43e23"
+      },
+      {
+        "case": "unbound-local",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "unbound-local-all-profile",
+        "manifest_sha256": "4b47ca28809730df794ef4c607e1c6451f7cf7fce077df6a0dc91dffc526e76c"
+      },
+      {
+        "case": "lazy-coroutine",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "binding",
+          "numeric",
+          "equal",
+          "compare",
+          "repr",
+          "print"
+        ],
+        "id": "lazy-coroutine-required",
+        "manifest_sha256": "df2c091ef233c2d99dcf5a76223a089995a32cae5da118d7919dd0d7f49f7f8d"
+      },
+      {
+        "case": "lazy-coroutine",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "numeric",
+          "binary",
+          "binding",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "iterate",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "lazy-coroutine-all-profile",
+        "manifest_sha256": "e296deadc912d7b5ef1877a08787cb18aa8368afd7c64ae886b0c5010c795a0e"
+      },
+      {
+        "case": "promise-callback-once",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "numeric",
+          "binary",
+          "binding",
+          "repr",
+          "print"
+        ],
+        "id": "promise-callback-once-required",
+        "manifest_sha256": "1124e367667277870a406cee777c380ad2e1974cec0e0aeda2a36dc80c2efd9d"
+      },
+      {
+        "case": "promise-callback-once",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "numeric",
+          "binary",
+          "binding",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "iterate",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "promise-callback-once-all-profile",
+        "manifest_sha256": "c494369931ca1da2069f5d01475cf4d3ef5b01ec7a5adbbc39c53e920f467623"
+      },
+      {
+        "case": "promise-rejection-value",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "binding",
+          "exception"
+        ],
+        "id": "promise-rejection-value-required",
+        "manifest_sha256": "761fcc95e4b1cfc3c8a51679ec78b847a09c08d04f118fbb705aa28f68467afd"
+      },
+      {
+        "case": "promise-rejection-value",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "numeric",
+          "binary",
+          "binding",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "iterate",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "promise-rejection-value-all-profile",
+        "manifest_sha256": "60a42fa6f0ce48f6b4aba302db3f568aaa1f3ac47a89d5cd82782203a0edc482"
+      },
+      {
+        "case": "promise-callback-raise",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "binding",
+          "exception",
+          "repr",
+          "print"
+        ],
+        "id": "promise-callback-raise-required",
+        "manifest_sha256": "daff8230b86b8dba72ddfae5331b5e6d30e9dfe216953a9d5ae23ddb6f26f4a1"
+      },
+      {
+        "case": "promise-callback-raise",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "numeric",
+          "binary",
+          "binding",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "iterate",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "promise-callback-raise-all-profile",
+        "manifest_sha256": "c70aec22836ae556acb93bd82faab1161b6a5c8550fdd1e04d61d7fb463c3e79"
+      },
+      {
+        "case": "async-original-failure",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "numeric",
+          "binary",
+          "binding"
+        ],
+        "id": "async-original-failure-required",
+        "manifest_sha256": "ab38c1e2b78d68f729806b1505ccc70ce89d56d963fd34db14ca12014637afd7"
+      },
+      {
+        "case": "async-original-failure",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "numeric",
+          "binary",
+          "binding",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "iterate",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "async-original-failure-all-profile",
+        "manifest_sha256": "a15396374f9ef6f1c2de472692b80c13b29dbd57910efee07354f4f91b265d3c"
+      },
+      {
+        "case": "module-alias-and-initialization",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "binding",
+          "call",
+          "numeric",
+          "str",
+          "tuple",
+          "equal",
+          "compare",
+          "input",
+          "repr",
+          "print"
+        ],
+        "id": "module-alias-and-initialization-required",
+        "manifest_sha256": "578da11fba0660e5d5ec9c51d416bc889b9adb45484b518c25bf88817fefec74"
+      },
+      {
+        "case": "module-alias-and-initialization",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "numeric",
+          "str",
+          "binary",
+          "binding",
+          "call",
+          "tuple",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "input",
+          "iterate",
+          "javascript",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "module-alias-and-initialization-all-profile",
+        "manifest_sha256": "a936f092ebad2090aceee20570073b9689e7db39f7fb9b22007ecb9cd4ffced6"
+      },
+      {
+        "case": "module-callback-origin",
+        "helper_policy": "required",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "binding",
+          "exception"
+        ],
+        "id": "module-callback-origin-required",
+        "manifest_sha256": "7d7fc3a290141e546d45a19600669f1cc6b7d5a31975ecb0febcd94879e776f9"
+      },
+      {
+        "case": "module-callback-origin",
+        "helper_policy": "all-profile",
+        "helpers": [
+          "error",
+          "call",
+          "javascript",
+          "async",
+          "str",
+          "tuple",
+          "input",
+          "async-expose",
+          "numeric",
+          "binary",
+          "binding",
+          "equal",
+          "compare",
+          "exception",
+          "index",
+          "iterate",
+          "len",
+          "repr",
+          "print",
+          "truth",
+          "types",
+          "unary"
+        ],
+        "id": "module-callback-origin-all-profile",
+        "manifest_sha256": "717afae5c91d269c5ae16d7be6f7c927a628dc1c9a8ba25659409e55b99c217d"
+      }
+    ]
+  },
+  "host": {
+    "logical_cpu_count": 10,
+    "machine": "arm64",
+    "processor": "arm",
+    "release": "27.0.0",
+    "system": "Darwin"
+  },
+  "kind": "python-javascript-compiler-measurements",
+  "measurement_scripts": {
+    "compiler_conformance.mjs": "db9214c6ce7e8c814fc81702417e1a765174826592381a5c764d01ca0921b184",
+    "compiler_conformance.py": "d03c5ea9846d4063b8da5a6d48bbb0a2ac43f4d7d818cfb32379499641ff71c9",
+    "measure_compiler.mjs": "d8fc75804b9834a0d0d4120d45875744c0046a07a0c273363af7c61f3842c509",
+    "measure_compiler.py": "f08c44e7f41a9cff032ad5c54bfa979df3653a012eb06b6e44ca4e386159d5e8"
+  },
+  "methods": {
+    "build": "Warm imported compiler and Unicode repr table; compilation and manifest generation only; excludes filesystem writes and Python startup.",
+    "cold": "Fresh browser context and worker per sample; browser process and OS caches remain warm/uncontrolled. Timer covers worker creation, imports, initialization, one call and result message; excludes document navigation.",
+    "memory": "Separate fresh-context worker samples. CDP HeapProfiler.collectGarbage then Runtime.getHeapUsage before import and after retaining one module/result. Used/total V8 heap, embedder heap and backing storage are bytes; excludes process RSS, other processes, and native/code allocations not exposed by this API.",
+    "scope": "Synchronous compiled-module browser fixtures, including measurement harness, maps/notices/manifest. Browser-host SDK and pocket PWA shell are measured separately. All-profile baseline includes every helper valid for the same profile; no new feature is enabled.",
+    "warm": "One context, explicit untimed warm-up, then a fresh worker for each observation. HTTP cache is shared; code-cache reuse is browser-controlled."
+  },
+  "node": "v24.19.0",
+  "python": "3.14.7",
+  "repository_revision": "35fbe6eb399f5d94e05e850eb36dbdf695e6d15a",
+  "samples_per_condition": 5,
+  "schema_version": 1,
+  "suite": "compiler-footprint/1",
+  "working_tree_modified": true
+}
